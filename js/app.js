@@ -25,7 +25,9 @@
   function getProducts() {
     var p = window.GUNBASE_STORE.getItem("gunbase_preview");
     if (p) { try { return JSON.parse(p); } catch (e) {} }
-    return window.GUNBASE_PRODUCTS || [];
+    var base = window.GUNBASE_PRODUCTS || [];
+    var soon = window.GUNBASE_COMING_SOON || [];
+    return base.concat(soon);
   }
   function catLabel(id) {
     var c = CATS.filter(function (x) { return x.id === id; })[0];
@@ -126,10 +128,15 @@
 
     list.forEach(function (p) {
       var card = document.createElement("div");
-      card.className = "card";
-      var media = imgSrc(p)
+      card.className = "card" + (p.comingSoon ? " card--soon" : "");
+      var mediaInner = imgSrc(p)
         ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(p.name[lang]) + '" loading="lazy" onerror="gbImgErr(this)" />'
         : '<div class="card__ph">' + crosshairSVG() + '</div>';
+      var media =
+        '<div class="card__media">' + mediaInner +
+          '<span class="card__cat">' + esc(catLabel(p.category)) + '</span>' +
+          (p.comingSoon ? '<span class="card__soon-badge">' + t("coming_soon") + '</span>' : '') +
+        '</div>';
       var priceHtml = "";
       if (CFG.showPrice && p.price > 0) {
         priceHtml = '<span class="card__price">' + CFG.currency + " " + p.price + "</span>";
@@ -137,7 +144,7 @@
         priceHtml = '<span>' + t("quote_on_request") + "</span>";
       }
       card.innerHTML =
-        '<div class="card__media">' + media + '<span class="card__cat">' + esc(catLabel(p.category)) + "</span></div>" +
+        media +
         '<div class="card__body">' +
           '<div class="card__name">' + esc(p.name[lang]) + '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + "</span></div>" +
           '<div class="card__sku">' + t("field_sku") + ": " + esc(p.sku) + "</div>" +
@@ -145,10 +152,12 @@
             "<div><b>" + t("field_moq") + "</b>" + p.moq + "</div>" +
             (priceHtml ? "<div>" + priceHtml + "</div>" : "") +
           "</div>" +
-          '<div class="card__actions">' +
-            '<button class="btn btn--sm" data-add="' + esc(p.id) + '">' + t("add_to_inquiry") + "</button>" +
-            '<button class="btn btn--sm btn--ghost" data-detail="' + esc(p.id) + '">' + t("view_details") + "</button>" +
-          "</div>" +
+          (p.comingSoon
+            ? '<div class="card__soon">' + t("coming_soon") + '</div>'
+            : '<div class="card__actions">' +
+                '<button class="btn btn--sm" data-add="' + esc(p.id) + '">' + t("add_to_inquiry") + "</button>" +
+                '<button class="btn btn--sm btn--ghost" data-detail="' + esc(p.id) + '">' + t("view_details") + "</button>" +
+              '</div>') +
         "</div>";
       grid.appendChild(card);
     });
@@ -163,7 +172,7 @@
 
   // ---------- product detail modal ----------
   function openDetail(p) {
-    if (!p) return;
+    if (!p || p.comingSoon) return;
     var body = $("#detailBody");
     if (!body) return;
     var media = imgSrc(p)
@@ -204,6 +213,8 @@
 
   // ---------- cart ----------
   function addToCart(id) {
+    var p = findProduct(id);
+    if (!p || p.comingSoon) return;
     var it = cart.filter(function (x) { return x.id === id; })[0];
     if (it) it.qty += 1; else cart.push({ id: id, qty: 1 });
     saveCart();
