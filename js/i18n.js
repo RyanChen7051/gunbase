@@ -10,6 +10,11 @@ window.I18N = {
     "nav_inquiry": "Inquiry",
     "nav_terms": "Trade Terms",
     "lang_toggle": "中文",
+    "btn_home": "Home",
+    "btn_update": "Update",
+    "update_checking": "Checking for updates…",
+    "update_done": "Catalog is up to date.",
+    "update_failed": "Update failed, please retry.",
     "install_text": "Install the GunBase app for quick access",
     "install_btn": "Install",
 
@@ -112,6 +117,11 @@ window.I18N = {
     "nav_inquiry": "在线询盘",
     "nav_terms": "贸易条款",
     "lang_toggle": "EN",
+    "btn_home": "首页",
+    "btn_update": "更新",
+    "update_checking": "正在检查更新…",
+    "update_done": "目录已是最新。",
+    "update_failed": "更新失败，请重试。",
     "install_text": "安装 GunBase 应用，方便随时访问",
     "install_btn": "安装",
 

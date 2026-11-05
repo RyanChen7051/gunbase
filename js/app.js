@@ -470,6 +470,28 @@
     $("#installBar").classList.add("show");
   }
 
+  // ---------- force update catalog (clear SW cache + reload) ----------
+  function forceUpdate() {
+    var btn = $("#updateBtn");
+    if (btn) btn.classList.add("is-busy");
+    toast(t("update_checking"));
+    var reload = function () {
+      setTimeout(function () { window.location.reload(true); }, 700);
+    };
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistration().then(function (reg) {
+        var upd = reg ? reg.update() : Promise.resolve();
+        Promise.resolve(upd).then(function () {
+          if ("caches" in window) {
+            caches.keys().then(function (ks) {
+              return Promise.all(ks.map(function (k) { return caches.delete(k); }));
+            }).then(reload).catch(reload);
+          } else { reload(); }
+        }).catch(reload);
+      }).catch(reload);
+    } else { reload(); }
+  }
+
   // ---------- init ----------
   function init() {
     applyI18n();
@@ -506,6 +528,10 @@
       e.preventDefault(); deferredPrompt = e; showInstall();
     });
     window.addEventListener("appinstalled", function () { window.GUNBASE_STORE.setItem("gunbase_installed", "1"); $("#installBar").classList.remove("show"); });
+
+    // Floating controls: Home & Update
+    $("#homeBtn").onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+    $("#updateBtn").onclick = forceUpdate;
 
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js").catch(function () {});
