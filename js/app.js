@@ -568,7 +568,10 @@
     window.addEventListener("appinstalled", function () { window.GUNBASE_STORE.setItem("gunbase_installed", "1"); $("#installBar").classList.remove("show"); });
 
     // Floating controls: Home & Update
-    $("#homeBtn").onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+    $("#homeBtn").onclick = function () {
+      try { window.scrollTo({ top: 0, behavior: "smooth" }); }
+      catch (e) { window.scrollTo(0, 0); }
+    };
     $("#updateBtn").onclick = forceUpdate;
 
     if ("serviceWorker" in navigator) {
