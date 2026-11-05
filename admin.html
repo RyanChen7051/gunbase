@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GunBase — Product Import (Seller)</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .admin-wrap{max-width:900px;margin:0 auto;padding:56px 20px}
+    .drop{border:1px dashed var(--line);padding:34px;text-align:center;background:var(--panel);margin:18px 0;border-radius:10px}
+    .drop input{font-size:14px;color:var(--ink)}
+    .admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+    .cols{background:var(--panel);border:1px solid var(--line-2);padding:18px 20px;font-size:13px;line-height:1.8;border-radius:10px;color:var(--muted)}
+    .cols code{background:var(--panel-2);padding:2px 7px;border:1px solid var(--line-2);border-radius:4px;color:var(--accent);font-size:12px}
+    table.prev{width:100%;border-collapse:collapse;font-size:12px;margin-top:14px;color:var(--ink)}
+    table.prev th,table.prev td{border:1px solid var(--line-2);padding:7px;text-align:left;vertical-align:top}
+    table.prev th{background:var(--panel-2);color:var(--accent);text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+    .note{color:var(--muted-2);font-size:12px;margin-top:10px}
+    #status{font-weight:800;margin:12px 0;color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__mark" data-i18n="brand">GUNBASE</span><span class="brand__sub" data-i18n="brand_sub">火械基地</span></a>
+      <button class="langbtn" id="langBtn">中文</button>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <h1 class="display" style="font-size:34px" data-i18n="admin_title">GunBase — Product Import (Seller)</h1>
+    <div class="rule"></div>
+    <p data-i18n="admin_intro">Upload an Excel (.xlsx) file to update the product catalog. Download the generated file and replace /js/products.js in your site, then redeploy.</p>
+
+    <div class="drop">
+      <input type="file" id="file" accept=".xlsx,.xls" />
+    </div>
+
+    <div id="status"></div>
+
+    <div class="admin-actions">
+      <button class="btn btn--sm" id="dlJs" data-i18n="admin_download">Download products.js</button>
+      <button class="btn btn--sm btn--ghost" id="preview" data-i18n="admin_preview">Preview (save to browser)</button>
+      <button class="btn btn--sm btn--ghost" id="dlTpl" data-i18n="admin_template">Download blank Excel template</button>
+      <button class="btn btn--sm btn--ghost" id="clearPrev" data-i18n="admin_clear">Clear local preview</button>
+    </div>
+
+    <div class="cols">
+      <strong data-i18n="admin_cols">Expected columns (first row = header):</strong><br/>
+      <code>id</code> <code>category</code> (scopes/firstaid/gear) <code>name_en</code> <code>name_zh</code> <code>sku</code>
+      <code>desc_en</code> <code>desc_zh</code> <code>price</code> (0 = quote) <code>moq</code> <code>specs_en</code> <code>specs_zh</code> <code>image</code> (optional URL)
+      <div class="note" data-i18n="admin_note">category must be one of: scopes / firstaid / gear. price 0 = quote on request. image = optional image URL.</div>
+    </div>
+
+    <div id="previewArea"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="libs/xlsx.full.min.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# 本地临时/构建产物
+*.log
+__pycache__/
+*.pyc
+node_modules/
+
+# 不要把密钥/本地配置提交进来
+.env
+*.secret

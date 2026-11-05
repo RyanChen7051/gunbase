@@ -1,0 +1,519 @@
+// =====================================================================
+// GunBase 火械基地 — app.js
+// Bilingual catalog + inquiry cart + quote request (no backend).
+// =====================================================================
+(function () {
+  "use strict";
+
+  var CFG = window.GUNBASE_CONFIG;
+  var I18N = window.I18N;
+  var CATS = window.GUNBASE_CATEGORIES;
+
+  // ---------- state ----------
+  var lang = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
+  var activeCat = "all";
+  var searchTerm = "";
+  var cart = loadCart();            // [{id, qty}]
+  var lastInquiry = null;           // for modal email / print
+
+  // ---------- helpers ----------
+  function t(key) {
+    return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || key;
+  }
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function getProducts() {
+    var p = window.GUNBASE_STORE.getItem("gunbase_preview");
+    if (p) { try { return JSON.parse(p); } catch (e) {} }
+    return window.GUNBASE_PRODUCTS || [];
+  }
+  function catLabel(id) {
+    var c = CATS.filter(function (x) { return x.id === id; })[0];
+    return c ? t(c.key) : id;
+  }
+  function loadCart() {
+    try { return JSON.parse(window.GUNBASE_STORE.getItem("gunbase_cart")) || []; }
+    catch (e) { return []; }
+  }
+  function saveCart() { window.GUNBASE_STORE.setItem("gunbase_cart", JSON.stringify(cart)); }
+  function findProduct(id) {
+    return getProducts().filter(function (p) { return p.id === id; })[0];
+  }
+  function cartTotalQty() {
+    return cart.reduce(function (s, it) { return s + it.qty; }, 0);
+  }
+
+  // Crosshair placeholder SVG (used on cards / detail when no image)
+  function crosshairSVG(size) {
+    size = size || 72;
+    return '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size + '" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<circle cx="50" cy="50" r="34" stroke="#f5a623" stroke-width="2" opacity=".5"/>' +
+      '<line x1="50" y1="6" x2="50" y2="24" stroke="#f5a623" stroke-width="2" opacity=".7"/>' +
+      '<line x1="50" y1="76" x2="50" y2="94" stroke="#f5a623" stroke-width="2" opacity=".7"/>' +
+      '<line x1="6" y1="50" x2="24" y2="50" stroke="#f5a623" stroke-width="2" opacity=".7"/>' +
+      '<line x1="76" y1="50" x2="94" y2="50" stroke="#f5a623" stroke-width="2" opacity=".7"/>' +
+      '<circle cx="50" cy="50" r="5" fill="#f5a623" opacity=".9"/>' +
+      '</svg>';
+  }
+  // Resolve image path: bare filename -> images/ folder; URLs / paths kept as-is
+  function imgSrc(p) {
+    var im = p && p.image ? String(p.image).trim() : "";
+    if (!im) return "";
+    if (/^(https?:|data:|\/)/i.test(im)) return im;
+    if (im.indexOf("/") !== -1) return im;
+    return "images/" + im;
+  }
+  // On image load error, swap for the crosshair placeholder
+  window.gbImgErr = function (img) {
+    if (!img || !img.parentNode) return;
+    var ph = document.createElement("div");
+    ph.className = "card__ph";
+    ph.innerHTML = crosshairSVG();
+    img.parentNode.replaceChild(ph, img);
+  };
+
+  // ---------- i18n apply ----------
+  function applyI18n() {
+    $all("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
+    $all("[data-i18n-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
+    document.documentElement.lang = (lang === "zh") ? "zh-CN" : "en";
+  }
+
+  function setLang(l) {
+    lang = l;
+    window.GUNBASE_STORE.setItem("gunbase_lang", l);
+    applyI18n();
+    renderTabs();
+    renderGrid();
+    renderCart();
+    renderTrade();
+    buildInquiryList();
+  }
+
+  // ---------- category tabs ----------
+  function renderTabs() {
+    var tabs = $("#tabs");
+    var items = [{ id: "all", label: t("cat_all"), desc: "" }].concat(
+      CATS.map(function (c) { return { id: c.id, label: t(c.key), desc: t(c.descKey) }; })
+    );
+    tabs.innerHTML = "";
+    items.forEach(function (it) {
+      var b = document.createElement("button");
+      b.className = "tab" + (it.id === activeCat ? " is-active" : "");
+      b.innerHTML = it.desc
+        ? it.label + "<small>" + it.desc + "</small>"
+        : it.label;
+      b.onclick = function () { activeCat = it.id; renderTabs(); renderGrid(); };
+      tabs.appendChild(b);
+    });
+  }
+
+  // ---------- product grid ----------
+  function renderGrid() {
+    var grid = $("#grid");
+    var list = getProducts();
+    if (activeCat !== "all") list = list.filter(function (p) { return p.category === activeCat; });
+    if (searchTerm) {
+      var q = searchTerm.toLowerCase();
+      list = list.filter(function (p) {
+        var s = (p.name.en + " " + p.name.zh + " " + p.sku + " " + p.desc.en + " " + p.desc.zh).toLowerCase();
+        return s.indexOf(q) !== -1;
+      });
+    }
+    grid.innerHTML = "";
+    $("#count").textContent = list.length + " " + t("result_count");
+    $("#noResult").style.display = list.length ? "none" : "block";
+
+    list.forEach(function (p) {
+      var card = document.createElement("div");
+      card.className = "card";
+      var media = imgSrc(p)
+        ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(p.name[lang]) + '" loading="lazy" onerror="gbImgErr(this)" />'
+        : '<div class="card__ph">' + crosshairSVG() + '</div>';
+      var priceHtml = "";
+      if (CFG.showPrice && p.price > 0) {
+        priceHtml = '<span class="card__price">' + CFG.currency + " " + p.price + "</span>";
+      } else if (CFG.showPrice) {
+        priceHtml = '<span>' + t("quote_on_request") + "</span>";
+      }
+      card.innerHTML =
+        '<div class="card__media">' + media + '<span class="card__cat">' + esc(catLabel(p.category)) + "</span></div>" +
+        '<div class="card__body">' +
+          '<div class="card__name">' + esc(p.name[lang]) + '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + "</span></div>" +
+          '<div class="card__sku">' + t("field_sku") + ": " + esc(p.sku) + "</div>" +
+          '<div class="card__meta">' +
+            "<div><b>" + t("field_moq") + "</b>" + p.moq + "</div>" +
+            (priceHtml ? "<div>" + priceHtml + "</div>" : "") +
+          "</div>" +
+          '<div class="card__actions">' +
+            '<button class="btn btn--sm" data-add="' + esc(p.id) + '">' + t("add_to_inquiry") + "</button>" +
+            '<button class="btn btn--sm btn--ghost" data-detail="' + esc(p.id) + '">' + t("view_details") + "</button>" +
+          "</div>" +
+        "</div>";
+      grid.appendChild(card);
+    });
+
+    $all("[data-add]", grid).forEach(function (b) {
+      b.onclick = function () { addToCart(b.getAttribute("data-add")); };
+    });
+    $all("[data-detail]", grid).forEach(function (b) {
+      b.onclick = function () { openDetail(findProduct(b.getAttribute("data-detail"))); };
+    });
+  }
+
+  // ---------- product detail modal ----------
+  function openDetail(p) {
+    if (!p) return;
+    var body = $("#detailBody");
+    if (!body) return;
+    var media = imgSrc(p)
+      ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(p.name[lang]) + '" onerror="gbImgErr(this)" />'
+      : '<div class="detail__ph">' + crosshairSVG(120) + '</div>';
+    var enSpec = (p.specs && p.specs.en) ? p.specs.en : "";
+    var zhSpec = (p.specs && p.specs.zh) ? p.specs.zh : "";
+    var specHtml = "";
+    if (enSpec) {
+      specHtml += '<div class="detail__spec"><h4>' + t("field_specs") + ' / Key Specs</h4><p>' +
+        esc(enSpec).replace(/\|/g, " · ") + '</p></div>';
+    }
+    if (zhSpec) {
+      specHtml += '<div class="detail__spec"><h4>' + t("specs_zh_full") + '</h4><p class="detail__spec_zh">' +
+        esc(zhSpec).replace(/\n/g, "<br>") + '</p></div>';
+    }
+    body.innerHTML =
+      '<div class="detail__media">' + media + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
+      '<div class="detail__info">' +
+        '<h3 class="detail__name">' + esc(p.name[lang]) +
+          '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + '</span></h3>' +
+        '<div class="detail__sku">' + t("field_sku") + ": " + esc(p.sku) + "　·　" + t("field_moq") + ": " + (p.moq || "—") + '</div>' +
+        (p.desc && p.desc[lang] ? '<p class="detail__desc">' + esc(p.desc[lang]) + '</p>' : '') +
+        specHtml +
+        '<button class="btn" data-add="' + esc(p.id) + '" style="margin-top:16px">' + t("add_to_inquiry") + '</button>' +
+      '</div>';
+    var addBtn = body.querySelector('[data-add]');
+    if (addBtn) addBtn.onclick = function () { addToCart(p.id); closeDetail(); };
+    $("#detailModal").classList.add("open");
+  }
+  function closeDetail() { var m = $("#detailModal"); if (m) m.classList.remove("open"); }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // ---------- cart ----------
+  function addToCart(id) {
+    var it = cart.filter(function (x) { return x.id === id; })[0];
+    if (it) it.qty += 1; else cart.push({ id: id, qty: 1 });
+    saveCart();
+    renderCart();
+    buildInquiryList();
+    toast(t("added"));
+  }
+  function setQty(id, qty) {
+    qty = parseInt(qty, 10);
+    if (isNaN(qty) || qty < 1) qty = 1;
+    var it = cart.filter(function (x) { return x.id === id; })[0];
+    if (it) it.qty = qty;
+    saveCart(); renderCart(); buildInquiryList();
+  }
+  function removeFromCart(id) {
+    cart = cart.filter(function (x) { return x.id !== id; });
+    saveCart(); renderCart(); buildInquiryList();
+  }
+  function clearCart() {
+    cart = []; saveCart(); renderCart(); buildInquiryList();
+  }
+
+  function renderCart() {
+    var body = $("#drawerBody");
+    var total = cartTotalQty();
+    var badge = $("#cartBadge");
+    if (total > 0) { badge.style.display = "flex"; badge.textContent = total; }
+    else badge.style.display = "none";
+    $("#cartTotal").textContent = total;
+
+    if (!cart.length) {
+      body.innerHTML = '<div class="drawer__empty">' + t("cart_empty") + "</div>";
+      return;
+    }
+    body.innerHTML = "";
+    cart.forEach(function (it) {
+      var p = findProduct(it.id);
+      if (!p) return;
+      var row = document.createElement("div");
+      row.className = "cart-item";
+      row.innerHTML =
+        '<div><div class="cart-item__name">' + esc(p.name[lang]) + "</div>" +
+        '<div class="cart-item__sku">' + esc(p.sku) + "</div></div>" +
+        '<div class="cart-item__right">' +
+          '<div class="qty">' +
+            '<button data-dec="' + esc(p.id) + '">−</button>' +
+            '<input type="number" min="1" value="' + it.qty + '" data-qty="' + esc(p.id) + '" />' +
+            '<button data-inc="' + esc(p.id) + '">+</button>' +
+          "</div>" +
+          '<button class="cart-item__remove" data-rm="' + esc(p.id) + '">' + t("cart_remove") + "</button>" +
+        "</div>";
+      body.appendChild(row);
+    });
+    $all("[data-dec]", body).forEach(function (b) { b.onclick = function () { var it = cart.filter(function (x){return x.id===b.getAttribute("data-dec");})[0]; setQty(b.getAttribute("data-dec"), (it?it.qty:1)-1); }; });
+    $all("[data-inc]", body).forEach(function (b) { var it = cart.filter(function (x){return x.id===b.getAttribute("data-inc");})[0]; setQty(b.getAttribute("data-inc"), (it?it.qty:1)+1); });
+    $all("[data-qty]", body).forEach(function (inp) { inp.onchange = function () { setQty(inp.getAttribute("data-qty"), inp.value); }; });
+    $all("[data-rm]", body).forEach(function (b) { b.onclick = function () { removeFromCart(b.getAttribute("data-rm")); }; });
+  }
+
+  // inquiry form product list (mirrors cart)
+  function buildInquiryList() {
+    var ul = $("#inquiryList");
+    if (!ul) return;
+    ul.innerHTML = "";
+    if (!cart.length) {
+      var li = document.createElement("li");
+      li.style.color = "var(--muted)";
+      li.textContent = t("cart_empty");
+      ul.appendChild(li);
+      return;
+    }
+    cart.forEach(function (it) {
+      var p = findProduct(it.id);
+      if (!p) return;
+      var li = document.createElement("li");
+      li.innerHTML = "<span>" + esc(p.name[lang]) + " · " + esc(p.sku) + "</span><span>×" + it.qty + "</span>";
+      ul.appendChild(li);
+    });
+  }
+
+  // ---------- trade term radios ----------
+  function renderTrade() {
+    var row = $("#tradeRow");
+    if (!row) return;
+    row.innerHTML = "";
+    CFG.tradeTerms.methods.forEach(function (m) {
+      var key = m === "FOB" ? "trade_fob" : (m === "EXW" ? "trade_exw" : null);
+      var label = document.createElement("label");
+      label.className = "radio";
+      label.innerHTML = '<input type="radio" name="trade" value="' + m + '" /> ' + (key ? t(key) : m);
+      row.appendChild(label);
+    });
+    // hint
+    var hint = document.createElement("div");
+    hint.style.cssText = "width:100%;font-size:12px;color:var(--muted);font-weight:600";
+    hint.textContent = t("trade_hint");
+    row.appendChild(hint);
+  }
+
+  // ---------- form submit ----------
+  function validate() {
+    var ok = true;
+    var form = $("#inquiryForm");
+    ["company", "contact", "email", "phone", "country"].forEach(function (n) {
+      var input = form.querySelector('[name="' + n + '"]');
+      var field = input.closest(".field");
+      field.classList.remove("invalid");
+      var v = input.value.trim();
+      if (!v) { field.classList.add("invalid"); ok = false; }
+      if (n === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { field.classList.add("invalid"); ok = false; }
+    });
+    // cart
+    $("#cartErr").style.display = cart.length ? "none" : "block";
+    if (!cart.length) ok = false;
+    // trade
+    var trade = form.querySelector('input[name="trade"]:checked');
+    var tradeField = form.querySelector("#tradeRow").closest(".field");
+    tradeField.classList.remove("invalid");
+    if (!trade) { tradeField.classList.add("invalid"); ok = false; }
+    return ok ? { trade: trade.value } : null;
+  }
+
+  function buildInquiry() {
+    var form = $("#inquiryForm");
+    var fd = new FormData(form);
+    var items = cart.map(function (it) {
+      var p = findProduct(it.id);
+      return { sku: p.sku, name: p.name, qty: it.qty, price: p.price };
+    });
+    var tradeEl = form.querySelector('input[name="trade"]:checked');
+    return {
+      company: (fd.get("company") || "").trim(),
+      contact: (fd.get("contact") || "").trim(),
+      email: (fd.get("email") || "").trim(),
+      phone: (fd.get("phone") || "").trim(),
+      country: (fd.get("country") || "").trim(),
+      delivery: (fd.get("delivery") || "").trim(),
+      trade: tradeEl ? tradeEl.value : "",
+      message: (fd.get("message") || "").trim(),
+      items: items,
+      date: new Date().toISOString()
+    };
+  }
+
+  function onInquiryListShow() { buildInquiryList(); }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var v = validate();
+    if (!v) {
+      // scroll to first invalid
+    var bad = $(".field.invalid");
+    if (bad && bad.scrollIntoView) bad.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    lastInquiry = buildInquiry();
+    var n = lastInquiry.items.reduce(function (s, x) { return s + x.qty; }, 0);
+    $("#modalSummary").textContent =
+      lastInquiry.company + " · " + n + " " + t("result_count") + " · " + lastInquiry.trade;
+    openModal();
+  }
+
+  // ---------- email / print ----------
+  function emailBody(inq) {
+    var L = function (k) { return t(k); };
+    var lines = [];
+    lines.push("=== GUNBASE INQUIRY / 火械基地询盘 ===");
+    lines.push("");
+    lines.push(L("f_company") + ": " + inq.company);
+    lines.push(L("f_contact") + ": " + inq.contact);
+    lines.push(L("f_email") + ": " + inq.email);
+    lines.push(L("f_phone") + ": " + inq.phone);
+    lines.push(L("f_country") + ": " + inq.country);
+    lines.push(L("f_trade") + ": " + inq.trade);
+    if (inq.delivery) lines.push(L("f_delivery") + ": " + inq.delivery);
+    lines.push("");
+    lines.push(L("f_products") + ":");
+    inq.items.forEach(function (it) {
+      var line = "  - " + it.sku + " | " + it.name.en + " / " + it.name.zh + " | Qty: " + it.qty;
+      if (CFG.showPrice) line += (it.price > 0 ? " | " + CFG.currency + " " + it.price : " | " + L("quote_on_request"));
+      lines.push(line);
+    });
+    if (inq.message) { lines.push(""); lines.push(L("f_message") + ": " + inq.message); }
+    lines.push("");
+    lines.push("--- " + L("terms_title") + " ---");
+    lines.push(L("terms_deposit"));
+    lines.push(L("terms_balance"));
+    lines.push(L("terms_methods"));
+    return lines.join("\n");
+  }
+
+  function openEmail() {
+    if (!lastInquiry) return;
+    var subject = CFG.inquirySubjectPrefix + lastInquiry.company;
+    var body = emailBody(lastInquiry);
+    var href = "mailto:" + CFG.sellerEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = href;
+  }
+
+  function printPdf() {
+    if (!lastInquiry) return;
+    var inq = lastInquiry;
+    var priceCol = !!CFG.showPrice;
+    var rows = inq.items.map(function (it) {
+      var cells = "<td>" + esc(it.sku) + "</td><td>" + esc(it.name.en) + "<br><small>" + esc(it.name.zh) + "</small></td><td style='text-align:center'>" + it.qty + "</td>";
+      if (priceCol) cells += "<td>" + (it.price > 0 ? CFG.currency + " " + it.price : t("quote_on_request")) + "</td>";
+      return "<tr>" + cells + "</tr>";
+    }).join("");
+    var html =
+      "<!doctype html><html><head><meta charset='utf-8'><title>GunBase Inquiry</title>" +
+      "<style>body{font-family:Arial,'PingFang SC',sans-serif;color:#111;max-width:760px;margin:24px auto;padding:0 16px}" +
+      "h1{font-size:22px;letter-spacing:.05em;text-transform:uppercase;margin:0}" +
+      ".sub{color:#666;font-size:12px;letter-spacing:.2em;text-transform:uppercase}" +
+      ".bar{height:4px;background:#0e0e0e;margin:10px 0 20px}" +
+      "table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}" +
+      "th,td{border:1px solid #ccc;padding:8px;text-align:left}th{background:#0e0e0e;color:#fff;text-transform:uppercase;font-size:11px;letter-spacing:.05em}" +
+      ".info{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:14px;margin-top:10px}" +
+      ".info b{display:block;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.04em}" +
+      ".terms{margin-top:20px;font-size:13px;background:#f4f3ef;padding:14px;border-left:4px solid #c0392b}" +
+      "@media print{body{margin:0}}</style></head><body>" +
+      "<div class='sub'>" + esc(CFG.company[lang]) + "</div>" +
+      "<h1>GunBase Inquiry / 火械基地询盘</h1><div class='bar'></div>" +
+      "<div class='info'>" +
+        "<div><b>" + t("f_company") + "</b>" + esc(inq.company) + "</div>" +
+        "<div><b>" + t("f_contact") + "</b>" + esc(inq.contact) + "</div>" +
+        "<div><b>" + t("f_email") + "</b>" + esc(inq.email) + "</div>" +
+        "<div><b>" + t("f_phone") + "</b>" + esc(inq.phone) + "</div>" +
+        "<div><b>" + t("f_country") + "</b>" + esc(inq.country) + "</div>" +
+        "<div><b>" + t("f_trade") + "</b>" + esc(inq.trade) + "</div>" +
+        (inq.delivery ? "<div><b>" + t("f_delivery") + "</b>" + esc(inq.delivery) + "</div>" : "") +
+      "</div>" +
+      "<table><thead><tr><th>SKU</th><th>" + t("f_products") + "</th><th style='text-align:center'>Qty</th>" +
+        (priceCol ? "<th>Price</th>" : "") + "</tr></thead><tbody>" + rows + "</tbody></table>" +
+      (inq.message ? "<p style='margin-top:14px'><b>" + t("f_message") + ":</b> " + esc(inq.message) + "</p>" : "") +
+      "<div class='terms'><b>" + t("terms_title") + "</b><br>" + t("terms_deposit") + "<br>" + t("terms_balance") + "<br>" + t("terms_methods") + "</div>" +
+      "<p style='margin-top:18px;color:#888;font-size:11px'>" + esc(inq.date) + "</p>" +
+      "</body></html>";
+    var w = window.open("", "_blank");
+    if (!w) { alert("Popup blocked. Please allow popups to save the PDF."); return; }
+    w.document.open(); w.document.write(html); w.document.close();
+    setTimeout(function () { w.focus(); w.print(); }, 350);
+  }
+
+  // ---------- drawer / modal ----------
+  function openDrawer() { $("#drawer").classList.add("open"); $("#drawerMask").classList.add("open"); }
+  function closeDrawer() { $("#drawer").classList.remove("open"); $("#drawerMask").classList.remove("open"); }
+  function openModal() { $("#modal").classList.add("open"); }
+  function closeModal() { $("#modal").classList.remove("open"); }
+
+  // ---------- toast ----------
+  function toast(msg) {
+    var el = document.createElement("div");
+    el.textContent = msg;
+    el.style.cssText = "position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--panel-3);color:var(--ink);padding:11px 20px;font-weight:700;font-size:13px;letter-spacing:.04em;z-index:95;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)";
+    document.body.appendChild(el);
+    setTimeout(function () { el.style.transition = "opacity .3s"; el.style.opacity = "0"; }, 900);
+    setTimeout(function () { el.remove(); }, 1250);
+  }
+
+  // ---------- PWA install ----------
+  var deferredPrompt = null;
+  function showInstall() {
+    if (window.GUNBASE_STORE.getItem("gunbase_installed")) return;
+    $("#installBar").classList.add("show");
+  }
+
+  // ---------- init ----------
+  function init() {
+    applyI18n();
+    renderTabs();
+    renderGrid();
+    renderCart();
+    renderTrade();
+    buildInquiryList();
+
+    $("#langBtn").onclick = function () { setLang(lang === "en" ? "zh" : "en"); };
+    $("#search").oninput = function (e) { searchTerm = e.target.value; renderGrid(); };
+
+    $("#cartToggle").onclick = openDrawer;
+    $("#drawerClose").onclick = closeDrawer;
+    $("#drawerMask").onclick = closeDrawer;
+    $("#cartClear").onclick = clearCart;
+    $("#cartCheckout").onclick = function () { closeDrawer(); document.getElementById("inquiry").scrollIntoView({ behavior: "smooth" }); onInquiryListShow(); };
+
+    $("#inquiryForm").addEventListener("submit", handleSubmit);
+    $("#modalClose").onclick = closeModal;
+    $("#modal").addEventListener("click", function (e) { if (e.target === $("#modal")) closeModal(); });
+    $("#detailClose").onclick = closeDetail;
+    $("#detailModal").addEventListener("click", function (e) { if (e.target === $("#detailModal")) closeDetail(); });
+    $("#sendEmail").onclick = openEmail;
+    $("#printPdf").onclick = printPdf;
+
+    $("#installBtn").onclick = function () {
+      if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function () { deferredPrompt = null; }); }
+      $("#installBar").classList.remove("show");
+    };
+    $("#installClose").onclick = function () { $("#installBar").classList.remove("show"); window.GUNBASE_STORE.setItem("gunbase_installed", "1"); };
+
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault(); deferredPrompt = e; showInstall();
+    });
+    window.addEventListener("appinstalled", function () { window.GUNBASE_STORE.setItem("gunbase_installed", "1"); $("#installBar").classList.remove("show"); });
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    }
+
+    showInstall();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

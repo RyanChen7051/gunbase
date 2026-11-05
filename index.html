@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GunBase 火械基地 — Tactical Optics · First Aid · Gear</title>
+  <meta name="description" content="GunBase 火械基地: tactical scopes, battlefield first-aid courses and field-grade gear. Request a quote online." />
+  <meta name="theme-color" content="#0a0c0a" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="icon" type="image/png" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Install prompt (PWA) -->
+  <div class="install-bar" id="installBar">
+    <span data-i18n="install_text">Install GunBase app for quick access</span>
+    <button id="installBtn" data-i18n="install_btn">Install</button>
+    <button class="x" id="installClose">×</button>
+  </div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark" data-i18n="brand">GUNBASE</span>
+        <span class="brand__sub" data-i18n="brand_sub">火械基地</span>
+      </a>
+      <nav class="nav">
+        <a href="#catalog" data-i18n="nav_catalog">Catalog</a>
+        <a href="#inquiry" data-i18n="nav_inquiry">Inquiry</a>
+        <a href="#terms" data-i18n="nav_terms">Trade Terms</a>
+      </nav>
+      <button class="langbtn" id="langBtn">中文</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero__bg"></div>
+    <svg class="hero__cross" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="100" cy="100" r="94" stroke="#f5a623" stroke-width="1" opacity=".45"/>
+      <circle cx="100" cy="100" r="72" stroke="#f5a623" stroke-width="1" stroke-dasharray="2 7" opacity=".5"/>
+      <line x1="100" y1="2" x2="100" y2="42" stroke="#f5a623" stroke-width="1.5" opacity=".7"/>
+      <line x1="100" y1="158" x2="100" y2="198" stroke="#f5a623" stroke-width="1.5" opacity=".7"/>
+      <line x1="2" y1="100" x2="42" y2="100" stroke="#f5a623" stroke-width="1.5" opacity=".7"/>
+      <line x1="158" y1="100" x2="198" y2="100" stroke="#f5a623" stroke-width="1.5" opacity=".7"/>
+      <circle cx="100" cy="100" r="7" fill="#f5a623" opacity=".9"/>
+      <circle cx="100" cy="100" r="3" fill="#0a0c0a"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">GUNBASE · 火械基地</p>
+      <h1 class="display" data-i18n="hero_title">TACTICAL OPTICS · FIRST AID · GEAR</h1>
+      <div class="rule"></div>
+      <p class="hero__sub" data-i18n="hero_sub">Precision scopes, battlefield first-aid training, and field-grade tactical equipment. Built for professionals.</p>
+      <div class="hero__langs">
+        <span class="hl-en">EN</span> Tactical Optics · First Aid · Gear
+        <span class="hl-sep">/</span>
+        <span class="hl-zh">中文</span> 战术光学 · 战场急救 · 战术装备
+      </div>
+      <div class="hero__cta">
+        <a class="btn" href="#catalog" data-i18n="hero_cta_catalog">Browse Catalog</a>
+        <a class="btn btn--accent" href="#inquiry" data-i18n="hero_cta_inquiry">Start Inquiry</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat"><b>3</b><span data-i18n="hero_stat_cat">Product Lines</span></div>
+        <div class="hero__stat"><b>FOB/EXW</b><span data-i18n="hero_stat_ship">Worldwide Shipping</span></div>
+        <div class="hero__stat"><b>50%</b><span data-i18n="hero_stat_dep">Deposit to Start</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section class="section" id="catalog">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_catalog">Catalog</p>
+      <h2 class="display" style="font-size:clamp(26px,5vw,46px)">PRODUCT CATALOG</h2>
+      <div class="rule"></div>
+
+      <div class="tabs" id="tabs"></div>
+
+      <div class="toolbar">
+        <div class="search">
+          <span aria-hidden="true">⌕</span>
+          <input type="search" id="search" data-i18n-ph="search_placeholder" placeholder="Search products..." />
+        </div>
+        <span class="count" id="count"></span>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <p id="noResult" class="count" style="display:none" data-i18n="no_result">No products match your search.</p>
+    </div>
+  </section>
+
+  <!-- Inquiry -->
+  <section class="section section--ink" id="inquiry">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_inquiry">Inquiry</p>
+      <h2 class="display" style="font-size:clamp(26px,5vw,46px)">REQUEST A QUOTE</h2>
+      <div class="rule"></div>
+      <p data-i18n="form_intro" style="color:#d8d5cc;max-width:640px">Tell us about your requirement. We typically reply within 2 business days.</p>
+
+      <form id="inquiryForm" style="margin-top:24px" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label data-i18n="f_company">Company / 公司名称</label>
+            <input name="company" type="text" autocomplete="organization" />
+            <span class="err" data-i18n="req_required">This field is required.</span>
+          </div>
+          <div class="field">
+            <label data-i18n="f_contact">Contact Person / 联系人</label>
+            <input name="contact" type="text" autocomplete="name" />
+            <span class="err" data-i18n="req_required">This field is required.</span>
+          </div>
+          <div class="field">
+            <label data-i18n="f_email">Email / 邮箱</label>
+            <input name="email" type="email" autocomplete="email" />
+            <span class="err" data-i18n="req_email">Please enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label data-i18n="f_phone">Phone / 电话</label>
+            <input name="phone" type="tel" autocomplete="tel" />
+            <span class="err" data-i18n="req_required">This field is required.</span>
+          </div>
+          <div class="field">
+            <label data-i18n="f_country">Country / 国家地区</label>
+            <input name="country" type="text" autocomplete="country-name" />
+            <span class="err" data-i18n="req_required">This field is required.</span>
+          </div>
+          <div class="field">
+            <label><span data-i18n="f_delivery">Expected Delivery / 期望交期</span> <span class="opt" data-i18n="f_optional">(optional)</span></label>
+            <input name="delivery" type="text" placeholder="e.g. 2026-08 / ASAP" />
+          </div>
+
+          <div class="field field--full">
+            <label data-i18n="f_products">Required Products / 需求产品</label>
+            <ul class="inquiry-list" id="inquiryList"></ul>
+            <span class="err" id="cartErr" data-i18n="req_cart">Please add at least one product to your inquiry.</span>
+          </div>
+
+          <div class="field field--full">
+            <label data-i18n="f_trade">Trade Term / 贸易条款</label>
+            <div class="radio-row" id="tradeRow"></div>
+            <span class="err" data-i18n="req_trade">Please select a trade term.</span>
+          </div>
+
+          <div class="field field--full">
+            <label><span data-i18n="f_message">Message / 备注</span> <span class="opt" data-i18n="f_optional">(optional)</span></label>
+            <textarea name="message" rows="4" placeholder=""></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <button type="submit" class="btn btn--accent" data-i18n="submit">Submit Inquiry</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Terms -->
+  <section class="section" id="terms">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="nav_terms">Trade Terms</p>
+      <h2 class="display" style="font-size:clamp(26px,5vw,46px)">TRADE & PAYMENT</h2>
+      <div class="rule"></div>
+      <div class="terms">
+        <div class="term">
+          <h4 data-i18n="t_deposit_h">Deposit</h4>
+          <p class="big">50%</p>
+          <p data-i18n="terms_deposit">50% deposit to confirm the order.</p>
+        </div>
+        <div class="term" style="border-color:var(--ink)">
+          <h4 data-i18n="t_balance_h">Balance</h4>
+          <p class="big">50%</p>
+          <p data-i18n="terms_balance">50% balance paid before shipment.</p>
+        </div>
+        <div class="term" style="border-color:var(--ink)">
+          <h4 data-i18n="t_methods_h">Incoterms</h4>
+          <p class="big">FOB / EXW</p>
+          <p data-i18n="terms_methods">Incoterms: FOB or EXW.</p>
+        </div>
+        <div class="term" style="border-color:var(--ink)">
+          <h4 data-i18n="t_note_h">Note</h4>
+          <p data-i18n="terms_note">Final price, lead time and shipping are confirmed by proforma invoice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span data-i18n="footer_text">© GUNBASE TACTICAL SUPPLY. All rights reserved.</span>
+      <a href="admin.html" data-i18n="footer_admin">Seller Admin</a>
+    </div>
+  </footer>
+
+  <!-- Cart toggle -->
+  <button class="cart-toggle" id="cartToggle" aria-label="cart">⌧<span class="badge" id="cartBadge" style="display:none">0</span></button>
+
+  <!-- Cart drawer -->
+  <div class="drawer-mask" id="drawerMask"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer__head">
+      <h3 data-i18n="cart_title">Inquiry Cart</h3>
+      <button class="drawer__close" id="drawerClose" aria-label="close">×</button>
+    </div>
+    <div class="drawer__body" id="drawerBody"></div>
+    <div class="drawer__foot">
+      <div class="drawer__total"><span data-i18n="cart_total_items">Total items</span><span id="cartTotal">0</span></div>
+      <button class="btn btn--sm" id="cartClear" data-i18n="cart_clear">Clear</button>
+      <button class="btn btn--accent btn--block" id="cartCheckout" data-i18n="cart_checkout">Fill Inquiry Form</button>
+    </div>
+  </aside>
+
+  <!-- Success modal -->
+  <div class="modal-mask" id="modal">
+    <div class="modal">
+      <div class="modal__head">
+        <h3 data-i18n="submit_ok_title">Inquiry Ready</h3>
+        <button class="drawer__close" id="modalClose" style="color:#fff" aria-label="close">×</button>
+      </div>
+      <div class="modal__body">
+        <p data-i18n="submit_ok_text">Choose how to send your inquiry to our sales team:</p>
+        <p id="modalSummary" style="font-size:13px;color:var(--muted)"></p>
+      </div>
+      <div class="modal__foot">
+        <button class="btn btn--accent" id="sendEmail" data-i18n="send_email">Open Email</button>
+        <button class="btn btn--ghost" id="printPdf" data-i18n="download_pdf">Print / Save PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product detail modal -->
+  <div class="modal-mask" id="detailModal">
+    <div class="modal modal--wide">
+      <div class="modal__head">
+        <h3 data-i18n="detail_title">Product Detail</h3>
+        <button class="drawer__close" id="detailClose" style="color:#fff" aria-label="close">×</button>
+      </div>
+      <div class="modal__body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
