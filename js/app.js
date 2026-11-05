@@ -33,6 +33,32 @@
     var c = CATS.filter(function (x) { return x.id === id; })[0];
     return c ? t(c.key) : id;
   }
+  // Inject machine-readable Product schema for all real (non-placeholder) items.
+  // Google's JS renderer picks this up; helps product-level rich results.
+  function injectProductSchema() {
+    try {
+      var base = window.GUNBASE_PRODUCTS || [];
+      var nodes = base.map(function (p) {
+        var data = {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": p.name.en,
+          "alternateName": p.name.zh,
+          "category": catLabel(p.category),
+          "brand": { "@type": "Brand", "name": "GunBase" },
+          "sku": p.sku,
+          "description": (p.desc && (p.desc.en || p.desc.zh)) ? (p.desc.en || p.desc.zh) : (p.name.en + " — " + catLabel(p.category))
+        };
+        if (p.image) data.image = (p.image.indexOf("http") === 0 ? p.image : "https://ryanchen7051.github.io/gunbase/" + p.image);
+        return data;
+      });
+      if (!nodes.length) return;
+      var s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": nodes });
+      document.head.appendChild(s);
+    } catch (e) {}
+  }
   function loadCart() {
     try { return JSON.parse(window.GUNBASE_STORE.getItem("gunbase_cart")) || []; }
     catch (e) { return []; }
@@ -130,7 +156,7 @@
       var card = document.createElement("div");
       card.className = "card" + (p.comingSoon ? " card--soon" : "");
       var mediaInner = imgSrc(p)
-        ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(p.name[lang]) + '" loading="lazy" onerror="gbImgErr(this)" />'
+        ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" loading="lazy" onerror="gbImgErr(this)" />'
         : '<div class="card__ph">' + crosshairSVG() + '</div>';
       var media =
         '<div class="card__media">' + mediaInner +
@@ -176,7 +202,7 @@
     var body = $("#detailBody");
     if (!body) return;
     var media = imgSrc(p)
-      ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(p.name[lang]) + '" onerror="gbImgErr(this)" />'
+      ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" onerror="gbImgErr(this)" />'
       : '<div class="detail__ph">' + crosshairSVG(120) + '</div>';
     var enSpec = (p.specs && p.specs.en) ? p.specs.en : "";
     var zhSpec = (p.specs && p.specs.zh) ? p.specs.zh : "";
@@ -508,6 +534,7 @@
     applyI18n();
     renderTabs();
     renderGrid();
+    injectProductSchema();
     renderCart();
     renderTrade();
     buildInquiryList();
