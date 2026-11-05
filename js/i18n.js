@@ -32,7 +32,7 @@ window.I18N = {
     "cat_firstaid": "First Aid Courses",
     "cat_firstaid_desc": "TCCC / combat trauma / stop-the-bleed training.",
     "cat_gear": "Tactical Gear",
-    "cat_gear_desc": "Weapon lights, laser boresighters, training targets & tactical lights.",
+    "cat_gear_desc": "Thermal & night-vision devices, weapon lights, laser boresighters/trainers, training targets, tactical lights & individual gear (everything besides scopes).",
 
     "search_placeholder": "Search products...",
     "result_count": "products",
@@ -139,7 +139,7 @@ window.I18N = {
     "cat_firstaid": "战场急救课程",
     "cat_firstaid_desc": "TCCC / 战创伤 / 止血急救培训。",
     "cat_gear": "战术装备",
-    "cat_gear_desc": "枪灯、激光校准/训练器、电子靶与战术手电。",
+    "cat_gear_desc": "热成像 / 夜视、枪灯、激光校准训练器、电子靶、战术照明与单兵装具（瞄准镜以外的全部装备）。",
 
     "search_placeholder": "搜索产品...",
     "result_count": "件产品",

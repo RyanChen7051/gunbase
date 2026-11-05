@@ -9,7 +9,7 @@
 window.GUNBASE_PRODUCTS = [
   {
     id: "GB-001",
-    category: "scopes",
+    category: "gear",
     name: { en: "Thermal Imager VISION-650", zh: "VISION-650 红外热成像仪 2.0" },
     sku: "VISION-650",
     desc: { en: "Handheld or weapon-mountable thermal imager for observation, target recognition and passive target acquisition in daylight, smoke, fog, low light and total darkness.", zh: "红外热成像仪，可手持或武器安装，适用于白天、烟雾、低照度及全黑环境下的观察、识别与被动目标捕获。" },
@@ -20,7 +20,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-002",
-    category: "scopes",
+    category: "gear",
     name: { en: "Night Vision Device 35mm", zh: "红外夜视仪（35mm）" },
     sku: "35mm",
     desc: { en: "Lightweight multi-purpose thermal / night-vision monocular for 24/7 reconnaissance, hunting, security and patrol in all weather.", zh: "轻便多功能红外夜视仪，全天候成像，适用于观察、狩猎、安保与夜间巡逻等场景。" },
