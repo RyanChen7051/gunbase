@@ -2,6 +2,7 @@
 // GunBase 火械基地 — Product catalog (window.GUNBASE_PRODUCTS)
 // Auto-generated from 供应商产品资料汇总表 (prices EXCLUDED per request).
 // 英文描述/关键规格由领域知识本地撰写（非机翻）；价格统一不展示。
+// 图片已从 Excel 提取至 images/（按 id 命名），image 字段回填。
 // 字段说明： id / category(scopes|firstaid|gear) / name{en,zh} / sku /
 //   desc{en,zh} / price(0,隐藏) / moq / specs{en,zh} / image
 // =====================================================================
@@ -15,7 +16,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Uncooled VOx detector (640x512 / 384x288) | Multiple color palettes (white/black/red hot/fusion/rainbow) | 1x/2x/4x/8x digital zoom | Photo & video recording | Wi-Fi | Recoil-rated | Weather-sealed", zh: "用途: 红外热成像仪是一款可手持或武器安装式热成像设备，可在白天或小雨、小雪、干燥烟雾及微光至全黑等恶劣条件下实现观察、目标识别和被动目标捕获功能。\n技术规格:\n探测器分辨率 ：640×512@12um  NETD＜35mK（25℃ ，F#1.0）；50Hz；8-14um\n显示屏分辨率：1024*768；0.39寸屏\n物镜焦距：50mm\n分划样式：十字分划，校正后隐藏，快捷键复杂隐藏\n分划颜色：红、绿、黑、白、蓝，具有A/B/C/D/E/F/G共7个用户分划设定菜单，分别具有校正与保存功能。\n电子变倍：1X/2X/4X/8X，放大后十字光标位置不改变\n拍照、录像：支持拍照和录像，支持设备内菜单查看和回放\n抗冲击3000发7.62和5.56制式子弹\n反冲击：支持\n语言：英语\n图像极性：白热、黑热、红热、融合、绿热、彩虹\n画中画：支持\n电子罗盘：支持，含罗盘校准，可以测量垂直与水平倾斜角度\n热点追踪：支持\n盲元修正：支持\nWiFi：支持\n图像校正：快门修正，快门优化时间＜0.8S\n图像增强：支持（热成像增益手动调节等级）\n图像亮度：1～10档 可调\n图像对比度：1～10档 可调\n屏幕亮度调节：1～10档 可调\n系统信息：支持，含序列号、软件版本、软核版本、逻辑版本等\n恢复出厂：支持\n时间日期显示：支持，具有实时时钟功能并可调\n开机时间：＜10S\n电量显示：支持，实时电量显示及欠压指示功能\nOSD：支持\n存储：64G ，且支持格式化\n具有固件在线升级功能\n连续工作时间（常温25℃）:＞9小时，2节18650电池；输出4.2V电压\n接口：采用航空插头，支持外部供电，通信，刷机，图片和视频导出\n环境要求：工作温度：-30℃~+55℃ ；存储温度：-40℃~+70℃\n* 性能表现会因环境条件不同而有所差异。" },
-    image: ""
+    image: "GB-001.jpg"
   },
   {
     id: "GB-002",
@@ -26,7 +27,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Uncooled VOx detector | 35mm / 50mm objective | OLED display | Pseudo-color modes | Picture-in-picture | Hotspot tracking | 18650 battery, up to 24h standby | IP67", zh: "红外夜视仪是一款轻便的多功能、多用途热成像仪。配有12um 384*288非制冷氧化钒探测器，采用有挡片刷新技术，具有高敏度、高刷新率、高稳定性的特点。同时采用低功耗电路设计，使设备待机时间长达24小时。可全天候全场景成像侦查，适用于自然界观察、户外狩猎、户外探险、安保防盗、作战侦察、夜间巡逻等多种场合。\n主要功能: 超长待机24h；采用有挡片技术；防误触设计；多种伪彩色模式；射表：快速对准场景中的目标物体；画中画：捕获十字光标中心周围的局部图像，将局部图像放大叠加显示在主预览界面上，便于看清关键图像的细节；电子放大功能；坏点校正：修复图像坏点及调节图像显示效果；热点追踪：对场景中的最高温度点进行实时追踪，画面中以图标追踪显示场景中的最高温点\n【非制冷红外探测器】\n分辨率: 384x288/12um\n探测器类型: 非制冷氧化钒探测器\n工作波段/帧频: 8-14um/50Hz\n【镜头参数】\n焦距: 35mm/F1.0\n视场角: 7.5°x5.7°（±5%）\nOLED: 0.39in（彩色）1024x768\n视觉放大: 2.36-18.88\n【图像】\n电子放大: x1、x2、x4、x8\n伪彩色: 白热、黑热、红热、融合、彩虹、铁红\n坏点修复: 支持\n射表: 支持\n画中画: 支持\n热点追踪: 支持\n图像模式: 识别、丛林\n视频输出: 支持PAL制\n【电源】\n电池类型: 18650（2节）\n工作时间: ≥24h（常温）\n【作用距离】\n探测距离: 1750m\n【接口】\n电气接口: TYPE-C接口5V/2A\n【环境适应】\n工作温度: 温度范围 -20℃～60℃\n存储温度: 温度范围 -20℃～65℃\n防护等级: IP67\n【物理特性】\n重量（不含电池）: ＜535g\n【机械特性】\n冲击: 750G/1ms" },
-    image: ""
+    image: "GB-002.jpg"
   },
   {
     id: "GB-003",
@@ -37,7 +38,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "2 MOA红点；24×20mm多层镀膜镜片；RMR接口（附MOS转接板+Picatinny底座）；Shake Awake抖动唤醒（闲置8分钟休眠）；亮度10级；1 MOA弹着点调节；1200G抗冲击；IPX7防水；适用手枪/步枪（Feyachi RDS-57 官网规格）" },
-    image: ""
+    image: "GB-003.jpg"
   },
   {
     id: "GB-004",
@@ -48,7 +49,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "3 MOA红点（三变点/多分划）；22.6×19mm非球面镜片；≤2 MOA视差；Doctor/Viper接口（附MOS转接板+Picatinny底座）；Shake Awake（8分钟休眠）；亮度11级（9日光+2夜视）带记忆；1 MOA调节；续航10万小时（附备用电池）；IPX7；1500G抗冲击（Feyachi RDS-59 官网规格）" },
-    image: ""
+    image: "GB-004.jpg"
   },
   {
     id: "GB-005",
@@ -59,7 +60,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "4种分划红绿双色反射镜（星爆/十字/靶心/圆点）；33mm反射孔径；红/绿各5级亮度，按钮调节；Shake Awake（约8分钟休眠）；1 MOA调节；航空铝合金阳极氧化；800G抗冲击；防雾镀膜（Feyachi RS-38 官网规格）" },
-    image: ""
+    image: "GB-005.jpg"
   },
   {
     id: "GB-006",
@@ -70,7 +71,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "1×22mm 5 MOA红绿双色点；7级亮度（红/绿各7）；0.83英寸增高镜座（绝对同高）；全多层镀膜；视差修正、无限视场；轻量化铝合金；防水防雾（Feyachi RDS-36 官网规格）" },
-    image: ""
+    image: "GB-006.jpg"
   },
   {
     id: "GB-007",
@@ -81,7 +82,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "1×20mm 4 MOA红点；CR2032电池；11级亮度；6061铝合金机身；±30 MOA调节（1 MOA/格）；长度72mm、重118g；附1英寸增高镜座；IPX7级防水（Feyachi RDS-25 官网规格）" },
-    image: ""
+    image: "GB-007.jpg"
   },
   {
     id: "GB-008",
@@ -92,7 +93,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "5",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "2 MOA红点；1×20/22mm多层镀膜镜片；CR2032电池；10级数字亮度（带记忆）；Motion Awake（8分钟休眠）；低高度 + 绝对同高双镜座；内置E/W调节工具；硬阳极氧化哑光；800–1000G抗冲击；附翻转镜盖（Feyachi V30 官网规格）" },
-    image: ""
+    image: "GB-008.jpg"
   },
   {
     id: "GB-009",
@@ -103,7 +104,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "RMR接口微型红点（215式）；红光单点；CR2032电池；多亮度档；铝合金机身；防水防雾；适配方滑套RMR开槽/转接板（参考RMR-footprint微红点规格）" },
-    image: ""
+    image: "GB-009.jpg"
   },
   {
     id: "GB-010",
@@ -114,7 +115,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 3MOA" },
-    image: ""
+    image: "GB-010.jpg"
   },
   {
     id: "GB-011",
@@ -125,7 +126,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 3MOA" },
-    image: ""
+    image: "GB-011.jpg"
   },
   {
     id: "GB-012",
@@ -136,7 +137,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 3MOA" },
-    image: ""
+    image: "GB-012.jpg"
   },
   {
     id: "GB-013",
@@ -147,7 +148,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 3MOA" },
-    image: ""
+    image: "GB-013.jpg"
   },
   {
     id: "GB-014",
@@ -158,7 +159,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-014.jpg"
   },
   {
     id: "GB-015",
@@ -169,7 +170,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 1MOA" },
-    image: ""
+    image: "GB-015.jpg"
   },
   {
     id: "GB-016",
@@ -180,7 +181,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-016.jpg"
   },
   {
     id: "GB-017",
@@ -191,7 +192,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 1MOA" },
-    image: ""
+    image: "GB-017.jpg"
   },
   {
     id: "GB-018",
@@ -202,7 +203,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-018.jpg"
   },
   {
     id: "GB-019",
@@ -213,7 +214,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-019.jpg"
   },
   {
     id: "GB-020",
@@ -224,7 +225,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 1MOA" },
-    image: ""
+    image: "GB-020.jpg"
   },
   {
     id: "GB-021",
@@ -235,7 +236,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-021.jpg"
   },
   {
     id: "GB-022",
@@ -246,7 +247,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-022.jpg"
   },
   {
     id: "GB-023",
@@ -257,7 +258,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "2-5 MOA dot | Multi-coated lens | Shake Awake / Motion Awake | 10+ brightness levels | 1 MOA windage & elevation | 1000G+ shockproof | IPX7 | RMR / Picatinny / Doctor footprint", zh: "视差: 2MOA" },
-    image: ""
+    image: "GB-023.jpg"
   },
   {
     id: "GB-024",
@@ -290,7 +291,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "6-24x50 / 5-25x56 | 34mm tube | Exposed zero-stop turrets | MRAD / MOA | Illuminated FFP reticle | Side parallax | ED glass | Shockproof | Weather sealed", zh: "包含辅材: 擦镜布、干燥剂、说明书、前后弹盖、消光筒、支架" },
-    image: ""
+    image: "GB-026.jpg"
   },
   {
     id: "GB-027",
@@ -433,7 +434,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "3-9x40 / 4-16x44 and similar | 30mm / 34mm tube | Tactical zero-stop turrets | Illuminated reticle (optional) | Side parallax | Multi-coated ED glass | Shockproof | Weather sealed", zh: "1-5×24 IR步枪镜（红光照明）；30mm单管；SFP第二代焦平面；真1倍双眼瞄准；11档红光照明变阻器；全多层镀膜；视场38m@100m（1倍）；出瞳距离 90mm；1/2 MOA调节；IPX7防水；1000G抗冲击；长度254mm、重426g（参考同档1-5×24 IR LPVO规格）" },
-    image: ""
+    image: "GB-039.jpg"
   },
   {
     id: "GB-040",
@@ -444,7 +445,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "5",
     specs: { en: "3x magnification | Flip-to-side quick-detach mount | Rapid transition | Compatible with red dot sights | Adjustable diopter | Shockproof", zh: "3×红点放大镜（侧翻镜）；快速侧翻镜座（按钮锁定，左下翻）；2.4英寸出瞳距离；23mm物镜；全多层镀膜；下1/3同高垫块；可调目镜对焦+风偏/高低；航空铝阳极氧化+氮充；防水/防雾/抗震；37/40mm高度（Feyachi M40 官网规格）" },
-    image: ""
+    image: "GB-040.jpg"
   },
   {
     id: "GB-041",
@@ -455,7 +456,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "5",
     specs: { en: "Red dot (2-5 MOA) + 3x flip magnifier | Shared mount | Shake Awake | Multi-coated | Rugged alloy | Ready-to-mount kit", zh: "红点+放大镜组合套装：V90 2 MOA红点（25mm物镜，视差<2 MOA）+ M37 1.5-5×放大镜；11级亮度（9日光+2夜视）；Shake Awake（8分钟休眠）；绝对同高；内置侧翻镜座；航空铝合金；1000–1200G抗冲击；IPX7防水（Feyachi V90+M37 官网规格）" },
-    image: ""
+    image: "GB-041.jpg"
   },
   {
     id: "GB-042",
@@ -466,7 +467,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "500-1200 lumens | Rechargeable / CR123A | Pressure pad & push switch | Aircraft aluminum | IPX-rated | Weapon-mount clamp", zh: "步枪用枪灯；1200流明（约22500坎德拉，照射约290m）；Picatinny/M-LOK快拆镜座；附远程压力开关+尾按；高/低/爆闪3模式；航空铝硬阳极氧化；18650/可充锂电池（Feyachi WL25 官网规格）" },
-    image: ""
+    image: "GB-042.jpg"
   },
   {
     id: "GB-043",
@@ -477,7 +478,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "10",
     specs: { en: "500-1200 lumens | Rechargeable / CR123A | Pressure pad & push switch | Aircraft aluminum | IPX-rated | Weapon-mount clamp", zh: "手枪用枪灯；1500流明；照射200-300m；航空铝阳极氧化；附5种导轨钥匙（GL/TSW-99/90two/P320/1913）；常亮+瞬亮双模式；防水抗冲击（Feyachi HL-20 官网规格）" },
-    image: ""
+    image: "GB-043.jpg"
   },
   {
     id: "GB-044",
@@ -488,7 +489,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "White light + visible laser (red / green) | Rechargeable | Multiple modes | Aluminum body | Pressure switch | IPX-rated", zh: "亮度: 800 lumen" },
-    image: ""
+    image: "GB-044.jpg"
   },
   {
     id: "GB-045",
@@ -499,7 +500,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "800-2000 lumens | USB-C rechargeable | Multiple modes + strobe | Aerospace aluminum | IPX8 | Pocket / full-size options", zh: "亮度: 1200 lumen" },
-    image: ""
+    image: "GB-045.jpg"
   },
   {
     id: "GB-046",
@@ -510,7 +511,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "800-2000 lumens | USB-C rechargeable | Multiple modes + strobe | Aerospace aluminum | IPX8 | Pocket / full-size options", zh: "亮度: 1200 lumen" },
-    image: ""
+    image: "GB-046.jpg"
   },
   {
     id: "GB-047",
@@ -521,7 +522,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 纸盒6颗电池" },
-    image: ""
+    image: "GB-047.jpg"
   },
   {
     id: "GB-048",
@@ -532,7 +533,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 礼品盒 二组电池" },
-    image: ""
+    image: "GB-048.jpg"
   },
   {
     id: "GB-049",
@@ -543,7 +544,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 礼品盒 三组电池" },
-    image: ""
+    image: "GB-049.jpg"
   },
   {
     id: "GB-050",
@@ -565,7 +566,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 纸盒6颗电池多配一组胶圈" },
-    image: ""
+    image: "GB-051.jpg"
   },
   {
     id: "GB-052",
@@ -576,7 +577,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 铁盒12颗电池多配一组胶圈" },
-    image: ""
+    image: "GB-052.jpg"
   },
   {
     id: "GB-053",
@@ -587,7 +588,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 天地盖包装 USB线 胶圈*1组 说明书*1张" },
-    image: ""
+    image: "GB-053.jpg"
   },
   {
     id: "GB-054",
@@ -598,7 +599,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 天地盖包装 USB线 胶圈*1组 说明书*1张" },
-    image: ""
+    image: "GB-054.jpg"
   },
   {
     id: "GB-055",
@@ -609,7 +610,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 铁盒多配后塞9颗电池两组胶圈" },
-    image: ""
+    image: "GB-055.jpg"
   },
   {
     id: "GB-056",
@@ -620,7 +621,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "激光训练器靶纸系统套装；含靶纸+激光训练组件；配合激光校准仪/训练弹进行室内干-fire训练；套装价185元未税（艺晶光电报价单）" },
-    image: ""
+    image: "GB-056.jpg"
   },
   {
     id: "GB-057",
@@ -642,7 +643,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 磁吸线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-058.jpg"
   },
   {
     id: "GB-059",
@@ -675,7 +676,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 拨片*1 小扳手*1 说明书*1 两组电池" },
-    image: ""
+    image: "GB-061.jpg"
   },
   {
     id: "GB-062",
@@ -686,7 +687,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 USB线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-062.jpg"
   },
   {
     id: "GB-063",
@@ -730,7 +731,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 USB线 拨片*1  说明书*1" },
-    image: ""
+    image: "GB-066.jpg"
   },
   {
     id: "GB-067",
@@ -741,7 +742,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 USB线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-067.jpg"
   },
   {
     id: "GB-068",
@@ -785,7 +786,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 拨片*1 小扳手*1 说明书*1 两组电池" },
-    image: ""
+    image: "GB-071.jpg"
   },
   {
     id: "GB-072",
@@ -807,7 +808,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 磁吸线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-073.jpg"
   },
   {
     id: "GB-074",
@@ -840,7 +841,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 磁吸线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-076.jpg"
   },
   {
     id: "GB-077",
@@ -873,7 +874,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 USB线 大扳手*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-079.jpg"
   },
   {
     id: "GB-080",
@@ -906,7 +907,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒；1x激光计数靶；1xType-C充电线；1x背部磁吸条；4x难度靶环；1x说明书" },
-    image: ""
+    image: "GB-082.jpg"
   },
   {
     id: "GB-083",
@@ -917,7 +918,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 飞机盒 USB线 拨片*1 小扳手*1 说明书*1" },
-    image: ""
+    image: "GB-083.jpg"
   },
   {
     id: "GB-084",
@@ -972,7 +973,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "",
     specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "激光训练器；绿激光 520nm（Class IIIA，<5mW）；塑胶外壳；内螺纹（内穿式）适配；带战术照明灯；USB充电；配件：飞机盒、USB线、拨片×1、小扳手×1、说明书×1；用于枪管归零校准/室内激光干-fire训练（参考同厂艺晶光电产品）" },
-    image: ""
+    image: "GB-088.jpg"
   },
   {
     id: "GB-089",
@@ -983,7 +984,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "手机APP激光打靶训练系统（三环靶图案）；蓝牙连接，配合激光训练弹/激光枪使用；实时计分、语音/数字报靶、成绩统计与历史记录；支持自由/计时/比赛模式；Android/iOS APP（参考同类：蓝牙BLE、约0.1环识别、多人训练，500套起订未税）" },
-    image: ""
+    image: "GB-089.jpg"
   },
   {
     id: "GB-090",
@@ -994,7 +995,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "手机APP激光打靶训练系统（七环靶图案）；蓝牙连接，配合激光训练弹/激光枪使用；实时计分、报靶、成绩统计与历史；支持自由/计时/比赛模式；Android/iOS APP（参考同类蓝牙激光训练靶系统，500套起订未税）" },
-    image: ""
+    image: "GB-090.jpg"
   },
   {
     id: "GB-091",
@@ -1005,7 +1006,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "蓝牙版手机APP激光打靶训练系统；蓝牙连接，配合激光训练弹/激光枪使用；实时计分、报靶、成绩统计；支持自由/计时/比赛模式；Android/iOS APP（参考同类蓝牙激光训练靶系统，500套起订未税）" },
-    image: ""
+    image: "GB-091.jpg"
   },
   {
     id: "GB-092",
@@ -1016,7 +1017,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "手机APP激光打靶训练系统（九宫格靶图案）；蓝牙连接，配合激光训练弹/激光枪使用；实时计分、报靶、成绩统计；支持自由/计时/比赛模式；Android/iOS APP（参考同类蓝牙激光训练靶系统，500套起订未税）" },
-    image: ""
+    image: "GB-092.jpg"
   },
   {
     id: "GB-093",
@@ -1027,7 +1028,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "手机APP激光打靶训练系统（十人靶图案，支持多人/比赛，最高十人）；蓝牙连接，配合激光训练弹/激光枪使用；实时计分、排名、成绩统计；支持自由/计时/比赛模式；Android/iOS APP（参考同类蓝牙激光训练靶系统，500套起订未税）" },
-    image: ""
+    image: "GB-093.jpg"
   },
   {
     id: "GB-094",
@@ -1038,7 +1039,7 @@ window.GUNBASE_PRODUCTS = [
     price: 0,
     moq: "500",
     specs: { en: "Acoustic / optical shot detection | Bluetooth app scoring | Real-time hit location | Multi-target | Rechargeable | Training analytics", zh: "配合激光训练弹（training cartridge）使用的手机APP打靶训练系统；蓝牙连接，配合激光训练弹使用；实时计分、报靶、成绩统计与历史；支持自由/计时/比赛模式；Android/iOS APP（参考同类蓝牙激光训练靶系统，500套起订未税）" },
-    image: ""
+    image: "GB-094.jpg"
   },
   {
     id: "GB-FA-TCCC-B",
@@ -1048,7 +1049,7 @@ window.GUNBASE_PRODUCTS = [
     desc: { en: "2-day introductory course: MARCH sequence, tourniquet application, wound packing and casualty drags.", zh: "2 天入门课程：MARCH 流程、止血带使用、伤口填塞与伤员拖曳。" },
     price: 0,
     moq: "8",
-    specs: { en: "Duration 2 days - Max 16 trainees - Certificate included", zh: "时长 2 天 · 每期最多 16 人 · 含证书" },
+    specs: { en: "Duration 2 days | Max 16 trainees | Certificate included", zh: "时长 2 天 · 每期最多 16 人 · 含证书" },
     image: ""
   },
   {
@@ -1059,7 +1060,7 @@ window.GUNBASE_PRODUCTS = [
     desc: { en: "5-day advanced course: needle decompression, airway management, IV/IO access and team casualty care.", zh: "5 天高级课程：针式减压、气道管理、静脉/骨内通路与团队救护。" },
     price: 0,
     moq: "6",
-    specs: { en: "Duration 5 days - Max 12 trainees - Scenario-based", zh: "时长 5 天 · 每期最多 12 人 · 情景演练" },
+    specs: { en: "Duration 5 days | Max 12 trainees | Scenario-based", zh: "时长 5 天 · 每期最多 12 人 · 情景演练" },
     image: ""
   },
   {
@@ -1070,7 +1071,7 @@ window.GUNBASE_PRODUCTS = [
     desc: { en: "Half-day hands-on workshop covering bleeding control, tourniquets and pressure dressings for civilians and staff.", zh: "半天实操工作坊，涵盖出血控制、止血带与加压包扎，面向平民与员工。" },
     price: 0,
     moq: "10",
-    specs: { en: "Duration 4h - Max 24 trainees - Kit provided", zh: "时长 4 小时 · 每期最多 24 人 · 提供耗材" },
+    specs: { en: "Duration 4h | Max 24 trainees | Kit provided", zh: "时长 4 小时 · 每期最多 24 人 · 提供耗材" },
     image: ""
   }
 ];

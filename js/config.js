@@ -23,7 +23,7 @@ window.GUNBASE_STORE = (function () {
 
 window.GUNBASE_CONFIG = {
   // 收件邮箱：客户提交询盘后，邮件会发到这里。请改成你的真实邮箱。
-  sellerEmail: "sales@gunbase.com",
+  sellerEmail: "3531885069@qq.com",
 
   // 公司抬头（用于询盘邮件 / PDF 抬头）
   company: {
