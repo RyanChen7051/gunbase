@@ -57,7 +57,7 @@ python3 -m http.server 8080
 
 1. 把 `gunbase-pwa/` 整个目录推到一个 GitHub 仓库（仓库设为 **Public**，Pages 才能公开访问）
 2. 仓库 **Settings → Pages → Branch 选 `main`、目录选 `/ (root)`** → Save
-3. 约 1 分钟后访问 `https://<用户名>.github.io/<仓库名>/`（本账号示例：`https://ryanchen7051.github.io/gunbase/`）
+3. 约 1 分钟后访问 `https://<用户名>.github.io/<仓库名>/`（本账号示例：`https://gunbase-optics.com/`）
 4. 客户用手机/电脑打开该链接 → 可「添加到主屏幕」安装成 App，离线也能看目录
 
 ### 怎么发给不同客户 / 怎么同步（核心）

@@ -50,7 +50,7 @@
           "sku": p.sku,
           "description": (p.desc && (p.desc.en || p.desc.zh)) ? (p.desc.en || p.desc.zh) : (p.name.en + " — " + catLabel(p.category))
         };
-        if (p.image) data.image = (p.image.indexOf("http") === 0 ? p.image : "https://ryanchen7051.github.io/gunbase/" + p.image);
+        if (p.image) data.image = (p.image.indexOf("http") === 0 ? p.image : "https://gunbase-optics.com/" + p.image);
         return data;
       });
       if (!nodes.length) return;

@@ -4,4 +4,4 @@ Allow: /
 # 后台管理页不对外开放索引
 Disallow: /admin.html
 
-Sitemap: https://ryanchen7051.github.io/gunbase/sitemap.xml
+Sitemap: https://gunbase-optics.com/sitemap.xml
