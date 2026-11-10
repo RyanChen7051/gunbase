@@ -268,10 +268,13 @@ a { color: inherit; text-decoration: none; }
 .fab.is-busy { opacity: .7; pointer-events: none; }
 .fab.is-busy .fab__spin { animation: fabspin .9s linear infinite; }
 @keyframes fabspin { to { transform: rotate(360deg); } }
+#waBtn { bottom: calc(236px + env(safe-area-inset-bottom, 0px)); background: #25D366; border-color: #25D366; box-shadow: 0 8px 22px rgba(37,211,102,.35); }
+#waBtn:hover { background: #2be370; }
 #homeBtn { bottom: calc(164px + env(safe-area-inset-bottom, 0px)); }
 #updateBtn { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 @media (max-width: 600px) {
   .fab { right: 14px; width: 48px; height: 48px; font-size: 20px; }
+  #waBtn { bottom: calc(210px + env(safe-area-inset-bottom, 0px)); }
   #homeBtn { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
   #updateBtn { bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
 }

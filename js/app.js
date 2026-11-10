@@ -117,6 +117,7 @@
     renderCart();
     renderTrade();
     buildInquiryList();
+    renderContact();
   }
 
   // ---------- category tabs ----------
@@ -341,6 +342,55 @@
     row.appendChild(hint);
   }
 
+  // ---------- contact section & WhatsApp ----------
+  function waLink(text) {
+    var msg = text || (lang === "zh"
+      ? "您好 GunBase，我想咨询贵司产品。"
+      : "Hello GunBase, I'd like to inquire about your products.");
+    return "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
+  }
+  function renderContact() {
+    var emailEl = $("#contactEmailText");
+    if (!emailEl) return;
+    emailEl.textContent = CFG.sellerEmail;
+    $("#contactEmailBtn").href = "mailto:" + CFG.sellerEmail + "?subject=" + encodeURIComponent(CFG.inquirySubjectPrefix + "General Inquiry");
+    $("#contactCompany").textContent = CFG.companyFull[lang];
+    $("#contactAddress").textContent = CFG.address[lang];
+    $("#contactHours").textContent = t("contact_hours_val");
+    var wa = String(CFG.whatsapp || "").replace(/\D/g, "");
+    var waCard = $("#contactWaCard");
+    var waFab = $("#waBtn");
+    if (wa) {
+      waCard.style.display = "";
+      $("#contactWaNumber").textContent = "+" + wa;
+      $("#contactWaBtn").href = waLink();
+      waFab.style.display = "flex";
+      waFab.href = waLink();
+    } else {
+      waCard.style.display = "none";
+      waFab.style.display = "none";
+    }
+  }
+  function copyEmail() {
+    var email = CFG.sellerEmail;
+    var done = function () { toast(t("contact_copied")); };
+    var fallback = function () {
+      var ta = document.createElement("textarea");
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) {}
+      ta.remove();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(done).catch(fallback);
+    } else fallback();
+  }
+  function openWhatsApp() {
+    if (!lastInquiry || !CFG.whatsapp) return;
+    window.open(waLink(emailBody(lastInquiry)), "_blank");
+  }
+
   // ---------- form submit ----------
   function validate() {
     var ok = true;
@@ -353,9 +403,11 @@
       if (!v) { field.classList.add("invalid"); ok = false; }
       if (n === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { field.classList.add("invalid"); ok = false; }
     });
-    // cart
-    $("#cartErr").style.display = cart.length ? "none" : "block";
-    if (!cart.length) ok = false;
+    // cart — allow a general inquiry without products if the client wrote a message
+    var msgVal = (form.querySelector('[name="message"]').value || "").trim();
+    $("#cartErr").textContent = t("req_cart_or_msg");
+    $("#cartErr").style.display = (cart.length || msgVal) ? "none" : "block";
+    if (!cart.length && !msgVal) ok = false;
     // trade
     var trade = form.querySelector('input[name="trade"]:checked');
     var tradeField = form.querySelector("#tradeRow").closest(".field");
@@ -556,6 +608,15 @@
     $("#detailModal").addEventListener("click", function (e) { if (e.target === $("#detailModal")) closeDetail(); });
     $("#sendEmail").onclick = openEmail;
     $("#printPdf").onclick = printPdf;
+
+    // Contact section
+    renderContact();
+    $("#copyEmailBtn").onclick = copyEmail;
+    var sendWa = $("#sendWa");
+    if (CFG.whatsapp && sendWa) {
+      sendWa.style.display = "";
+      sendWa.onclick = openWhatsApp;
+    }
 
     $("#installBtn").onclick = function () {
       if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function () { deferredPrompt = null; }); }

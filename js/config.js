@@ -25,6 +25,25 @@ window.GUNBASE_CONFIG = {
   // 收件邮箱：客户提交询盘后，邮件会发到这里。请改成你的真实邮箱。
   sellerEmail: "3531885069@qq.com",
 
+  // WhatsApp 商务号（仅数字，含国家码，例如中国大陆手机号 "8613812345678"）。
+  // 留空 "" 则页面上的 WhatsApp 按钮自动隐藏，不会出现死链。
+  whatsapp: "",
+
+  // 公司联系信息（Contact 区块展示 + 询盘邮件抬头）
+  companyFull: {
+    en: "Gun Base INC. (GunBase 火械基地)",
+    zh: "火械基地股份有限公司 (Gun Base INC.)"
+  },
+  address: {
+    en: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan",
+    zh: "台北市松山区复兴北路367号8楼"
+  },
+  // 客服响应时间承诺（Contact 区块展示）
+  replyTime: {
+    en: "We reply within 2 business days.",
+    zh: "我们将在 2 个工作日内回复。"
+  },
+
   // 公司抬头（用于询盘邮件 / PDF 抬头）
   company: {
     en: "GUNBASE TACTICAL SUPPLY",

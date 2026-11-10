@@ -67,6 +67,7 @@
         <a href="#catalog" data-i18n="nav_catalog">Catalog</a>
         <a href="#inquiry" data-i18n="nav_inquiry">Inquiry</a>
         <a href="#terms" data-i18n="nav_terms">Trade Terms</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
       </nav>
       <button class="langbtn" id="langBtn">中文</button>
     </div>
@@ -224,6 +225,42 @@
     </div>
   </section>
 
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+      <h2 class="display" style="font-size:clamp(26px,5vw,46px)">CONTACT US</h2>
+      <div class="rule"></div>
+      <p data-i18n="contact_reply" style="color:var(--muted);max-width:640px">We reply within 2 business days.</p>
+
+      <div class="terms" style="margin-top:20px">
+        <div class="term">
+          <h4 data-i18n="contact_email_h">Email</h4>
+          <p class="big" style="font-size:20px;word-break:break-all" id="contactEmailText">3531885069@qq.com</p>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <a class="btn btn--sm" id="contactEmailBtn" href="mailto:3531885069@qq.com" data-i18n="contact_email_us">Email Us</a>
+            <button type="button" class="btn btn--sm btn--ghost" id="copyEmailBtn" data-i18n="contact_copy">Copy</button>
+          </div>
+        </div>
+        <div class="term" id="contactWaCard" style="display:none">
+          <h4 data-i18n="contact_wa_h">WhatsApp</h4>
+          <p class="big" style="font-size:20px" id="contactWaNumber">—</p>
+          <p data-i18n="contact_wa_hint">Fastest channel for quotations &amp; samples.</p>
+          <a class="btn btn--sm" id="contactWaBtn" href="#" target="_blank" rel="noopener" style="margin-top:10px;background:#25D366;border-color:#25D366;color:#08110b" data-i18n="contact_wa_us">Chat on WhatsApp</a>
+        </div>
+        <div class="term">
+          <h4 data-i18n="contact_co_h">Company</h4>
+          <p id="contactCompany">Gun Base INC. (GunBase 火械基地)</p>
+          <p id="contactHours" style="margin-top:6px"></p>
+        </div>
+        <div class="term">
+          <h4 data-i18n="contact_addr_h">Address</h4>
+          <p id="contactAddress">8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
       <span data-i18n="footer_text">© GUNBASE TACTICAL SUPPLY. All rights reserved.</span>
@@ -231,7 +268,10 @@
     </div>
   </footer>
 
-  <!-- Floating controls: Home & Update -->
+  <!-- Floating controls: WhatsApp / Home & Update -->
+  <a class="fab fab--wa" id="waBtn" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" style="display:none">
+    <svg viewBox="0 0 32 32" width="22" height="22" fill="#08110b" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4.6 27l5.3-1.7c1.9 1.1 4 1.7 6.1 1.7 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm0 21.7c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.1 1 1-3-.3-.4a9 9 0 0 1-1.4-4.8c0-5 4.1-9 9.2-9s9.2 4 9.2 9-4.1 8.9-9.2 8.9zm5-6.7c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.8 2 .9 2.8 1 3.8.8.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.5-.4z"/></svg>
+  </a>
   <button class="fab" id="homeBtn" aria-label="home" title="Home">⌂</button>
   <button class="fab" id="updateBtn" aria-label="update" title="Update"><span class="fab__spin">↻</span></button>
 
@@ -266,6 +306,7 @@
       </div>
       <div class="modal__foot">
         <button class="btn btn--accent" id="sendEmail" data-i18n="send_email">Open Email</button>
+        <button class="btn" id="sendWa" target="_blank" rel="noopener" style="display:none;background:#25D366;border-color:#25D366;color:#08110b">WhatsApp</button>
         <button class="btn btn--ghost" id="printPdf" data-i18n="download_pdf">Print / Save PDF</button>
       </div>
     </div>
