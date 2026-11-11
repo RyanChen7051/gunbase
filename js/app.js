@@ -53,7 +53,12 @@
           "sku": p.sku,
           "description": (p.desc && (p.desc.en || p.desc.zh)) ? (p.desc.en || p.desc.zh) : (p.name.en + " — " + catLabel(p.category))
         };
-        if (p.image) data.image = (p.image.indexOf("http") === 0 ? p.image : "https://gunbase-optics.com/" + p.image);
+        if (p.image) {
+          var raw = String(p.image).trim();
+          data.image = /^https?:/i.test(raw)
+            ? raw
+            : "https://gunbase-optics.com/" + (raw.indexOf("/") !== -1 ? raw : "images/" + raw);
+        }
         return data;
       });
       if (!nodes.length) return;
