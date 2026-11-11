@@ -8,7 +8,7 @@
 window.GUNBASE_SCOPE_SWITCH = [
   {
     id: "GB-SW-001",
-    category: "gear",
+    category: "hardware",
     name: { en: "Scope Switch", zh: "SCOPE SWITCH" },
     sku: "GB-SW-001",
     desc: {
