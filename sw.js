@@ -1,5 +1,5 @@
 // GunBase 火械基地 — Service Worker (offline app shell)
-var CACHE = "gunbase-v4";
+var CACHE = "gunbase-v5";
 var SHELL = [
   "./",
   "index.html",
@@ -17,6 +17,9 @@ var SHELL = [
   "assets/icon-192.png",
   "assets/icon-512.png",
   "assets/icon-maskable-512.png",
+  "images/GB-OTH-001.jpg",
+  "images/GB-OTH-001-2.jpg",
+  "images/GB-OTH-001-3.jpg",
   "manifest.webmanifest"
 ];
 
