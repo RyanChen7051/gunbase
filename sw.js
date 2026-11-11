@@ -1,5 +1,5 @@
 // GunBase 火械基地 — Service Worker (offline app shell)
-var CACHE = "gunbase-v6";
+var CACHE = "gunbase-v7";
 var SHELL = [
   "./",
   "index.html",
@@ -14,6 +14,7 @@ var SHELL = [
   "js/app.js",
   "js/admin.js",
   "libs/xlsx.full.min.js",
+  "assets/logo-white.png",
   "assets/icon-192.png",
   "assets/icon-512.png",
   "assets/icon-maskable-512.png",
@@ -24,7 +25,14 @@ var SHELL = [
 ];
 
 self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SHELL); }).then(function () { return self.skipWaiting(); }));
+  // Add shell files one by one: one missing asset must not abort the whole install.
+  e.waitUntil(
+    caches.open(CACHE).then(function (c) {
+      return Promise.all(SHELL.map(function (u) {
+        return c.add(u).catch(function () { return null; });
+      }));
+    }).then(function () { return self.skipWaiting(); })
+  );
 });
 
 self.addEventListener("activate", function (e) {
@@ -58,7 +66,13 @@ self.addEventListener("fetch", function (e) {
           caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
         }
         return res;
-      }).catch(function () { return caches.match("./"); });
+      }).catch(function () {
+        // Handing an HTML document to an <img> produces a broken-image box.
+        if (e.request.destination === "image" || /\.(png|jpe?g|gif|svg|webp|ico)$/i.test(url.pathname)) {
+          return new Response("", { status: 404, statusText: "image unavailable" });
+        }
+        return caches.match("./");
+      });
     })
   );
 });
