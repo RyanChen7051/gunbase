@@ -37,6 +37,8 @@ window.I18N = {
     "cat_hardware_desc": "Weapon lights, laser boresighters & trainers, electronic targets, metal accessories.",
     "cat_custom": "Custom Products",
     "cat_custom_desc": "Custom-made products, parts, accessories & materials. Contact us directly to discuss.",
+    "cat_other": "Other Products",
+    "cat_other_desc": "Partner-supplied platforms and other products. Contact our sales window for details.",
 
     "search_placeholder": "Search products...",
     "result_count": "products",
@@ -126,7 +128,7 @@ window.I18N = {
     "admin_preview": "Preview (saved to this browser for testing)",
     "admin_template": "Download blank Excel template",
     "admin_cols": "Expected columns (first row = header):",
-    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware / custom. price 0 = quote on request. image = optional image URL.",
+    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware / other / custom. price 0 = quote on request. image = optional image URL.",
 
     "custom_card_tag": "DIRECT CONTACT WINDOW",
     "custom_card_title": "Tell Us What You Need - We'll Build It",
@@ -177,6 +179,8 @@ window.I18N = {
     "cat_hardware_desc": "枪灯、激光校准训练器、电子训练靶及金属配件。",
     "cat_custom": "客制化定制产品",
     "cat_custom_desc": "客制化产品、配件、辅料等，请直接联系窗口进一步讨论。",
+    "cat_other": "其他",
+    "cat_other_desc": "合作厂商供应之平台及其他产品，详情请联系我们的窗口。",
 
     "search_placeholder": "搜索产品...",
     "result_count": "件产品",
@@ -266,7 +270,7 @@ window.I18N = {
     "admin_preview": "预览（仅保存到本浏览器用于测试）",
     "admin_template": "下载空白 Excel 模板",
     "admin_cols": "Excel 列要求（首行为表头）：",
-    "admin_note": "category 须为 scopes / firstaid / gear / hardware / custom 之一；price 填 0 表示价格面议；image 为可选图片链接。",
+    "admin_note": "category 须为 scopes / firstaid / gear / hardware / other / custom 之一；price 填 0 表示价格面议；image 为可选图片链接。",
 
     "custom_card_tag": "直接联系窗口",
     "custom_card_title": "告诉我们需求，我们来定制",
@@ -290,5 +294,6 @@ window.GUNBASE_CATEGORIES = [
   { id: "firstaid",  key: "cat_firstaid",  descKey: "cat_firstaid_desc" },
   { id: "gear",      key: "cat_gear",      descKey: "cat_gear_desc" },
   { id: "hardware",  key: "cat_hardware",  descKey: "cat_hardware_desc" },
+  { id: "other",     key: "cat_other",     descKey: "cat_other_desc" },
   { id: "custom",    key: "cat_custom",    descKey: "cat_custom_desc", contactOnly: true }
 ];
