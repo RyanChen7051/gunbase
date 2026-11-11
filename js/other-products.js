@@ -1,6 +1,6 @@
 // =====================================================================
 // GunBase 火械基地 — Other / partner-supplied products
-// 来源: 合作厂商产品型录 PDF（4 页，含规格表与产品照片）
+// 来源: 合作厂商产品型录 PDF（4 页，含规格表与 3 张不同配置产品照片）
 // 独立文件挂载，避免后台 admin.html 重导 Excel 时被覆盖。
 // 注意: 原厂电话 / 邮箱 / 网址 / 公司名一律不写入本站，
 //       所有询盘统一由 GunBase 窗口受理。
@@ -23,6 +23,8 @@ window.GUNBASE_OTHER_PRODUCTS = [
       en: "Caliber: 9x19 mm | Barrel length: 152 mm (6 in) | Overall length, collapsed stock: 565 mm (22.2 in) | Overall length, extended folding stock: 650 mm (25.6 in) | Overall length without stock: 375 mm (14.7 in) | Weight without magazine: 3.2 kg (7.05 lb) | Weight without magazine and stock: 2.6 kg (5.70 lb) | Magazine: 30-round Glock-pattern | Stock: adjustable, 8-stage telescopic / folding | Barrel material: carbon steel | Receiver material: aluminum | Action type: blowback | Trigger: 2.4 kg pull | Trigger shape: curved | Twist rate: 1:7 | Forend type: alloy | Grip: polymer with rubber cover | Receiver finish: hard-coat anodized | Forend handle: polymer with rubber cover",
       zh: "口径：9x19 mm | 枪管长：152 mm（6 吋）| 全长（枪托收缩）：565 mm（22.2 吋）| 全长（折叠托展开）：650 mm（25.6 吋）| 全长（无枪托）：375 mm（14.7 吋）| 重量（不含弹匣）：3.2 kg | 重量（不含弹匣与枪托）：2.6 kg | 弹匣：30 发 Glock 规格 | 枪托：可调 8 段伸缩 / 折叠 | 枪管材质：碳钢 | 机匣材质：铝合金 | 动作方式：反冲式 | 扳机拉力：2.4 kg | 扳机形状：弧形 | 缠距：1:7 | 护木：合金 | 握把：聚合物包胶 | 机匣表面：硬质阳极氧化 | 护木握持件：聚合物包胶"
     },
-    image: "GB-OTH-001.jpg"
+    image: "GB-OTH-001.jpg",
+    // 同一型号的 3 种配置照片，全部取自该 PDF，卡片上可点击切换
+    images: ["GB-OTH-001.jpg", "GB-OTH-001-2.jpg", "GB-OTH-001-3.jpg"]
   }
 ];
