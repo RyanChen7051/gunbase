@@ -32,7 +32,9 @@ window.I18N = {
     "cat_firstaid": "First Aid Courses",
     "cat_firstaid_desc": "TCCC / combat trauma / stop-the-bleed training.",
     "cat_gear": "Tactical Gear",
-    "cat_gear_desc": "Thermal & night-vision devices, weapon lights, laser boresighters/trainers, training targets, tactical lights & individual gear (everything besides scopes).",
+    "cat_gear_desc": "Body armor, helmets, belts, packs, gloves, goggles, boots & load-bearing equipment.",
+    "cat_hardware": "Hardware Parts",
+    "cat_hardware_desc": "Weapon lights, laser boresighters & trainers, electronic targets, metal accessories.",
 
     "search_placeholder": "Search products...",
     "result_count": "products",
@@ -122,7 +124,7 @@ window.I18N = {
     "admin_preview": "Preview (saved to this browser for testing)",
     "admin_template": "Download blank Excel template",
     "admin_cols": "Expected columns (first row = header):",
-    "admin_note": "Category must be one of: scopes / firstaid / gear. price 0 = quote on request. image = optional image URL.",
+    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware. price 0 = quote on request. image = optional image URL.",
     "admin_loaded": "Loaded N products. Replace /js/products.js with the downloaded file and redeploy to publish.",
     "admin_clear": "Clear local preview"
   },
@@ -156,7 +158,9 @@ window.I18N = {
     "cat_firstaid": "战场急救课程",
     "cat_firstaid_desc": "TCCC / 战创伤 / 止血急救培训。",
     "cat_gear": "战术装备",
-    "cat_gear_desc": "热成像 / 夜视、枪灯、激光校准训练器、电子靶、战术照明与单兵装具（瞄准镜以外的全部装备）。",
+    "cat_gear_desc": "防弹衣、头盔、战术腰带、背包、手套、护目镜、战术靴与携行具。",
+    "cat_hardware": "五金配件",
+    "cat_hardware_desc": "枪灯、激光校准训练器、电子训练靶及金属配件。",
 
     "search_placeholder": "搜索产品...",
     "result_count": "件产品",
@@ -246,7 +250,7 @@ window.I18N = {
     "admin_preview": "预览（仅保存到本浏览器用于测试）",
     "admin_template": "下载空白 Excel 模板",
     "admin_cols": "Excel 列要求（首行为表头）：",
-    "admin_note": "category 须为 scopes / firstaid / gear 之一；price 填 0 表示价格面议；image 为可选图片链接。",
+    "admin_note": "category 须为 scopes / firstaid / gear / hardware 之一；price 填 0 表示价格面议；image 为可选图片链接。",
     "admin_loaded": "已载入 N 件产品。将下载的文件替换 /js/products.js 并重新部署即可发布。",
     "admin_clear": "清除本地预览"
   }
@@ -256,5 +260,6 @@ window.I18N = {
 window.GUNBASE_CATEGORIES = [
   { id: "scopes",    key: "cat_scopes",    descKey: "cat_scopes_desc" },
   { id: "firstaid",  key: "cat_firstaid",  descKey: "cat_firstaid_desc" },
-  { id: "gear",      key: "cat_gear",      descKey: "cat_gear_desc" }
+  { id: "gear",      key: "cat_gear",      descKey: "cat_gear_desc" },
+  { id: "hardware",  key: "cat_hardware",  descKey: "cat_hardware_desc" }
 ];
