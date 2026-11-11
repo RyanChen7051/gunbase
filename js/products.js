@@ -9,7 +9,7 @@
 window.GUNBASE_PRODUCTS = [
   {
     id: "GB-001",
-    category: "gear",
+    category: "scopes",
     name: { en: "Thermal Imager VISION-650", zh: "VISION-650 红外热成像仪 2.0" },
     sku: "VISION-650",
     desc: { en: "Handheld or weapon-mountable thermal imager for observation, target recognition and passive target acquisition in daylight, smoke, fog, low light and total darkness.", zh: "红外热成像仪，可手持或武器安装，适用于白天、烟雾、低照度及全黑环境下的观察、识别与被动目标捕获。" },
@@ -20,7 +20,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-002",
-    category: "gear",
+    category: "scopes",
     name: { en: "Night Vision Device 35mm", zh: "红外夜视仪（35mm）" },
     sku: "35mm",
     desc: { en: "Lightweight multi-purpose thermal / night-vision monocular for 24/7 reconnaissance, hunting, security and patrol in all weather.", zh: "轻便多功能红外夜视仪，全天候成像，适用于观察、狩猎、安保与夜间巡逻等场景。" },
@@ -460,7 +460,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-042",
-    category: "gear",
+    category: "hardware",
     name: { en: "Weapon Light WL-25", zh: "WL-25 步枪用枪灯" },
     sku: "WL-25",
     desc: { en: "Picatinny / M-LOK weapon-mounted white light for target identification and low-light engagement.", zh: "枪灯，Picatinny / M-LOK 战术导轨安装，高亮白光，适用于识别与低光交战。" },
@@ -471,7 +471,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-043",
-    category: "gear",
+    category: "hardware",
     name: { en: "Weapon Light HL-20", zh: "HL-20 手枪用枪灯" },
     sku: "HL-20",
     desc: { en: "Picatinny / M-LOK weapon-mounted white light for target identification and low-light engagement.", zh: "枪灯，Picatinny / M-LOK 战术导轨安装，高亮白光，适用于识别与低光交战。" },
@@ -482,7 +482,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-044",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Flashlight", zh: "5038 下挂激光手电筒" },
     sku: "GB-044",
     desc: { en: "Combined white-light and visible (red / green) laser flashlight for aiming and illumination in training and field use.", zh: "激光手电筒，白光 + 可见激光（红/绿），适用于训练与实战照明瞄准。" },
@@ -493,7 +493,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-045",
-    category: "gear",
+    category: "hardware",
     name: { en: "Tactical Flashlight", zh: "4025 战术手电筒" },
     sku: "GB-045",
     desc: { en: "Handheld tactical flashlight with high output, strobe and rugged construction for EDC, duty and outdoor use.", zh: "战术手电筒，高亮度、爆闪、航空铝机身，适用于日常、执勤与户外。" },
@@ -504,7 +504,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-046",
-    category: "gear",
+    category: "hardware",
     name: { en: "Tactical Flashlight", zh: "4030 战术手电筒" },
     sku: "GB-046",
     desc: { en: "Handheld tactical flashlight with high output, strobe and rugged construction for EDC, duty and outdoor use.", zh: "战术手电筒，高亮度、爆闪、航空铝机身，适用于日常、执勤与户外。" },
@@ -515,7 +515,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-047",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "常规校准仪红光" },
     sku: "GB-047",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -526,7 +526,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-048",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer 12GA", zh: "12GA校准仪红光" },
     sku: "12GA",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -537,7 +537,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-049",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer 12GA", zh: "12GA校准仪绿光" },
     sku: "12GA",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -548,7 +548,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-050",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "常规校准仪绿光" },
     sku: "GB-050",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -559,7 +559,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-051",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "223长尾校准仪红光" },
     sku: "GB-051",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -570,7 +570,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-052",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "223长尾校准仪绿光" },
     sku: "GB-052",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -581,7 +581,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-053",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "20.5训校一体红光" },
     sku: "GB-053",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -592,7 +592,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-054",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "20.5训校一体绿光" },
     sku: "GB-054",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -603,7 +603,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-055",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "常规训练器红光" },
     sku: "GB-055",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -614,7 +614,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-056",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "训练器靶纸系统套装" },
     sku: "GB-056",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -625,7 +625,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-057",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "训练器绿光" },
     sku: "GB-057",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -636,7 +636,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-058",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1040红光塑胶" },
     sku: "GB-058",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -647,7 +647,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-059",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1040绿光塑胶" },
     sku: "GB-059",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -658,7 +658,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-060",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1040蓝光塑胶" },
     sku: "GB-060",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -669,7 +669,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-061",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1042红光" },
     sku: "GB-061",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -680,7 +680,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-062",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1043红光" },
     sku: "GB-062",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -691,7 +691,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-063",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1043绿光" },
     sku: "GB-063",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -702,7 +702,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-064",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1043蓝光" },
     sku: "GB-064",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -713,7 +713,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-065",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1043金属款" },
     sku: "GB-065",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -724,7 +724,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-066",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1149单灯" },
     sku: "GB-066",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -735,7 +735,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-067",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1149内穿红光加灯" },
     sku: "GB-067",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -746,7 +746,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-068",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1149内穿绿光加灯" },
     sku: "GB-068",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -757,7 +757,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-069",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1149内穿紫光加灯" },
     sku: "GB-069",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -768,7 +768,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-070",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1149内穿蓝光加灯" },
     sku: "GB-070",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -779,7 +779,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-071",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1081红光" },
     sku: "GB-071",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -790,7 +790,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-072",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1081绿光" },
     sku: "GB-072",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -801,7 +801,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-073",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1080红光" },
     sku: "GB-073",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -812,7 +812,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-074",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1080绿光" },
     sku: "GB-074",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -823,7 +823,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-075",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1080蓝光" },
     sku: "GB-075",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -834,7 +834,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-076",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1044红光" },
     sku: "GB-076",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -845,7 +845,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-077",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1044绿光" },
     sku: "GB-077",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -856,7 +856,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-078",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1044蓝光" },
     sku: "GB-078",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -867,7 +867,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-079",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1077红绿加灯" },
     sku: "GB-079",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -878,7 +878,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-080",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1077紫绿" },
     sku: "GB-080",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -889,7 +889,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-081",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1077蓝绿加灯" },
     sku: "GB-081",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -900,7 +900,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-082",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "白色激光靶" },
     sku: "GB-082",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -911,7 +911,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-083",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1073内穿红光加灯" },
     sku: "GB-083",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -922,7 +922,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-084",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1073内穿绿光加灯" },
     sku: "GB-084",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -933,7 +933,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-085",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1073内穿紫光加灯" },
     sku: "GB-085",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -944,7 +944,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-086",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "1073内穿蓝光加灯" },
     sku: "GB-086",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -955,7 +955,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-087",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "7020内穿红光加灯" },
     sku: "GB-087",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -966,7 +966,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-088",
-    category: "gear",
+    category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "7020内穿绿光加灯" },
     sku: "GB-088",
     desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
@@ -977,7 +977,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-089",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target APP", zh: "三环靶APP" },
     sku: "APP",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
@@ -988,7 +988,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-090",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target APP", zh: "七环靶APP" },
     sku: "APP",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
@@ -999,7 +999,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-091",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target APP", zh: "蓝牙靶APP" },
     sku: "APP",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
@@ -1010,7 +1010,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-092",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target", zh: "九宫格" },
     sku: "GB-092",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
@@ -1021,7 +1021,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-093",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target APP", zh: "十人靶APP" },
     sku: "APP",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
@@ -1032,7 +1032,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-094",
-    category: "gear",
+    category: "hardware",
     name: { en: "Electronic Training Target APP", zh: "训练弹APP" },
     sku: "APP",
     desc: { en: "Smart electronic target system with mobile-app scoring and shot analysis for training and qualification.", zh: "电子靶系统，手机 App 计分与弹着分析，适用于训练与考核。" },
