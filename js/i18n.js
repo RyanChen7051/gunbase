@@ -35,6 +35,8 @@ window.I18N = {
     "cat_gear_desc": "Body armor, helmets, belts, packs, gloves, goggles, boots & load-bearing equipment.",
     "cat_hardware": "Hardware Parts",
     "cat_hardware_desc": "Weapon lights, laser boresighters & trainers, electronic targets, metal accessories.",
+    "cat_custom": "Custom Products",
+    "cat_custom_desc": "Custom-made products, parts, accessories & materials. Contact us directly to discuss.",
 
     "search_placeholder": "Search products...",
     "result_count": "products",
@@ -124,7 +126,19 @@ window.I18N = {
     "admin_preview": "Preview (saved to this browser for testing)",
     "admin_template": "Download blank Excel template",
     "admin_cols": "Expected columns (first row = header):",
-    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware. price 0 = quote on request. image = optional image URL.",
+    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware / custom. price 0 = quote on request. image = optional image URL.",
+
+    "custom_card_tag": "DIRECT CONTACT WINDOW",
+    "custom_card_title": "Tell Us What You Need - We'll Build It",
+    "custom_card_text": "Custom-made products, spare parts, accessories, auxiliary materials and OEM / ODM projects are handled case by case. Please contact our window directly for further discussion: send drawings, specifications, samples or target quantity, and our team will reply with feasibility, MOQ and a quotation.",
+    "custom_card_points": "Custom parts & accessories|Auxiliary materials, finishing & packaging|OEM / ODM, prototyping & private labeling",
+    "custom_card_direct": "Direct contact window",
+    "custom_btn_wa": "WhatsApp - Discuss Now",
+    "custom_btn_email": "Email Our Team",
+    "custom_btn_form": "Fill Custom Inquiry Form",
+    "custom_btn_contact": "View Contact Window",
+    "custom_prefill": "Custom / OEM inquiry: I would like to discuss custom products, parts or auxiliary materials. My requirements: ",
+    "custom_count": "Custom projects - direct inquiry",
     "admin_loaded": "Loaded N products. Replace /js/products.js with the downloaded file and redeploy to publish.",
     "admin_clear": "Clear local preview"
   },
@@ -161,6 +175,8 @@ window.I18N = {
     "cat_gear_desc": "防弹衣、头盔、战术腰带、背包、手套、护目镜、战术靴与携行具。",
     "cat_hardware": "五金配件",
     "cat_hardware_desc": "枪灯、激光校准训练器、电子训练靶及金属配件。",
+    "cat_custom": "客制化定制产品",
+    "cat_custom_desc": "客制化产品、配件、辅料等，请直接联系窗口进一步讨论。",
 
     "search_placeholder": "搜索产品...",
     "result_count": "件产品",
@@ -250,7 +266,19 @@ window.I18N = {
     "admin_preview": "预览（仅保存到本浏览器用于测试）",
     "admin_template": "下载空白 Excel 模板",
     "admin_cols": "Excel 列要求（首行为表头）：",
-    "admin_note": "category 须为 scopes / firstaid / gear / hardware 之一；price 填 0 表示价格面议；image 为可选图片链接。",
+    "admin_note": "category 须为 scopes / firstaid / gear / hardware / custom 之一；price 填 0 表示价格面议；image 为可选图片链接。",
+
+    "custom_card_tag": "直接联系窗口",
+    "custom_card_title": "告诉我们需求，我们来定制",
+    "custom_card_text": "客制化产品、零配件、辅料及 OEM / ODM 项目均按案讨论。请直接联系窗口进一步讨论：提供图纸、规格、样品或目标数量，我们将回复可行性、起订量与报价。",
+    "custom_card_points": "客制化配件与零件|辅料、表面处理与包装|OEM / ODM、打样与自有品牌",
+    "custom_card_direct": "直接联系窗口",
+    "custom_btn_wa": "WhatsApp 立即讨论",
+    "custom_btn_email": "邮件联系窗口",
+    "custom_btn_form": "填写定制询盘单",
+    "custom_btn_contact": "查看联系窗口",
+    "custom_prefill": "客制化 / OEM 询盘：我想讨论客制化产品、配件或辅料，需求如下：",
+    "custom_count": "定制项目 - 直接联系洽谈",
     "admin_loaded": "已载入 N 件产品。将下载的文件替换 /js/products.js 并重新部署即可发布。",
     "admin_clear": "清除本地预览"
   }
@@ -261,5 +289,6 @@ window.GUNBASE_CATEGORIES = [
   { id: "scopes",    key: "cat_scopes",    descKey: "cat_scopes_desc" },
   { id: "firstaid",  key: "cat_firstaid",  descKey: "cat_firstaid_desc" },
   { id: "gear",      key: "cat_gear",      descKey: "cat_gear_desc" },
-  { id: "hardware",  key: "cat_hardware",  descKey: "cat_hardware_desc" }
+  { id: "hardware",  key: "cat_hardware",  descKey: "cat_hardware_desc" },
+  { id: "custom",    key: "cat_custom",    descKey: "cat_custom_desc", contactOnly: true }
 ];

@@ -35,7 +35,7 @@ window.GUNBASE_CONFIG = {
     zh: "火械基地股份有限公司 (Gun Base INC.)"
   },
   address: {
-    en: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan",
+    en: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China",
     zh: "台北市松山区复兴北路367号8楼"
   },
   // 客服响应时间承诺（Contact 区块展示）

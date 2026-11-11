@@ -138,6 +138,59 @@
     });
   }
 
+  // ---------- Custom / OEM lead card: direct contact window ----------
+  // Shown as the first card when the "custom" tab is active. It is a contact
+  // entry point, not a sellable product, so it never enters the inquiry cart.
+  function buildCustomCard() {
+    var wa = String(CFG.whatsapp || "").replace(/\D/g, "");
+    var email = CFG.sellerEmail;
+    var el = document.createElement("div");
+    el.className = "card custom-card";
+    var points = t("custom_card_points").split("|").map(function (s) {
+      return "<li>" + esc(s.trim()) + "</li>";
+    }).join("");
+    var waRow = wa
+      ? '<span>WhatsApp&nbsp; <a href="' + waLink(t("custom_prefill")) + '" target="_blank" rel="noopener">+' + esc(wa) + "</a></span>"
+      : "";
+    var waBtn = wa
+      ? '<a class="btn btn--sm btn--accent" href="' + waLink(t("custom_prefill")) + '" target="_blank" rel="noopener">' + esc(t("custom_btn_wa")) + "</a>"
+      : "";
+    el.innerHTML =
+      '<div class="custom-card__head">' +
+        '<span class="custom-card__tag">' + esc(t("custom_card_tag")) + "</span>" +
+        '<span class="custom-card__cat">' + esc(t("cat_custom")) + "</span>" +
+      "</div>" +
+      '<div class="custom-card__body">' +
+        "<h3>" + esc(t("custom_card_title")) + "</h3>" +
+        "<p>" + esc(t("custom_card_text")) + "</p>" +
+        "<ul>" + points + "</ul>" +
+        '<div class="custom-card__direct">' +
+          "<b>" + esc(t("custom_card_direct")) + "</b>" + waRow +
+          '<span>Email&nbsp; <a href="mailto:' + esc(email) + '">' + esc(email) + "</a></span>" +
+        "</div>" +
+        '<div class="custom-card__actions">' + waBtn +
+          '<a class="btn btn--sm" href="mailto:' + esc(email) + "?subject=" + encodeURIComponent(CFG.inquirySubjectPrefix + "Custom / OEM Inquiry") + '">' + esc(t("custom_btn_email")) + "</a>" +
+          '<button class="btn btn--sm btn--ghost" type="button" data-custom="form">' + esc(t("custom_btn_form")) + "</button>" +
+          '<button class="btn btn--sm btn--ghost" type="button" data-custom="contact">' + esc(t("custom_btn_contact")) + "</button>" +
+        "</div>" +
+      "</div>";
+
+    var formBtn = el.querySelector('[data-custom="form"]');
+    if (formBtn) formBtn.onclick = function () {
+      var msg = $("#inquiryForm") && $("#inquiryForm").querySelector('[name="message"]');
+      if (msg && !msg.value.trim()) msg.value = t("custom_prefill");
+      var sec = $("#inquiry");
+      if (sec && sec.scrollIntoView) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      onInquiryListShow();
+    };
+    var contactBtn = el.querySelector('[data-custom="contact"]');
+    if (contactBtn) contactBtn.onclick = function () {
+      var sec = $("#contact");
+      if (sec && sec.scrollIntoView) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    return el;
+  }
+
   // ---------- product grid ----------
   function renderGrid() {
     var grid = $("#grid");
@@ -151,8 +204,10 @@
       });
     }
     grid.innerHTML = "";
-    $("#count").textContent = list.length + " " + t("result_count");
-    $("#noResult").style.display = list.length ? "none" : "block";
+    var showCustom = (activeCat === "custom");
+    if (showCustom) grid.appendChild(buildCustomCard());
+    $("#count").textContent = showCustom ? t("custom_count") : list.length + " " + t("result_count");
+    $("#noResult").style.display = (list.length || showCustom) ? "none" : "block";
 
     list.forEach(function (p) {
       var card = document.createElement("div");
