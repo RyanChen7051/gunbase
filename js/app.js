@@ -28,7 +28,8 @@
     var base = window.GUNBASE_PRODUCTS || [];
     var soon = window.GUNBASE_COMING_SOON || [];
     var extra = window.GUNBASE_SCOPE_SWITCH || [];   // standalone docs (e.g. Scope Switch)
-    return base.concat(soon).concat(extra);
+    var others = window.GUNBASE_OTHER_PRODUCTS || []; // partner-supplied / other products
+    return base.concat(soon).concat(extra).concat(others);
   }
   function catLabel(id) {
     var c = CATS.filter(function (x) { return x.id === id; })[0];
@@ -38,7 +39,9 @@
   // Google's JS renderer picks this up; helps product-level rich results.
   function injectProductSchema() {
     try {
-      var base = (window.GUNBASE_PRODUCTS || []).concat(window.GUNBASE_SCOPE_SWITCH || []);
+      var base = (window.GUNBASE_PRODUCTS || [])
+        .concat(window.GUNBASE_SCOPE_SWITCH || [])
+        .concat(window.GUNBASE_OTHER_PRODUCTS || []);
       var nodes = base.map(function (p) {
         var data = {
           "@context": "https://schema.org",
