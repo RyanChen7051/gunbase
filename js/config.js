@@ -27,7 +27,7 @@ window.GUNBASE_CONFIG = {
 
   // WhatsApp 商务号（仅数字，含国家码，例如中国大陆手机号 "8613812345678"）。
   // 留空 "" 则页面上的 WhatsApp 按钮自动隐藏，不会出现死链。
-  whatsapp: "",
+  whatsapp: "886982310045",
 
   // 公司联系信息（Contact 区块展示 + 询盘邮件抬头）
   companyFull: {
