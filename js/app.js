@@ -104,6 +104,33 @@
     img.parentNode.replaceChild(ph, img);
   };
 
+  // ---------- optional multi-photo gallery ----------
+  // A product may declare "images": [file, ...]. First entry is the main photo;
+  // the rest become clickable thumbnails on both the card and the detail modal.
+  function galleryHtml(p, variant) {
+    if (!p || !p.images || p.images.length < 2) return "";
+    var thumbs = p.images.map(function (im, i) {
+      var src = imgSrc({ image: im });
+      return '<button type="button" class="gb-thumb' + (i === 0 ? " is-active" : "") +
+        '" data-gallery-src="' + esc(src) + '" aria-label="Photo ' + (i + 1) + '">' +
+        '<img src="' + esc(src) + '" alt="" loading="lazy" /></button>';
+    }).join("");
+    return '<div class="gb-thumbs ' + variant + '">' + thumbs + "</div>";
+  }
+  function bindGallery(root) {
+    $all("[data-gallery-src]", root).forEach(function (b) {
+      b.onclick = function () {
+        var wrap = b.parentNode;
+        var scope = wrap && wrap.parentNode;
+        if (!scope) return;
+        var main = scope.querySelector(".gb-main");
+        if (main) main.src = b.getAttribute("data-gallery-src");
+        $all(".gb-thumb", wrap).forEach(function (x) { x.classList.remove("is-active"); });
+        b.classList.add("is-active");
+      };
+    });
+  }
+
   // ---------- i18n apply ----------
   function applyI18n() {
     $all("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
@@ -218,10 +245,11 @@
       var card = document.createElement("div");
       card.className = "card" + (p.comingSoon ? " card--soon" : "");
       var mediaInner = imgSrc(p)
-        ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" loading="lazy" onerror="gbImgErr(this)" />'
+        ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" loading="lazy" onerror="gbImgErr(this)" />'
         : '<div class="card__ph">' + crosshairSVG() + '</div>';
       var media =
         '<div class="card__media">' + mediaInner +
+          galleryHtml(p, "gb-thumbs--card") +
           '<span class="card__cat">' + esc(catLabel(p.category)) + '</span>' +
           (p.comingSoon ? '<span class="card__soon-badge">' + t("coming_soon") + '</span>' : '') +
         '</div>';
@@ -256,6 +284,7 @@
     $all("[data-detail]", grid).forEach(function (b) {
       b.onclick = function () { openDetail(findProduct(b.getAttribute("data-detail"))); };
     });
+    bindGallery(grid);
   }
 
   // ---------- product detail modal ----------
@@ -264,7 +293,7 @@
     var body = $("#detailBody");
     if (!body) return;
     var media = imgSrc(p)
-      ? '<img src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" onerror="gbImgErr(this)" />'
+      ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" onerror="gbImgErr(this)" />'
       : '<div class="detail__ph">' + crosshairSVG(120) + '</div>';
     var enSpec = (p.specs && p.specs.en) ? p.specs.en : "";
     var zhSpec = (p.specs && p.specs.zh) ? p.specs.zh : "";
@@ -278,7 +307,7 @@
         esc(zhSpec).replace(/\n/g, "<br>") + '</p></div>';
     }
     body.innerHTML =
-      '<div class="detail__media">' + media + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
+      '<div class="detail__media">' + media + galleryHtml(p, "gb-thumbs--detail") + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
       '<div class="detail__info">' +
         '<h3 class="detail__name">' + esc(p.name[lang]) +
           '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + '</span></h3>' +
@@ -289,6 +318,7 @@
       '</div>';
     var addBtn = body.querySelector('[data-add]');
     if (addBtn) addBtn.onclick = function () { addToCart(p.id); closeDetail(); };
+    bindGallery(body);
     $("#detailModal").classList.add("open");
   }
   function closeDetail() { var m = $("#detailModal"); if (m) m.classList.remove("open"); }
