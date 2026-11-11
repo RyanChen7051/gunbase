@@ -206,7 +206,9 @@
     grid.innerHTML = "";
     var showCustom = (activeCat === "custom");
     if (showCustom) grid.appendChild(buildCustomCard());
-    $("#count").textContent = showCustom ? t("custom_count") : list.length + " " + t("result_count");
+    $("#count").textContent = showCustom
+      ? (list.length ? t("custom_count") + " - " + list.length + " " + t("result_count") : t("custom_count"))
+      : list.length + " " + t("result_count");
     $("#noResult").style.display = (list.length || showCustom) ? "none" : "block";
 
     list.forEach(function (p) {
@@ -639,6 +641,10 @@
 
   // ---------- init ----------
   function init() {
+    // Deep link: #custom opens the Custom / OEM contact tab directly,
+    // so sales can share a direct URL to the contact window.
+    var hashCat = (window.location.hash || "").replace(/^#/, "");
+    if (CATS.filter(function (c) { return c.id === hashCat; }).length) activeCat = hashCat;
     applyI18n();
     renderTabs();
     renderGrid();
