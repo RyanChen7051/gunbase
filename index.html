@@ -39,6 +39,30 @@
     "knowsAbout": ["Tactical Optics", "Rifle Scopes", "Red Dot Sight", "Night Vision", "Thermal Imaging", "TCCC First Aid", "Tactical Gear", "Plate Carrier", "Weapon Lights", "Laser Boresighter", "Training Targets", "Hardware Parts", "OEM/ODM Customization", "Custom Parts & Accessories", "Auxiliary Materials"]
   }
   </script>
+  <!-- Inline logo fallback: a transient CDN/TLS failure must never leave a broken-image box.
+       First retry with a cache-busting URL; if that also fails, swap in an inline SVG wordmark. -->
+  <script>
+  window.gbLogoFallback = (function () {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 217">' +
+      '<polygon points="10,44 138,4 600,44" fill="#ffffff"/>' +
+      '<polygon points="590,173 462,213 10,173" fill="#ffffff"/>' +
+      '<text x="300" y="142" text-anchor="middle" font-family="Georgia,Times New Roman,serif" ' +
+      'font-size="92" font-weight="900" fill="#ffffff">GUNBASE</text>' +
+      '</svg>';
+    var inline = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    return function (el) {
+      if (!el || el.getAttribute('data-gb-fallback')) return;
+      if (!el.getAttribute('data-gb-retry')) {
+        el.setAttribute('data-gb-retry', '1');
+        var base = (el.getAttribute('src') || '').split('?')[0];
+        el.src = base + '?retry=' + Date.now();
+        return;
+      }
+      el.setAttribute('data-gb-fallback', '1');
+      el.src = inline;
+    };
+  })();
+  </script>
 </head>
 <body>
   <!-- Install prompt (PWA) -->
@@ -60,7 +84,7 @@
   <header class="topbar">
     <div class="wrap topbar__inner">
       <a class="brand" href="#top">
-        <img class="brand__logo" src="assets/logo-white.png" alt="GUNBASE 火械基地" />
+        <img class="brand__logo" src="assets/logo-white.png" width="600" height="217" alt="GUNBASE 火械基地" onerror="gbLogoFallback(this)" />
         <span class="brand__sub" data-i18n="brand_sub">火械基地</span>
       </a>
       <nav class="nav">
@@ -87,7 +111,7 @@
       <circle cx="100" cy="100" r="3" fill="#0a0c0a"/>
     </svg>
     <div class="wrap">
-      <img class="hero__logo" src="assets/logo-white.png" alt="GUNBASE 火械基地" />
+      <img class="hero__logo" src="assets/logo-white.png" width="600" height="217" alt="GUNBASE 火械基地" onerror="gbLogoFallback(this)" />
       <h1 class="display" data-i18n="hero_title">TACTICAL OPTICS · FIRST AID · GEAR</h1>
       <div class="rule"></div>
       <p class="hero__sub" data-i18n="hero_sub">Precision scopes, battlefield first-aid training, and field-grade tactical equipment. Built for professionals.</p>
