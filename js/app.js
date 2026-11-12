@@ -158,8 +158,19 @@
   // ---------- category tabs ----------
   function renderTabs() {
     var tabs = $("#tabs");
+    // Hide categories with no products (contact-only tabs such as Custom / OEM
+    // always stay visible because they render a lead card instead of products).
+    var counts = {};
+    getProducts().forEach(function (p) { counts[p.category] = (counts[p.category] || 0) + 1; });
+    var visible = CATS.filter(function (c) { return c.contactOnly || counts[c.id]; });
+    // Deep links to a now-empty category fall back to "All Products".
+    if (activeCat !== "all" && !visible.filter(function (c) { return c.id === activeCat; }).length) {
+      activeCat = "all";
+    }
+    var cc = $("#catCount");
+    if (cc) cc.textContent = visible.length;
     var items = [{ id: "all", label: t("cat_all"), desc: "" }].concat(
-      CATS.map(function (c) { return { id: c.id, label: t(c.key), desc: t(c.descKey) }; })
+      visible.map(function (c) { return { id: c.id, label: t(c.key), desc: t(c.descKey) }; })
     );
     tabs.innerHTML = "";
     items.forEach(function (it) {
