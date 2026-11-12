@@ -505,3 +505,24 @@ table.prev th { background: var(--panel-2); color: var(--accent); text-transform
   margin: 0 0 8px; color: #e8916a; font-size: 11px;
   letter-spacing: .12em; text-transform: uppercase;
 }
+
+/* ---- Product photo watermark (bottom-right of every photo) ---- */
+.gb-wm {
+  position: absolute; right: 8px; bottom: 8px; z-index: 6;
+  padding: 5px 8px; border-radius: 6px;
+  background: rgba(9, 14, 19, .72);
+  border: 1px solid rgba(255, 255, 255, .16);
+  pointer-events: none;
+}
+.gb-wm img { display: block; height: auto; opacity: .96; }
+.card__media .gb-wm img,
+.detail__media .gb-wm img {
+  width: 88px; height: auto; max-height: none;
+  object-fit: contain; transform: none !important;
+}
+.detail__media .gb-wm img { width: 128px; }
+.card:hover .card__media .gb-wm img { transform: none; }
+@media (max-width: 560px) {
+  .card__media .gb-wm img { width: 68px; }
+  .detail__media .gb-wm img { width: 100px; }
+}
