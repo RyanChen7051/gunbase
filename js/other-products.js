@@ -1,6 +1,6 @@
 // =====================================================================
 // GunBase 火械基地 - Other / partner-supplied products
-// 来源: 合作厂商产品型录 PDF（4 页）：同一 ALP-100 平台的 3 种配置
+// 来源: 合作厂商产品型录 PDF（原有 4 页 ALP-100 平台 3 配置 + 4 份型录归纳之 18 个产品族）
 // 独立文件挂载，避免后台 admin.html 重导 Excel 时被覆盖。
 // 注意: 原厂电话 / 邮箱 / 网址 / 公司名一律不写入本站，
 //       所有询盘统一由 GunBase 窗口受理。
@@ -61,5 +61,426 @@ window.GUNBASE_OTHER_PRODUCTS = [
     },
     image: "GB-OTH-001-3.jpg",
     images: ["GB-OTH-001.jpg", "GB-OTH-001-2.jpg", "GB-OTH-001-3.jpg"]
+  },
+{
+    "id": "GB-CAT-001",
+    "category": "other",
+    "name": {
+      "en": "12 GA Pump-Action Shotgun - Standard Synthetic",
+      "zh": "12 号径泵动式霰弹枪 - 标准合成枪托型"
+    },
+    "sku": "GB-CAT-001",
+    "desc": {
+      "en": "Standard pump-action shotgun configuration with black synthetic furniture, fixed cylinder choke and iron sights. A durable, straightforward platform available in matte blued and matte nickel finishes for training, security and hunting applications. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "标准泵动式霰弹枪配置，黑色合成枪托、固定圆柱收束器与机械瞄具。结构耐用、操作直接，提供哑光发蓝与哑光镀镍表面处理，适用于训练、安保与狩猎用途。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA / 20 GA | Action: pump-action | Barrel length: 18.5 in / 20 in | Choke: fixed cylinder | Sight: iron sight | Stock: black synthetic | Average weight: 2,800 - 3,000 g | Overall length: 100 cm | Magazine: 5+1 / 7+1 | Finish: matte blued / matte nickel",
+      "zh": "口径：12 GA / 20 GA | 动作方式：泵动式 | 枪管长：18.5 吋 / 20 吋 | 收束器：固定圆柱 | 瞄具：机械瞄具 | 枪托：黑色合成 | 平均重量：2,800 - 3,000 g | 全长：100 cm | 弹仓容量：5+1 / 7+1 | 表面：哑光发蓝 / 哑光镀镍"
+    },
+    "image": "GB-CAT-IMG-01.jpg",
+    "images": [
+      "GB-CAT-IMG-01.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-002",
+    "category": "other",
+    "name": {
+      "en": "12 GA Pump-Action Shotgun - Custom / Cerakote Finish",
+      "zh": "12 号径泵动式霰弹枪 - 客制涂层型"
+    },
+    "sku": "GB-CAT-002",
+    "desc": {
+      "en": "Custom-finish pump-action shotgun platform offered with Cerakote and camouflage surface treatments. Drilled steel barrel and an aluminum receiver block keep the platform rigid, while a 76 mm (3 in) chamber supports a wide range of service loads. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "客制表面泵动式霰弹枪平台，提供 Cerakote 涂层与迷彩处理。钻孔钢制枪管搭配铝合金机匣本体维持结构刚性，76 mm（3 吋）弹膛可对应多种制式弹药。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA | Chamber: 76 mm / 3 in | Barrel length: 18 in / 20 in | Barrel: 4140 drilled steel | Receiver: aluminum block from steel bar | Choke: fixed cylinder | Finish: Cerakote / camouflage | Average weight: approx. 2,800 g | Furniture: synthetic",
+      "zh": "口径：12 GA | 弹膛：76 mm / 3 吋 | 枪管长：18 吋 / 20 吋 | 枪管：4140 钻孔钢 | 机匣：铝合金本体 | 收束器：固定圆柱 | 表面：Cerakote / 迷彩 | 平均重量：约 2,800 g | 护木枪托：合成材质"
+    },
+    "image": "GB-CAT-IMG-01.jpg",
+    "images": [
+      "GB-CAT-IMG-01.jpg",
+      "GB-CAT-IMG-04.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-003",
+    "category": "other",
+    "name": {
+      "en": "12 GA Semi-Automatic Shotgun - Hunting / Walnut",
+      "zh": "12 号径半自动霰弹枪 - 狩猎木托型"
+    },
+    "sku": "GB-CAT-003",
+    "desc": {
+      "en": "Semi-automatic hunting shotgun supplied with select walnut furniture and interchangeable choke tubes. Long-barrel variants with bead sights are intended for field, trap and sporting use. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "半自动狩猎霰弹枪，配备胡桃木枪托护木与可更换收束管。长枪管搭配珠状准星的版本适用于野外、飞靶与运动射击用途。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA / 20 GA | Action: semi-automatic | Barrel length: 20 in / 28 in / 30 in | Choke: F / M / CL | Sight: bead sight | Stock: walnut / camouflage | Average weight: 2,800 - 3,200 g | Overall length: 115 - 124 cm | Magazine: 2 / 4+1 / 7+1",
+      "zh": "口径：12 GA / 20 GA | 动作方式：半自动 | 枪管长：20 / 28 / 30 吋 | 收束器：F / M / CL | 瞄具：珠状准星 | 枪托：胡桃木 / 迷彩 | 平均重量：2,800 - 3,200 g | 全长：115 - 124 cm | 弹仓容量：2 / 4+1 / 7+1"
+    },
+    "image": "GB-CAT-IMG-02.jpg",
+    "images": [
+      "GB-CAT-IMG-02.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-004",
+    "category": "other",
+    "name": {
+      "en": "12 GA Semi-Automatic Shotgun - Ergonomic Synthetic",
+      "zh": "12 号径半自动霰弹枪 - 人体工学合成枪托型"
+    },
+    "sku": "GB-CAT-004",
+    "desc": {
+      "en": "Ergonomic-stock semi-automatic shotgun with interchangeable chokes and an adjustable mid sight. The whole trigger group can be removed with two pins for straightforward cleaning and maintenance. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "人体工学枪托半自动霰弹枪，配可更换收束管与可调中置照门。仅需取下两支插销即可拆下整个扳机组，便于清洁保养。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA / 20 GA | Action: semi-automatic | Barrel length: 20 in / 28 in / 30 in | Choke: F / M / CL | Sight: adjustable mid sight / bead sight | Magazine: 4+1 / 7+1 | Stock: ergonomic synthetic | Trigger group: two-pin tool-free disassembly",
+      "zh": "口径：12 GA / 20 GA | 动作方式：半自动 | 枪管长：20 / 28 / 30 吋 | 收束器：F / M / CL | 瞄具：可调中置照门 / 珠状准星 | 弹仓容量：4+1 / 7+1 | 枪托：人体工学合成 | 扳机组：双插销免工具拆解"
+    },
+    "image": "GB-CAT-IMG-02.jpg",
+    "images": [
+      "GB-CAT-IMG-02.jpg",
+      "GB-CAT-IMG-05.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-005",
+    "category": "other",
+    "name": {
+      "en": "Over & Under Shotgun - 12 / 20 GA / .410",
+      "zh": "双管上下叠置霰弹枪 - 12 / 20 号 / .410"
+    },
+    "sku": "GB-CAT-005",
+    "desc": {
+      "en": "Over-and-under break-action shotgun offered in walnut, engraved and silver finishes. Interchangeable choke tubes and a bead sight support field and clay-target applications. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "上下叠置折开式双管霰弹枪，提供胡桃木、雕花与银色表面处理。可更换收束管搭配珠状准星，适用于野外与飞靶射击。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Configuration: over & under | Gauge: 12 GA / 20 GA / .410 GA | Barrel length: 28 in / 30 in | Choke: F / M / CL | Sight: bead sight | Stock: walnut / engraved | Average weight: 2,800 - 3,800 g | Overall length: 115 - 120 cm | Capacity: 2",
+      "zh": "配置：上下叠置双管 | 口径：12 GA / 20 GA / .410 GA | 枪管长：28 / 30 吋 | 收束器：F / M / CL | 瞄具：珠状准星 | 枪托：胡桃木 / 雕花 | 平均重量：2,800 - 3,800 g | 全长：115 - 120 cm | 容量：2 发"
+    },
+    "image": "GB-CAT-IMG-03.jpg",
+    "images": [
+      "GB-CAT-IMG-03.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-006",
+    "category": "other",
+    "name": {
+      "en": "Single-Barrel / Trap & Skeet Shotgun",
+      "zh": "单管 / 飞靶竞赛霰弹枪"
+    },
+    "sku": "GB-CAT-006",
+    "desc": {
+      "en": "Single-barrel and dedicated trap / skeet configurations with silver, case-hardened and hand-engraved finishes. Long 28 - 30 in barrels and walnut or camo-synthetic furniture cover sporting and competition use. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "单管与专用飞靶（Trap / Skeet）配置，提供银色、表面硬化与手工雕花处理。28 - 30 吋长枪管搭配胡桃木或迷彩合成枪托，涵盖运动与竞赛用途。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Configuration: single barrel / trap & skeet | Barrel length: 28 in / 30 in | Choke: F / M / CL | Sight: bead sight | Finish: silver / case hardening / hand-made engraving | Stock: walnut / camo synthetic | Average weight: 2,500 - 3,800 g | Overall length: 115 - 120 cm | Capacity: 1 - 2",
+      "zh": "配置：单管 / 飞靶竞赛 | 枪管长：28 / 30 吋 | 收束器：F / M / CL | 瞄具：珠状准星 | 表面：银色 / 表面硬化 / 手工雕花 | 枪托：胡桃木 / 迷彩合成 | 平均重量：2,500 - 3,800 g | 全长：115 - 120 cm | 容量：1 - 2 发"
+    },
+    "image": "GB-CAT-IMG-03.jpg",
+    "images": [
+      "GB-CAT-IMG-03.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-007",
+    "category": "other",
+    "name": {
+      "en": "12 GA Tactical Pump-Action Shotgun - Pistol Grip",
+      "zh": "12 号径战术泵动霰弹枪 - 手枪握把型"
+    },
+    "sku": "GB-CAT-007",
+    "desc": {
+      "en": "Compact tactical pump-action configuration with a fixed pistol grip, muzzle-brake choke and ghost-ring sights. Short-barrel and standard-barrel variants cover different duty profiles. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "紧凑战术泵动配置，固定手枪握把、枪口制退收束器与鬼环照门。短枪管与标准枪管版本对应不同勤务需求。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA / 20 GA | Action: pump-action | Barrel length: 8.6 in / 18.5 in / 20 in | Choke: muzzle brake / fixed cylinder | Sight: ghost-ring / ghost sight | Stock: fixed pistol grip / black synthetic | Magazine: 4+1 / 5+1 / 7+1 | Average weight: 2,650 - 3,150 g | Overall length: 76 - 105 cm",
+      "zh": "口径：12 GA / 20 GA | 动作方式：泵动式 | 枪管长：8.6 / 18.5 / 20 吋 | 收束器：枪口制退 / 固定圆柱 | 瞄具：鬼环 / 鬼环式 | 枪托：固定手枪握把 / 黑色合成 | 弹仓容量：4+1 / 5+1 / 7+1 | 平均重量：2,650 - 3,150 g | 全长：76 - 105 cm"
+    },
+    "image": "GB-CAT-IMG-05.jpg",
+    "images": [
+      "GB-CAT-IMG-05.jpg",
+      "GB-CAT-IMG-01.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-008",
+    "category": "other",
+    "name": {
+      "en": "12 GA Magazine-Fed Shotgun",
+      "zh": "12 号径弹匣供弹霰弹枪"
+    },
+    "sku": "GB-CAT-008",
+    "desc": {
+      "en": "Box-magazine-fed shotgun with a 20 in barrel, muzzle brake and ghost sights. Offered in matte blued and camouflage finishes for duty and security applications. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "弹匣供弹式霰弹枪，20 吋枪管、枪口制退器与鬼环照门。提供哑光发蓝与迷彩表面处理，适用于勤务与安保用途。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA / 20 GA | Feed: detachable box magazine | Barrel length: 20 in | Choke: muzzle brake | Sight: ghost sight | Magazine capacity: 5 | Stock: black synthetic | Average weight: 3,500 - 3,750 g | Overall length: 100 cm | Finish: matte blued / camouflage",
+      "zh": "口径：12 GA / 20 GA | 供弹：可拆式弹匣 | 枪管长：20 吋 | 收束器：枪口制退 | 瞄具：鬼环式 | 弹匣容量：5 发 | 枪托：黑色合成 | 平均重量：3,500 - 3,750 g | 全长：100 cm | 表面：哑光发蓝 / 迷彩"
+    },
+    "image": "GB-CAT-IMG-04.jpg",
+    "images": [
+      "GB-CAT-IMG-04.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-009",
+    "category": "other",
+    "name": {
+      "en": "12 GA Bullpup Shotgun",
+      "zh": "12 号径无托结构霰弹枪"
+    },
+    "sku": "GB-CAT-009",
+    "desc": {
+      "en": "Bullpup-layout shotgun that keeps a 20 in barrel in a 72 cm overall package. Cerakote and camouflage finishes, ghost sights and a 5-round magazine are standard across the variants. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "无托结构霰弹枪，在 72 cm 全长内保留 20 吋枪管。各版本标配 Cerakote / 迷彩表面、鬼环照门与 5 发弹匣。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Configuration: bullpup | Gauge: 12 GA / 20 GA | Barrel length: 20 in | Choke: muzzle brake | Sight: ghost sight | Magazine capacity: 5 | Finish: Cerakote / camouflage | Average weight: 3,500 g | Overall length: 72 cm",
+      "zh": "配置：无托结构 | 口径：12 GA / 20 GA | 枪管长：20 吋 | 收束器：枪口制退 | 瞄具：鬼环式 | 弹匣容量：5 发 | 表面：Cerakote / 迷彩 | 平均重量：3,500 g | 全长：72 cm"
+    },
+    "image": "GB-CAT-IMG-04.jpg",
+    "images": [
+      "GB-CAT-IMG-04.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-010",
+    "category": "other",
+    "name": {
+      "en": "9x19 mm Semi-Automatic Pistol Platform",
+      "zh": "9x19 mm 半自动手枪平台"
+    },
+    "sku": "GB-CAT-010",
+    "desc": {
+      "en": "A 9x19 mm semi-automatic pistol platform optimised for accuracy and realistic training. Multiple colour options, an accessory rail and tool-free field stripping support a wide range of configuration requirements. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "9x19 mm 半自动手枪平台，针对精度与实境训练最佳化。多种配色、附件导轨与免工具拆解，可对应不同配置需求。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber: 9x19 mm | Action: semi-automatic | Platform: accuracy-optimised pistol | Colour options: multiple | Furniture: polymer | Accessory rail: yes | Maintenance: tool-free field stripping | Application: training / duty",
+      "zh": "口径：9x19 mm | 动作方式：半自动 | 平台：精度优化手枪 | 配色：多种可选 | 握把护木：聚合物 | 附件导轨：有 | 保养：免工具拆解 | 用途：训练 / 勤务"
+    },
+    "image": "GB-CAT-IMG-06.jpg",
+    "images": [
+      "GB-CAT-IMG-06.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-011",
+    "category": "other",
+    "name": {
+      "en": "9x19 mm Semi-Automatic Carbine - 16 in Barrel",
+      "zh": "9x19 mm 半自动卡宾枪 - 16 吋枪管"
+    },
+    "sku": "GB-CAT-011",
+    "desc": {
+      "en": "A highly accurate and reliable 9x19 mm semi-automatic carbine built around a 16 in barrel, with barrel-shroud and colour options for different duty configurations. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "以 16 吋枪管为核心的 9x19 mm 半自动卡宾枪，兼具精度与可靠性，提供护筒与配色选项以对应不同勤务配置。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber: 9x19 mm | Action: semi-automatic | Barrel length: 16 in | Configuration: carbine | Barrel shroud options: yes | Colour options: multiple | Application: training / security",
+      "zh": "口径：9x19 mm | 动作方式：半自动 | 枪管长：16 吋 | 配置：卡宾枪 | 枪管护筒选项：有 | 配色：多种可选 | 用途：训练 / 安保"
+    },
+    "image": "GB-CAT-IMG-07.jpg",
+    "images": [
+      "GB-CAT-IMG-07.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-012",
+    "category": "other",
+    "name": {
+      "en": "Hunting / Tactical Rifle Platform",
+      "zh": "狩猎 / 战术步枪平台"
+    },
+    "sku": "GB-CAT-012",
+    "desc": {
+      "en": "Modular rifle platform offered in hunting and tactical configurations, with hard-coated receiver finishes, steel barrels and ergonomic furniture. Configuration highlights are confirmed at inquiry stage. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "模块化步枪平台，提供狩猎与战术配置，机匣硬质涂层、钢制枪管与人体工学枪托护木。各配置重点规格于询盘阶段确认。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Platform: modular rifle | Receiver finish: hard-coat | Barrel material: steel | Stock: ergonomic | Configurations: hunting / tactical | Colour options: multiple | Detail specifications: confirmed per configuration at inquiry",
+      "zh": "平台：模块化步枪 | 机匣表面：硬质涂层 | 枪管材质：钢 | 枪托：人体工学 | 配置：狩猎 / 战术 | 配色：多种可选 | 细部规格：依配置于询盘时确认"
+    },
+    "image": "GB-CAT-IMG-08.jpg",
+    "images": [
+      "GB-CAT-IMG-08.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-013",
+    "category": "other",
+    "name": {
+      "en": "Premium Engraved Shotgun - Walnut / Case Hardened",
+      "zh": "高级雕花霰弹枪 - 胡桃木 / 表面硬化处理"
+    },
+    "sku": "GB-CAT-013",
+    "desc": {
+      "en": "Premium-grade shotgun configurations featuring hand-made engraving or case-hardened receivers, select walnut furniture and 30 in barrels. Built for ceremonial, collection and sporting use. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "高级霰弹枪配置，具备手工雕花或表面硬化机匣、精选胡桃木枪托护木与 30 吋枪管，适用于礼仪、收藏与运动射击用途。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Gauge: 12 GA | Barrel length: 30 in | Choke: F / M / CL | Sight: bead sight | Finish: hand-made engraving / case hardening | Stock: select walnut | Average weight: 3,250 - 3,800 g | Overall length: 115 - 120 cm | Capacity: 2",
+      "zh": "口径：12 GA | 枪管长：30 吋 | 收束器：F / M / CL | 瞄具：珠状准星 | 表面：手工雕花 / 表面硬化 | 枪托：精选胡桃木 | 平均重量：3,250 - 3,800 g | 全长：115 - 120 cm | 容量：2 发"
+    },
+    "image": "GB-CAT-IMG-03.jpg",
+    "images": [
+      "GB-CAT-IMG-03.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-014",
+    "category": "other",
+    "name": {
+      "en": "20 mm HEI Cartridge Assemblies (20x102 / 20x110)",
+      "zh": "20 mm 高爆燃烧弹整弹与组件（20x102 / 20x110）"
+    },
+    "sku": "GB-CAT-014",
+    "desc": {
+      "en": "Medium-calibre 20 mm cartridge assemblies and components for anti-aircraft weapon systems, supplied as complete rounds or as body, shell and fuze sub-assemblies. Two case lengths are available. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "中口径 20 mm 整弹与组件，用于防空武器系统，可供应整弹或弹体、弹壳、引信等子组件，提供两种弹壳长度。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber type: medium caliber | Variants: 20x102 mm / 20x110 mm HEI | Weight: approx. 260 g (20x102) / 220 g (20x110) | Diameter: 20 mm | Length: approx. 168 mm / 178 mm | Material: brass and steel | Components: cartridge body / shell / fuze assembly | Application: anti-aircraft systems",
+      "zh": "口径类型：中口径 | 型号：20x102 mm / 20x110 mm HEI | 重量：约 260 g / 220 g | 直径：20 mm | 长度：约 168 mm / 178 mm | 材质：黄铜与钢 | 组件：弹体 / 弹壳 / 引信总成 | 用途：防空系统"
+    },
+    "image": "GB-CAT-IMG-09.jpg",
+    "images": [
+      "GB-CAT-IMG-09.jpg",
+      "GB-CAT-IMG-11.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-015",
+    "category": "other",
+    "name": {
+      "en": "35 mm Anti-Aircraft Ammunition & Projectile Assemblies",
+      "zh": "35 mm 防空弹药与弹丸组件"
+    },
+    "sku": "GB-CAT-015",
+    "desc": {
+      "en": "Medium-calibre 35 mm anti-aircraft ammunition supplied as projectile assemblies with body, case, ballistic cone, capsule and fuze components. Service and training variants are available. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "中口径 35 mm 防空弹药，以弹丸总成形式供应，含弹体、弹壳、弹道锥、火帽与引信组件，提供实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber type: medium caliber | Ammunition group: 35 mm anti-aircraft | Weight: approx. 1,570 g | Diameter: 35 mm | Length: approx. 387 mm | Material: 7075 aluminum alloy and equivalents + steel | Effective range: 6,000 m | Variants: service / training | Components: body / case / cone / capsule / fuze",
+      "zh": "口径类型：中口径 | 弹种：35 mm 防空弹药 | 重量：约 1,570 g | 直径：35 mm | 长度：约 387 mm | 材质：7075 铝合金及等同材料 + 钢 | 有效射程：6,000 m | 版本：实用弹 / 训练弹 | 组件：弹体 / 弹壳 / 弹道锥 / 火帽 / 引信"
+    },
+    "image": "GB-CAT-IMG-12.jpg",
+    "images": [
+      "GB-CAT-IMG-12.jpg",
+      "GB-CAT-IMG-14.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-016",
+    "category": "other",
+    "name": {
+      "en": "40 mm Low-Velocity Grenade Launcher Ammunition (40x46 / 40x53)",
+      "zh": "40 mm 低速榴弹发射器弹药（40x46 / 40x53）"
+    },
+    "sku": "GB-CAT-016",
+    "desc": {
+      "en": "40 mm grenade launcher ammunition and component sets, covering low-velocity 40x46 mm and 40x53 mm families. Supplied as complete rounds or as individual case, body, holder, cone, fuze, capsule and seal components. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "40 mm 榴弹发射器弹药与组件组，涵盖低速 40x46 mm 与 40x53 mm 系列，可供应整弹或弹壳、弹体、本体座、弹道锥、引信、火帽与密封件等单件。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Ammunition group: 40x46 mm low-velocity / 40x53 mm | Product class: grenade launcher ammunition | Components: ammo case / bullet body / body holder / ballistic cone / fuze / capsule / seal / plastic top cap | Variants: service / training",
+      "zh": "弹种：40x46 mm 低速 / 40x53 mm | 产品类别：榴弹发射器弹药 | 组件：弹壳 / 弹体 / 本体座 / 弹道锥 / 引信 / 火帽 / 密封件 / 塑料上盖 | 版本：实用弹 / 训练弹"
+    },
+    "image": "GB-CAT-IMG-12.jpg",
+    "images": [
+      "GB-CAT-IMG-12.jpg",
+      "GB-CAT-IMG-13.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-017",
+    "category": "other",
+    "name": {
+      "en": "60 mm / 81 mm Mortar Ammunition",
+      "zh": "60 mm / 81 mm 迫击炮弹"
+    },
+    "sku": "GB-CAT-017",
+    "desc": {
+      "en": "Mortar ammunition families in 60 mm and 81 mm calibres, available as complete rounds, projectile bodies and fin / fuze component sets. Service and training variants are covered by the portfolio. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "60 mm 与 81 mm 口径迫击炮弹系列，可供应整弹、弹体以及尾翼 / 引信组件组，涵盖实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber: 60 mm / 81 mm | Product group: mortar ammunition | Configurations: complete round / projectile body / fin assembly / fuze options | Variants: HE / training | Application: defense solutions inventory",
+      "zh": "口径：60 mm / 81 mm | 产品组别：迫击炮弹药 | 配置：整弹 / 弹体 / 尾翼总成 / 引信选项 | 版本：高爆弹 / 训练弹 | 用途：国防解决方案清单"
+    },
+    "image": "GB-CAT-IMG-13.jpg",
+    "images": [
+      "GB-CAT-IMG-13.jpg"
+    ]
+  },
+  {
+    "id": "GB-CAT-018",
+    "category": "other",
+    "name": {
+      "en": "155 mm Artillery Projectiles",
+      "zh": "155 mm 火炮弹丸"
+    },
+    "sku": "GB-CAT-018",
+    "desc": {
+      "en": "Large-calibre 155 mm artillery / howitzer projectile family, supplied as projectile bodies with boat-tail profiles and fuze / driving-band options. Service and training variants are included in the portfolio. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "大口径 155 mm 加农炮 / 榴弹炮弹丸系列，供应船尾型弹体与引信 / 弹带选项，清单含实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
+    },
+    "price": 0,
+    "moq": "",
+    "specs": {
+      "en": "Caliber: 155 mm | Product group: artillery / howitzer ammunition | Configuration: boat-tail projectile body | Options: fuze / driving band | Variants: HE / training | Application: defense solutions inventory",
+      "zh": "口径：155 mm | 产品组别：加农炮 / 榴弹炮弹药 | 配置：船尾型弹体 | 选项：引信 / 弹带 | 版本：高爆弹 / 训练弹 | 用途：国防解决方案清单"
+    },
+    "image": "GB-CAT-IMG-10.jpg",
+    "images": [
+      "GB-CAT-IMG-10.jpg",
+      "GB-CAT-IMG-14.jpg"
+    ]
   }
 ];
