@@ -1,6 +1,7 @@
 // =====================================================================
-// GunBase 火械基地 - Other / partner-supplied products
+// GunBase 火械基地 - Firearms & Ammunition (partner-supplied platforms)
 // 来源: 合作厂商产品型录 PDF（原有 4 页 ALP-100 平台 3 配置 + 4 份型录归纳之 18 个产品族）
+// 分类: GB-OTH-001~003 与 GB-CAT-001~013 归 firearms；GB-CAT-014~018 归 ammunition
 // 独立文件挂载，避免后台 admin.html 重导 Excel 时被覆盖。
 // 注意: 原厂电话 / 邮箱 / 网址 / 公司名一律不写入本站，
 //       所有询盘统一由 GunBase 窗口受理。
@@ -10,7 +11,7 @@
 window.GUNBASE_OTHER_PRODUCTS = [
   {
     id: "GB-OTH-001",
-    category: "other",
+    category: "firearms",
     name: { en: "ALP-100 9x19mm Platform - Standard Pistol", zh: "ALP-100 9x19mm 平台 - 标准手枪型" },
     sku: "GB-OTH-001",
     desc: {
@@ -28,7 +29,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     id: "GB-OTH-002",
-    category: "other",
+    category: "firearms",
     name: { en: "ALP-100 9x19mm Platform - Folding / Telescopic Stock", zh: "ALP-100 9x19mm 平台 - 折叠／伸缩枪托型" },
     sku: "GB-OTH-002",
     desc: {
@@ -46,7 +47,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     id: "GB-OTH-003",
-    category: "other",
+    category: "firearms",
     name: { en: "ALP-100 9x19mm Platform - Extended Front Shroud", zh: "ALP-100 9x19mm 平台 - 延长前护筒型" },
     sku: "GB-OTH-003",
     desc: {
@@ -64,7 +65,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
 {
     "id": "GB-CAT-001",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Pump-Action Shotgun - Standard Synthetic",
       "zh": "12 号径泵动式霰弹枪 - 标准合成枪托型"
@@ -87,7 +88,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-002",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Pump-Action Shotgun - Custom / Cerakote Finish",
       "zh": "12 号径泵动式霰弹枪 - 客制涂层型"
@@ -111,7 +112,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-003",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Semi-Automatic Shotgun - Hunting / Walnut",
       "zh": "12 号径半自动霰弹枪 - 狩猎木托型"
@@ -134,7 +135,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-004",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Semi-Automatic Shotgun - Ergonomic Synthetic",
       "zh": "12 号径半自动霰弹枪 - 人体工学合成枪托型"
@@ -158,7 +159,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-005",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "Over & Under Shotgun - 12 / 20 GA / .410",
       "zh": "双管上下叠置霰弹枪 - 12 / 20 号 / .410"
@@ -181,7 +182,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-006",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "Single-Barrel / Trap & Skeet Shotgun",
       "zh": "单管 / 飞靶竞赛霰弹枪"
@@ -204,7 +205,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-007",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Tactical Pump-Action Shotgun - Pistol Grip",
       "zh": "12 号径战术泵动霰弹枪 - 手枪握把型"
@@ -228,7 +229,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-008",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Magazine-Fed Shotgun",
       "zh": "12 号径弹匣供弹霰弹枪"
@@ -251,7 +252,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-009",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "12 GA Bullpup Shotgun",
       "zh": "12 号径无托结构霰弹枪"
@@ -274,7 +275,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-010",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "9x19 mm Semi-Automatic Pistol Platform",
       "zh": "9x19 mm 半自动手枪平台"
@@ -297,7 +298,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-011",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "9x19 mm Semi-Automatic Carbine - 16 in Barrel",
       "zh": "9x19 mm 半自动卡宾枪 - 16 吋枪管"
@@ -320,7 +321,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-012",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "Hunting / Tactical Rifle Platform",
       "zh": "狩猎 / 战术步枪平台"
@@ -343,7 +344,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-013",
-    "category": "other",
+    "category": "firearms",
     "name": {
       "en": "Premium Engraved Shotgun - Walnut / Case Hardened",
       "zh": "高级雕花霰弹枪 - 胡桃木 / 表面硬化处理"
@@ -366,7 +367,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-014",
-    "category": "other",
+    "category": "ammunition",
     "name": {
       "en": "20 mm HEI Cartridge Assemblies (20x102 / 20x110)",
       "zh": "20 mm 高爆燃烧弹整弹与组件（20x102 / 20x110）"
@@ -390,7 +391,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-015",
-    "category": "other",
+    "category": "ammunition",
     "name": {
       "en": "35 mm Anti-Aircraft Ammunition & Projectile Assemblies",
       "zh": "35 mm 防空弹药与弹丸组件"
@@ -414,7 +415,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-016",
-    "category": "other",
+    "category": "ammunition",
     "name": {
       "en": "40 mm Low-Velocity Grenade Launcher Ammunition (40x46 / 40x53)",
       "zh": "40 mm 低速榴弹发射器弹药（40x46 / 40x53）"
@@ -438,7 +439,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-017",
-    "category": "other",
+    "category": "ammunition",
     "name": {
       "en": "60 mm / 81 mm Mortar Ammunition",
       "zh": "60 mm / 81 mm 迫击炮弹"
@@ -461,7 +462,7 @@ window.GUNBASE_OTHER_PRODUCTS = [
   },
   {
     "id": "GB-CAT-018",
-    "category": "other",
+    "category": "ammunition",
     "name": {
       "en": "155 mm Artillery Projectiles",
       "zh": "155 mm 火炮弹丸"
