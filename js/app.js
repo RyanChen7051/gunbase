@@ -37,11 +37,13 @@
   }
   // Inject machine-readable Product schema for all real (non-placeholder) items.
   // Google's JS renderer picks this up; helps product-level rich results.
+  // Controlled items are deliberately excluded so they never enter structured data.
   function injectProductSchema() {
     try {
       var base = (window.GUNBASE_PRODUCTS || [])
         .concat(window.GUNBASE_SCOPE_SWITCH || [])
-        .concat(window.GUNBASE_OTHER_PRODUCTS || []);
+        .concat(window.GUNBASE_OTHER_PRODUCTS || [])
+        .filter(function (p) { return !p.restricted; });
       var nodes = base.map(function (p) {
         var data = {
           "@context": "https://schema.org",
@@ -259,7 +261,7 @@
 
     list.forEach(function (p) {
       var card = document.createElement("div");
-      card.className = "card" + (p.comingSoon ? " card--soon" : "");
+      card.className = "card" + (p.comingSoon ? " card--soon" : "") + (p.restricted ? " gb-restricted" : "");
       var mediaInner = imgSrc(p)
         ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" loading="lazy" onerror="gbImgErr(this)" />'
         : '<div class="card__ph">' + crosshairSVG() + '</div>';
@@ -268,6 +270,7 @@
           galleryHtml(p, "gb-thumbs--card") +
           '<span class="card__cat">' + esc(catLabel(p.category)) + '</span>' +
           (p.comingSoon ? '<span class="card__soon-badge">' + t("coming_soon") + '</span>' : '') +
+          (p.restricted ? '<span class="gb-restricted__badge">' + esc(t("restricted_badge")) + '</span>' : '') +
         '</div>';
       var priceHtml = "";
       if (CFG.showPrice && p.price > 0) {
@@ -280,6 +283,9 @@
         '<div class="card__body">' +
           '<div class="card__name">' + esc(p.name[lang]) + '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + "</span></div>" +
           '<div class="card__sku">' + t("field_sku") + ": " + esc(p.sku) + "</div>" +
+          (p.restricted
+            ? '<div class="gb-restricted__notice"><b>' + esc(t("restricted_badge")) + '</b> ' + esc(t("restricted_notice")) + '</div>'
+            : '') +
           '<div class="card__meta">' +
             "<div><b>" + t("field_moq") + "</b>" + p.moq + "</div>" +
             (priceHtml ? "<div>" + priceHtml + "</div>" : "") +
@@ -314,11 +320,15 @@
     var enSpec = (p.specs && p.specs.en) ? p.specs.en : "";
     var zhSpec = (p.specs && p.specs.zh) ? p.specs.zh : "";
     var specHtml = "";
-    if (enSpec) {
+    if (p.restricted) {
+      specHtml = '<div class="detail__restricted"><h4>' + esc(t("restricted_badge")) +
+        '</h4><p>' + esc(t("restricted_detail")) + '</p></div>';
+    }
+    if (!p.restricted && enSpec) {
       specHtml += '<div class="detail__spec"><h4>' + t("field_specs") + ' / Key Specs</h4><p>' +
         esc(enSpec).replace(/\|/g, " · ") + '</p></div>';
     }
-    if (zhSpec) {
+    if (!p.restricted && zhSpec) {
       specHtml += '<div class="detail__spec"><h4>' + t("specs_zh_full") + '</h4><p class="detail__spec_zh">' +
         esc(zhSpec).replace(/\n/g, "<br>") + '</p></div>';
     }
@@ -330,6 +340,9 @@
         '<div class="detail__sku">' + t("field_sku") + ": " + esc(p.sku) + "　·　" + t("field_moq") + ": " + (p.moq || "—") + '</div>' +
         (p.desc && p.desc[lang] ? '<p class="detail__desc">' + esc(p.desc[lang]) + '</p>' : '') +
         specHtml +
+        (p.restricted
+          ? '<a class="btn btn--accent" href="' + esc(restrictedMail(p)) + '" style="margin-top:16px">' + esc(t("restricted_btn")) + '</a> '
+          : '') +
         '<button class="btn" data-add="' + esc(p.id) + '" style="margin-top:16px">' + t("add_to_inquiry") + '</button>' +
       '</div>';
     var addBtn = body.querySelector('[data-add]');
@@ -449,6 +462,16 @@
   }
 
   // ---------- contact section & WhatsApp ----------
+  // Controlled items: specs are released by a human after EUC / licence checks,
+  // so the "Request Specifications" action opens a pre-filled email, not a data sheet.
+  function restrictedMail(p) {
+    var subject = CFG.inquirySubjectPrefix + "Specification Request - " + p.sku;
+    var body = (lang === "zh"
+      ? "您好 GunBase，\n\n我方拟索取下列受控品项之技术规格，并愿配合提供最终用户证明（EUC）、最终用途说明及相关进出口许可文件供贵司核验。\n\n品项：" + p.name.zh + "（" + p.sku + "）\n\n公司：\n联系人：\n国家/地区：\n最终用途：\n\n"
+      : "Hello GunBase,\n\nWe would like to request the technical specifications for the controlled item below. We can provide an End-User Certificate (EUC), an end-use statement and all applicable export / import licences for your verification.\n\nItem: " + p.name.en + " (" + p.sku + ")\n\nCompany:\nContact:\nCountry:\nEnd use:\n\n");
+    return "mailto:" + CFG.sellerEmail + "?subject=" + encodeURIComponent(subject) +
+           "&body=" + encodeURIComponent(body);
+  }
   function waLink(text) {
     var msg = text || (lang === "zh"
       ? "您好 GunBase，我想咨询贵司产品。"
