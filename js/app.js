@@ -102,6 +102,13 @@
     if (im.indexOf("/") !== -1) return im;
     return "images/" + im;
   }
+  // Brand watermark for product photos. Rendered as an overlay (not burned into
+  // the JPEG) so object-fit: cover, hover zoom and the thumbnail strip can never
+  // crop or hide it. A dark plate keeps the white wordmark legible on white photos.
+  function wmHtml(p) {
+    if (!imgSrc(p)) return "";
+    return '<span class="gb-wm" aria-hidden="true"><img src="assets/logo-white.png" alt="" /></span>';
+  }
   // On image load error, swap for the crosshair placeholder
   window.gbImgErr = function (img) {
     if (!img || !img.parentNode) return;
@@ -268,6 +275,7 @@
       var media =
         '<div class="card__media">' + mediaInner +
           galleryHtml(p, "gb-thumbs--card") +
+          wmHtml(p) +
           '<span class="card__cat">' + esc(catLabel(p.category)) + '</span>' +
           (p.comingSoon ? '<span class="card__soon-badge">' + t("coming_soon") + '</span>' : '') +
           (p.restricted ? '<span class="gb-restricted__badge">' + esc(t("restricted_badge")) + '</span>' : '') +
@@ -333,7 +341,7 @@
         esc(zhSpec).replace(/\n/g, "<br>") + '</p></div>';
     }
     body.innerHTML =
-      '<div class="detail__media">' + media + galleryHtml(p, "gb-thumbs--detail") + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
+      '<div class="detail__media">' + media + galleryHtml(p, "gb-thumbs--detail") + wmHtml(p) + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
       '<div class="detail__info">' +
         '<h3 class="detail__name">' + esc(p.name[lang]) +
           '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + '</span></h3>' +
