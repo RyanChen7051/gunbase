@@ -23,7 +23,7 @@ window.GUNBASE_STORE = (function () {
 
 window.GUNBASE_CONFIG = {
   // 收件邮箱：客户提交询盘后，邮件会发到这里。请改成你的真实邮箱。
-  sellerEmail: "3531885069@qq.com",
+  sellerEmail: "sales@gunbase-optics.com",
 
   // WhatsApp 商务号（仅数字，含国家码，例如中国大陆手机号 "8613812345678"）。
   // 留空 "" 则页面上的 WhatsApp 按钮自动隐藏，不会出现死链。
