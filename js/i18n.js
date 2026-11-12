@@ -18,8 +18,8 @@ window.I18N = {
     "install_text": "Install the GunBase app for quick access",
     "install_btn": "Install",
 
-    "hero_title": "TACTICAL OPTICS · FIRST AID · GEAR",
-    "hero_sub": "Precision scopes, battlefield first-aid training, and field-grade tactical equipment. Built for professionals.",
+    "hero_title": "OPTICS · FIREARMS · AMMUNITION · GEAR",
+    "hero_sub": "Precision optics, firearms, ammunition, battlefield first-aid training and field-grade tactical equipment. Built for professionals.",
     "hero_cta_catalog": "Browse Catalog",
     "hero_cta_inquiry": "Start Inquiry",
     "hero_stat_cat": "Product Lines",
@@ -37,8 +37,12 @@ window.I18N = {
     "cat_hardware_desc": "Weapon lights, laser boresighters & trainers, electronic targets, metal accessories.",
     "cat_custom": "Custom Products",
     "cat_custom_desc": "Custom-made products, parts, accessories & materials. Contact us directly to discuss.",
+    "cat_firearms": "Firearms",
+    "cat_firearms_desc": "Shotguns, pistols, carbines, rifles and partner-supplied weapon platforms. Authorized procurement only.",
+    "cat_ammunition": "Ammunition",
+    "cat_ammunition_desc": "Medium- and large-calibre cartridges, mortar and artillery projectiles, and component assemblies.",
     "cat_other": "Other Products",
-    "cat_other_desc": "Partner-supplied platforms and other products. Contact our sales window for details.",
+    "cat_other_desc": "Miscellaneous partner-supplied items and future additions. Contact our sales window for details.",
 
     "search_placeholder": "Search products...",
     "result_count": "products",
@@ -128,7 +132,7 @@ window.I18N = {
     "admin_preview": "Preview (saved to this browser for testing)",
     "admin_template": "Download blank Excel template",
     "admin_cols": "Expected columns (first row = header):",
-    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware / other / custom. price 0 = quote on request. image = optional image URL.",
+    "admin_note": "Category must be one of: scopes / firstaid / gear / hardware / firearms / ammunition / other / custom. price 0 = quote on request. image = optional image URL.",
 
     "custom_card_tag": "DIRECT CONTACT WINDOW",
     "custom_card_title": "Tell Us What You Need - We'll Build It",
@@ -160,8 +164,8 @@ window.I18N = {
     "install_text": "安装 GunBase 应用，方便随时访问",
     "install_btn": "安装",
 
-    "hero_title": "战术光学 · 战场急救 · 战术装备",
-    "hero_sub": "精密瞄准镜、战场急救课程与军规级战术装备，为专业人士打造。",
+    "hero_title": "战术光学 · 枪械弹药 · 战场急救 · 战术装备",
+    "hero_sub": "精密瞄准镜、枪械、弹药、战场急救课程与军规级战术装备，为专业人士打造。",
     "hero_cta_catalog": "浏览目录",
     "hero_cta_inquiry": "发起询盘",
     "hero_stat_cat": "产品线",
@@ -179,8 +183,12 @@ window.I18N = {
     "cat_hardware_desc": "枪灯、激光校准训练器、电子训练靶及金属配件。",
     "cat_custom": "客制化定制产品",
     "cat_custom_desc": "客制化产品、配件、辅料等，请直接联系窗口进一步讨论。",
+    "cat_firearms": "枪械",
+    "cat_firearms_desc": "霰弹枪、手枪、卡宾枪、步枪及合作厂商供应之枪械平台，仅限合法授权采购。",
+    "cat_ammunition": "弹药",
+    "cat_ammunition_desc": "中大口径整弹、迫击炮弹、火炮弹丸与弹药组件。",
     "cat_other": "其他",
-    "cat_other_desc": "合作厂商供应之平台及其他产品，详情请联系我们的窗口。",
+    "cat_other_desc": "合作厂商供应之其他杂项与后续新增品项，详情请联系我们的窗口。",
 
     "search_placeholder": "搜索产品...",
     "result_count": "件产品",
@@ -270,7 +278,7 @@ window.I18N = {
     "admin_preview": "预览（仅保存到本浏览器用于测试）",
     "admin_template": "下载空白 Excel 模板",
     "admin_cols": "Excel 列要求（首行为表头）：",
-    "admin_note": "category 须为 scopes / firstaid / gear / hardware / other / custom 之一；price 填 0 表示价格面议；image 为可选图片链接。",
+    "admin_note": "category 须为 scopes / firstaid / gear / hardware / firearms / ammunition / other / custom 之一；price 填 0 表示价格面议；image 为可选图片链接。",
 
     "custom_card_tag": "直接联系窗口",
     "custom_card_title": "告诉我们需求，我们来定制",
@@ -290,10 +298,12 @@ window.I18N = {
 
 // 分类元数据（顺序与标签键）
 window.GUNBASE_CATEGORIES = [
-  { id: "scopes",    key: "cat_scopes",    descKey: "cat_scopes_desc" },
-  { id: "firstaid",  key: "cat_firstaid",  descKey: "cat_firstaid_desc" },
-  { id: "gear",      key: "cat_gear",      descKey: "cat_gear_desc" },
-  { id: "hardware",  key: "cat_hardware",  descKey: "cat_hardware_desc" },
-  { id: "other",     key: "cat_other",     descKey: "cat_other_desc" },
-  { id: "custom",    key: "cat_custom",    descKey: "cat_custom_desc", contactOnly: true }
+  { id: "scopes",      key: "cat_scopes",      descKey: "cat_scopes_desc" },
+  { id: "firearms",    key: "cat_firearms",    descKey: "cat_firearms_desc" },
+  { id: "ammunition",  key: "cat_ammunition",  descKey: "cat_ammunition_desc" },
+  { id: "firstaid",    key: "cat_firstaid",    descKey: "cat_firstaid_desc" },
+  { id: "gear",        key: "cat_gear",        descKey: "cat_gear_desc" },
+  { id: "hardware",    key: "cat_hardware",    descKey: "cat_hardware_desc" },
+  { id: "other",       key: "cat_other",       descKey: "cat_other_desc" },
+  { id: "custom",      key: "cat_custom",      descKey: "cat_custom_desc", contactOnly: true }
 ];
