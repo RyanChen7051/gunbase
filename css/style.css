@@ -502,3 +502,20 @@ table.prev th { background: var(--panel-2); color: var(--accent); text-transform
   .card__media .gb-wm img { width: 68px; }
   .detail__media .gb-wm img { width: 100px; }
 }
+
+/* ---- Pricing: private negotiation (no public price) ---- */
+.card__price--private {
+  color: var(--accent); font-weight: 700; letter-spacing: .03em;
+}
+.detail__pricing {
+  margin-top: 16px; padding: 14px 16px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: rgba(245, 166, 35, .06);
+}
+.detail__pricing h4 {
+  margin: 0 0 6px; font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent);
+}
+.detail__pricing p { margin: 0; font-size: 13px; line-height: 1.65; color: var(--muted); }
+.detail__pricing-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.detail__pricing-actions .btn { flex: 1 1 auto; text-decoration: none; }
