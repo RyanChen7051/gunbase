@@ -249,6 +249,27 @@
   }
 
   // ---------- product grid ----------
+  // A photo-less item is pushed to the bottom of its OWN category, not to the
+  // bottom of the whole catalog. Grouping is stable: category order and the
+  // original order inside each bucket are both preserved. This only affects
+  // display order — the data files, JSON-LD and cart IDs stay untouched.
+  function hasPhoto(p) {
+    if (imgSrc(p)) return true;
+    if (p.images && p.images.length && imgSrc({ image: p.images[0] })) return true;
+    return false;
+  }
+  function noPhotoLast(list) {
+    var order = [], groups = {};
+    list.forEach(function (p) {
+      var k = p.category || "other";
+      if (!groups[k]) { groups[k] = { photo: [], plain: [] }; order.push(k); }
+      groups[k][hasPhoto(p) ? "photo" : "plain"].push(p);
+    });
+    var out = [];
+    order.forEach(function (k) { out = out.concat(groups[k].photo, groups[k].plain); });
+    return out;
+  }
+
   function renderGrid() {
     var grid = $("#grid");
     var list = getProducts();
@@ -260,6 +281,7 @@
         return s.indexOf(q) !== -1;
       });
     }
+    list = noPhotoLast(list);
     grid.innerHTML = "";
     var showCustom = (activeCat === "custom");
     if (showCustom) grid.appendChild(buildCustomCard());
