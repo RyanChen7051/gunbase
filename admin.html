@@ -24,7 +24,12 @@
   <header class="topbar">
     <div class="wrap topbar__inner">
       <a class="brand" href="index.html"><span class="brand__mark" data-i18n="brand">GUNBASE</span><span class="brand__sub" data-i18n="brand_sub">火械基地</span></a>
-      <button class="langbtn" id="langBtn">中文</button>
+      <div class="langpick" id="langPick">
+        <button class="langpick__btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language">
+          <span class="langpick__globe" aria-hidden="true">◎</span><span id="langCode">EN</span><span class="langpick__caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="langpick__menu" id="langMenu" role="listbox" aria-label="Select language" aria-hidden="true"></div>
+      </div>
     </div>
   </header>
 
