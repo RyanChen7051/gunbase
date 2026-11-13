@@ -32,22 +32,30 @@ window.GUNBASE_CONFIG = {
   // 公司联系信息（Contact 区块展示 + 询盘邮件抬头）
   companyFull: {
     en: "Gun Base INC. (GunBase 火械基地)",
-    zh: "火械基地股份有限公司 (Gun Base INC.)"
+    zh: "火械基地股份有限公司 (Gun Base INC.)",
+    "zh-TW": "火械基地股份有限公司 (Gun Base INC.)",
+    es: "Gun Base INC. (GunBase 火械基地)"
   },
   address: {
     en: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China",
-    zh: "台北市松山区复兴北路367号8楼"
+    zh: "台北市松山区复兴北路367号8楼",
+    "zh-TW": "台北市松山區復興北路 367 號 8 樓",
+    es: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China"
   },
   // 客服响应时间承诺（Contact 区块展示）
   replyTime: {
     en: "We reply within 2 business days.",
-    zh: "我们将在 2 个工作日内回复。"
+    zh: "我们将在 2 个工作日内回复。",
+    "zh-TW": "我們將在 2 個工作天內回覆。",
+    es: "Respondemos en un plazo de 2 días laborables."
   },
 
   // 公司抬头（用于询盘邮件 / PDF 抬头）
   company: {
     en: "GUNBASE TACTICAL SUPPLY",
-    zh: "火械基地战术供应"
+    zh: "火械基地战术供应",
+    "zh-TW": "火械基地戰術供應",
+    es: "GUNBASE TACTICAL SUPPLY"
   },
 
   // 询盘邮件主题前缀
