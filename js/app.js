@@ -1,6 +1,6 @@
 // =====================================================================
 // GunBase 火械基地 — app.js
-// Bilingual catalog + inquiry cart + quote request (no backend).
+// 4-language catalog + inquiry cart + quote request (no backend).
 // =====================================================================
 (function () {
   "use strict";
@@ -8,9 +8,15 @@
   var CFG = window.GUNBASE_CONFIG;
   var I18N = window.I18N;
   var CATS = window.GUNBASE_CATEGORIES;
+  var LANGS = window.GUNBASE_LANGS;
+  var S2T = window.GUNBASE_S2T || { map: {}, words: [] };
 
   // ---------- state ----------
-  var lang = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
+  // Guard against stale / unknown values stored by older builds.
+  var lang = (function () {
+    var v = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
+    return LANGS.filter(function (x) { return x.id === v; }).length ? v : "en";
+  })();
   // No "All Products" view: visitors always browse one category at a time.
   // Start on the first category that actually has products.
   function defaultCat() {
@@ -27,6 +33,34 @@
   // ---------- helpers ----------
   function t(key) {
     return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || key;
+  }
+  // Product data carries only en / zh fields. Spanish falls back to English;
+  // Traditional Chinese renders the Simplified source through a character map,
+  // so no product record needs to be duplicated or re-translated.
+  var PH = {}, PH_KEYS = [];
+  (S2T.words || []).forEach(function (w) { PH[w[0]] = w[1]; PH_KEYS.push(w[0]); });
+  PH_KEYS.sort(function (a, b) { return b.length - a.length; });   // longest match first
+  var PH_RE = PH_KEYS.length ? new RegExp(PH_KEYS.join("|"), "g") : null;
+  function toHant(x) {
+    x = String(x == null ? "" : x);
+    if (PH_RE) x = x.replace(PH_RE, function (m) { return PH[m]; });
+    return x.replace(/[\u3400-\u9fff]/g, function (c) { return S2T.map[c] || c; });
+  }
+  function loc(obj) {
+    if (obj == null) return "";
+    if (typeof obj === "string") return obj;
+    if (obj[lang]) return obj[lang];
+    if (lang === "zh-TW") return toHant(obj.zh || obj.en || "");
+    return obj.en || obj.zh || "";
+  }
+  function sub(obj) {
+    if (!obj) return "";
+    if (lang === "en") return obj.zh || "";
+    if (lang === "zh" || lang === "zh-TW") return obj.en || "";
+    return "";  // Spanish: primary name is already English, no duplicate subline
+  }
+  function langMeta() {
+    return LANGS.filter(function (x) { return x.id === lang; })[0] || LANGS[0];
   }
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -159,12 +193,15 @@
   function applyI18n() {
     $all("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
     $all("[data-i18n-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
-    document.documentElement.lang = (lang === "zh") ? "zh-CN" : "en";
+    document.documentElement.lang = langMeta().html;
+    renderLangUI();
   }
 
   function setLang(l) {
+    if (!LANGS.filter(function (x) { return x.id === l; }).length) return;
     lang = l;
     window.GUNBASE_STORE.setItem("gunbase_lang", l);
+    closeLangMenu();
     applyI18n();
     renderTabs();
     renderGrid();
@@ -172,6 +209,62 @@
     renderTrade();
     buildInquiryList();
     renderContact();
+  }
+
+  // ---------- language picker (topbar dropdown + hero shortcuts) ----------
+  function closeLangMenu() {
+    var pick = $("#langPick"); if (pick) pick.classList.remove("is-open");
+    var btn = $("#langBtn"); if (btn) btn.setAttribute("aria-expanded", "false");
+    var menu = $("#langMenu"); if (menu) menu.setAttribute("aria-hidden", "true");
+  }
+  function renderLangUI() {
+    var meta = langMeta();
+    var code = $("#langCode"); if (code) code.textContent = meta.label;
+    var btn = $("#langBtn"); if (btn) btn.setAttribute("aria-label", t("lang_label"));
+    var menu = $("#langMenu");
+    if (menu) {
+      menu.innerHTML = "";
+      LANGS.forEach(function (m) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "langpick__opt" + (m.id === lang ? " is-active" : "");
+        b.setAttribute("role", "option");
+        b.setAttribute("aria-selected", m.id === lang ? "true" : "false");
+        b.innerHTML = "<b>" + esc(m.label) + "</b><span>" + esc(m.name) + "</span><i class=\"tick\">✓</i>";
+        b.onclick = function () { setLang(m.id); };
+        menu.appendChild(b);
+      });
+    }
+    var hero = $("#heroLangs");
+    if (hero) {
+      hero.innerHTML = "";
+      LANGS.forEach(function (m) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "hero__langbtn" + (m.id === lang ? " is-active" : "");
+        b.setAttribute("aria-pressed", m.id === lang ? "true" : "false");
+        b.innerHTML = "<b>" + esc(m.label) + "</b><span>" + esc(m.name) + "</span>";
+        b.onclick = function () { setLang(m.id); };
+        hero.appendChild(b);
+      });
+    }
+  }
+  function bindLangPicker() {
+    var btn = $("#langBtn"), pick = $("#langPick"), menu = $("#langMenu");
+    if (!btn || !pick || !menu) return;
+    btn.onclick = function (e) {
+      e.stopPropagation();
+      var open = !pick.classList.contains("is-open");
+      pick.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    document.addEventListener("click", function (e) {
+      if (!pick.contains(e.target)) closeLangMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeLangMenu();
+    });
   }
 
   // ---------- category explorer (no "All Products" entry) ----------
@@ -318,7 +411,7 @@
       var card = document.createElement("div");
       card.className = "card" + (p.comingSoon ? " card--soon" : "");
       var mediaInner = imgSrc(p)
-        ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" loading="lazy" onerror="gbImgErr(this)" />'
+        ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + loc(p.name)) + '" loading="lazy" onerror="gbImgErr(this)" />'
         : '<div class="card__ph">' + crosshairSVG() + '</div>';
       var media =
         '<div class="card__media">' + mediaInner +
@@ -340,7 +433,7 @@
       card.innerHTML =
         media +
         '<div class="card__body">' +
-          '<div class="card__name">' + esc(p.name[lang]) + '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + "</span></div>" +
+          '<div class="card__name">' + esc(loc(p.name)) + (sub(p.name) ? '<span class="card__name_zh">' + esc(sub(p.name)) + "</span>" : "") + "</div>" +
           '<div class="card__sku">' + t("field_sku") + ": " + esc(p.sku) + "</div>" +
           '<div class="card__meta">' +
             "<div><b>" + t("field_moq") + "</b>" + p.moq + "</div>" +
@@ -369,18 +462,19 @@
   // No price figure is ever rendered. These helpers build pre-filled direct
   // contact links so a buyer can start a confidential pricing discussion.
   function pricingMail(p) {
-    var subject = t("price_talk_subject") + p.sku + " - " + (lang === "zh" ? p.name.zh : p.name.en);
+    var subject = t("price_talk_subject") + p.sku + " - " + loc(p.name);
+    var zhName = lang === "zh-TW" ? toHant(p.name.zh) : p.name.zh;
     var body = t("price_talk_body")
       .replace(/\{sku\}/g, p.sku)
-      .replace(/\{name\}/g, p.name.en + " / " + p.name.zh);
+      .replace(/\{name\}/g, p.name.en + (zhName ? " / " + zhName : ""));
     return "mailto:" + CFG.sellerEmail +
       "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(body);
   }
   function pricingWa(p) {
-    var msg = lang === "zh"
-      ? "您好 GunBase，我想私下洽谈 " + p.sku + "（" + p.name.zh + "）的价格，请与我联系并提供报价。"
-      : "Hello GunBase, I'd like to discuss pricing privately for " + p.sku + " (" + p.name.en + "). Please contact me with a quotation.";
+    var msg = t("wa_pricing_msg")
+      .replace(/\{sku\}/g, p.sku)
+      .replace(/\{name\}/g, loc(p.name));
     return waLink(msg);
   }
   function pricingBlock(p) {
@@ -402,13 +496,14 @@
     var body = $("#detailBody");
     if (!body) return;
     var media = imgSrc(p)
-      ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + p.name.en) + '" onerror="gbImgErr(this)" />'
+      ? '<img class="gb-main" src="' + esc(imgSrc(p)) + '" alt="' + esc(catLabel(p.category) + " — " + loc(p.name)) + '" onerror="gbImgErr(this)" />'
       : '<div class="detail__ph">' + crosshairSVG(120) + '</div>';
     var enSpec = (p.specs && p.specs.en) ? p.specs.en : "";
-    var zhSpec = (p.specs && p.specs.zh) ? p.specs.zh : "";
+    var zhSpec = (p.specs && p.specs.zh)
+      ? (lang === "zh-TW" ? toHant(p.specs.zh) : p.specs.zh) : "";
     var specHtml = "";
     if (enSpec) {
-      specHtml += '<div class="detail__spec"><h4>' + t("field_specs") + ' / Key Specs</h4><p>' +
+      specHtml += '<div class="detail__spec"><h4>' + t("field_specs") + " / " + t("specs_key") + '</h4><p>' +
         esc(enSpec).replace(/\|/g, " · ") + '</p></div>';
     }
     if (zhSpec) {
@@ -418,10 +513,10 @@
     body.innerHTML =
       '<div class="detail__media">' + media + galleryHtml(p, "gb-thumbs--detail") + wmHtml(p) + '<span class="card__cat">' + esc(catLabel(p.category)) + '</span></div>' +
       '<div class="detail__info">' +
-        '<h3 class="detail__name">' + esc(p.name[lang]) +
-          '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + '</span></h3>' +
+        '<h3 class="detail__name">' + esc(loc(p.name)) +
+          (sub(p.name) ? '<span class="card__name_zh">' + esc(sub(p.name)) + '</span>' : "") + '</h3>' +
         '<div class="detail__sku">' + t("field_sku") + ": " + esc(p.sku) + "　·　" + t("field_moq") + ": " + (p.moq || "—") + '</div>' +
-        (p.desc && p.desc[lang] ? '<p class="detail__desc">' + esc(p.desc[lang]) + '</p>' : '') +
+        (loc(p.desc) ? '<p class="detail__desc">' + esc(loc(p.desc)) + '</p>' : '') +
         pricingBlock(p) +
         specHtml +
         '<button class="btn" data-add="' + esc(p.id) + '" style="margin-top:16px">' + t("add_to_inquiry") + '</button>' +
@@ -484,7 +579,7 @@
       var row = document.createElement("div");
       row.className = "cart-item";
       row.innerHTML =
-        '<div><div class="cart-item__name">' + esc(p.name[lang]) + "</div>" +
+        '<div><div class="cart-item__name">' + esc(loc(p.name)) + "</div>" +
         '<div class="cart-item__sku">' + esc(p.sku) + "</div></div>" +
         '<div class="cart-item__right">' +
           '<div class="qty">' +
@@ -518,7 +613,7 @@
       var p = findProduct(it.id);
       if (!p) return;
       var li = document.createElement("li");
-      li.innerHTML = "<span>" + esc(p.name[lang]) + " · " + esc(p.sku) + "</span><span>×" + it.qty + "</span>";
+      li.innerHTML = "<span>" + esc(loc(p.name)) + " · " + esc(p.sku) + "</span><span>×" + it.qty + "</span>";
       ul.appendChild(li);
     });
   }
@@ -544,9 +639,7 @@
 
   // ---------- contact section & WhatsApp ----------
   function waLink(text) {
-    var msg = text || (lang === "zh"
-      ? "您好 GunBase，我想咨询贵司产品。"
-      : "Hello GunBase, I'd like to inquire about your products.");
+    var msg = text || t("wa_greeting");
     return "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
   }
   function renderContact() {
@@ -554,8 +647,8 @@
     if (!emailEl) return;
     emailEl.textContent = CFG.sellerEmail;
     $("#contactEmailBtn").href = "mailto:" + CFG.sellerEmail + "?subject=" + encodeURIComponent(CFG.inquirySubjectPrefix + "General Inquiry");
-    $("#contactCompany").textContent = CFG.companyFull[lang];
-    $("#contactAddress").textContent = CFG.address[lang];
+    $("#contactCompany").textContent = loc(CFG.companyFull);
+    $("#contactAddress").textContent = loc(CFG.address);
     $("#contactHours").textContent = t("contact_hours_val");
     var wa = String(CFG.whatsapp || "").replace(/\D/g, "");
     var waCard = $("#contactWaCard");
@@ -661,7 +754,7 @@
   function emailBody(inq) {
     var L = function (k) { return t(k); };
     var lines = [];
-    lines.push("=== GUNBASE INQUIRY / 火械基地询盘 ===");
+    lines.push(L("email_header"));
     lines.push("");
     lines.push(L("f_company") + ": " + inq.company);
     lines.push(L("f_contact") + ": " + inq.contact);
@@ -673,7 +766,7 @@
     lines.push("");
     lines.push(L("f_products") + ":");
     inq.items.forEach(function (it) {
-      var line = "  - " + it.sku + " | " + it.name.en + " / " + it.name.zh + " | Qty: " + it.qty;
+      var line = "  - " + it.sku + " | " + loc(it.name) + " | Qty: " + it.qty;
       if (CFG.showPrice) line += (it.price > 0 ? " | " + CFG.currency + " " + it.price : " | " + L("quote_on_request"));
       lines.push(line);
     });
@@ -704,7 +797,8 @@
     var inq = lastInquiry;
     var priceCol = !!CFG.showPrice;
     var rows = inq.items.map(function (it) {
-      var cells = "<td>" + esc(it.sku) + "</td><td>" + esc(it.name.en) + "<br><small>" + esc(it.name.zh) + "</small></td><td style='text-align:center'>" + it.qty + "</td>";
+      var nm = loc(it.name), sb = sub(it.name);
+      var cells = "<td>" + esc(it.sku) + "</td><td>" + esc(nm) + (sb ? "<br><small>" + esc(sb) + "</small>" : "") + "</td><td style='text-align:center'>" + it.qty + "</td>";
       if (priceCol) cells += "<td>" + (it.price > 0 ? CFG.currency + " " + it.price : t("quote_on_request")) + "</td>";
       return "<tr>" + cells + "</tr>";
     }).join("");
@@ -720,8 +814,8 @@
       ".info b{display:block;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.04em}" +
       ".terms{margin-top:20px;font-size:13px;background:#f4f3ef;padding:14px;border-left:4px solid #c0392b}" +
       "@media print{body{margin:0}}</style></head><body>" +
-      "<div class='sub'>" + esc(CFG.company[lang]) + "</div>" +
-      "<h1>GunBase Inquiry / 火械基地询盘</h1><div class='bar'></div>" +
+      "<div class='sub'>" + esc(loc(CFG.company)) + "</div>" +
+      "<h1>" + esc(t("inquiry_doc_title")) + "</h1><div class='bar'></div>" +
       "<div class='info'>" +
         "<div><b>" + t("f_company") + "</b>" + esc(inq.company) + "</div>" +
         "<div><b>" + t("f_contact") + "</b>" + esc(inq.contact) + "</div>" +
@@ -731,8 +825,8 @@
         "<div><b>" + t("f_trade") + "</b>" + esc(inq.trade) + "</div>" +
         (inq.delivery ? "<div><b>" + t("f_delivery") + "</b>" + esc(inq.delivery) + "</div>" : "") +
       "</div>" +
-      "<table><thead><tr><th>SKU</th><th>" + t("f_products") + "</th><th style='text-align:center'>Qty</th>" +
-        (priceCol ? "<th>Price</th>" : "") + "</tr></thead><tbody>" + rows + "</tbody></table>" +
+      "<table><thead><tr><th>" + t("field_sku") + "</th><th>" + t("f_products") + "</th><th style='text-align:center'>" + t("cart_qty") + "</th>" +
+        (priceCol ? "<th>" + t("field_unit_price") + "</th>" : "") + "</tr></thead><tbody>" + rows + "</tbody></table>" +
       (inq.message ? "<p style='margin-top:14px'><b>" + t("f_message") + ":</b> " + esc(inq.message) + "</p>" : "") +
       (!priceCol ? "<div class='terms' style='border-left-color:#c9841a'><b>" + t("price_private_title") + "</b><br>" + t("price_mail_note") + "</div>" : "") +
       "<div class='terms'><b>" + t("terms_title") + "</b><br>" + t("terms_deposit") + "<br>" + t("terms_balance") + "<br>" + t("terms_methods") + "</div>" +
@@ -803,7 +897,7 @@
     renderTrade();
     buildInquiryList();
 
-    $("#langBtn").onclick = function () { setLang(lang === "en" ? "zh" : "en"); };
+    bindLangPicker();
     $("#search").oninput = function (e) { searchTerm = e.target.value; renderGrid(); };
 
     $("#cartToggle").onclick = openDrawer;
