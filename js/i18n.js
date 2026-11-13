@@ -27,6 +27,11 @@ window.I18N = {
     "hero_stat_dep": "Deposit to Start",
 
     "cat_all": "All Products",
+    "cat_pick": "CHOOSE A CATEGORY TO EXPLORE",
+    "cat_explore": "EXPLORE",
+    "cat_unit": "ITEMS",
+    "cat_contact": "CONTACT",
+    "cat_search": "SEARCH / ALL CATEGORIES",
     "cat_scopes": "Scopes",
     "cat_scopes_desc": "Rifle scopes, red dots, LPVO, magnifiers, thermal & night vision.",
     "cat_firstaid": "First Aid Courses",
@@ -181,6 +186,11 @@ window.I18N = {
     "hero_stat_dep": "订金起订",
 
     "cat_all": "全部产品",
+    "cat_pick": "请选择分类，逐一探索产品",
+    "cat_explore": "进入分类",
+    "cat_unit": "件",
+    "cat_contact": "洽询",
+    "cat_search": "全站搜索",
     "cat_scopes": "瞄准镜",
     "cat_scopes_desc": "步枪镜、红点镜、LPVO、放大镜、热成像与夜视。",
     "cat_firstaid": "战场急救课程",
