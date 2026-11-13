@@ -11,7 +11,15 @@
 
   // ---------- state ----------
   var lang = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
-  var activeCat = "all";
+  // No "All Products" view: visitors always browse one category at a time.
+  // Start on the first category that actually has products.
+  function defaultCat() {
+    var counts = {};
+    getProducts().forEach(function (p) { counts[p.category] = (counts[p.category] || 0) + 1; });
+    var first = CATS.filter(function (c) { return counts[c.id]; })[0];
+    return first ? first.id : (CATS[0] ? CATS[0].id : "scopes");
+  }
+  var activeCat = defaultCat();
   var searchTerm = "";
   var cart = loadCart();            // [{id, qty}]
   var lastInquiry = null;           // for modal email / print
@@ -166,31 +174,42 @@
     renderContact();
   }
 
-  // ---------- category tabs ----------
+  // ---------- category explorer (no "All Products" entry) ----------
   function renderTabs() {
     var tabs = $("#tabs");
-    // Hide categories with no products (contact-only tabs such as Custom / OEM
-    // always stay visible because they render a lead card instead of products).
     var counts = {};
     getProducts().forEach(function (p) { counts[p.category] = (counts[p.category] || 0) + 1; });
+    // Empty categories are hidden; contact-only (Custom / OEM) always stays.
     var visible = CATS.filter(function (c) { return c.contactOnly || counts[c.id]; });
-    // Deep links to a now-empty category fall back to "All Products".
-    if (activeCat !== "all" && !visible.filter(function (c) { return c.id === activeCat; }).length) {
-      activeCat = "all";
-    }
+    if (!visible.filter(function (c) { return c.id === activeCat; }).length) activeCat = defaultCat();
     var cc = $("#catCount");
     if (cc) cc.textContent = visible.length;
-    var items = [{ id: "all", label: t("cat_all"), desc: "" }].concat(
-      visible.map(function (c) { return { id: c.id, label: t(c.key), desc: t(c.descKey) }; })
-    );
     tabs.innerHTML = "";
-    items.forEach(function (it) {
+    visible.forEach(function (c, i) {
+      var n = counts[c.id] || 0;
+      var badge = c.contactOnly ? t("cat_contact") : n + " " + t("cat_unit");
       var b = document.createElement("button");
-      b.className = "tab" + (it.id === activeCat ? " is-active" : "");
-      b.innerHTML = it.desc
-        ? it.label + "<small>" + it.desc + "</small>"
-        : it.label;
-      b.onclick = function () { activeCat = it.id; renderTabs(); renderGrid(); };
+      b.type = "button";
+      b.className = "cat" + (c.id === activeCat ? " is-active" : "");
+      b.setAttribute("aria-pressed", c.id === activeCat ? "true" : "false");
+      b.innerHTML =
+        '<span class="cat__top">' +
+          '<span class="cat__idx">' + (i < 9 ? "0" : "") + (i + 1) + "</span>" +
+          '<span class="cat__num">' + esc(badge) + "</span>" +
+        "</span>" +
+        '<span class="cat__name">' + esc(t(c.key)) + "</span>" +
+        '<span class="cat__desc">' + esc(t(c.descKey)) + "</span>" +
+        '<span class="cat__go">' + esc(t("cat_explore")) + "</span>";
+      b.onclick = function () {
+        activeCat = c.id;
+        renderTabs();
+        renderGrid();
+        // On small screens the category wall is tall - bring results into view.
+        if (window.innerWidth < 760) {
+          var bar = $(".toolbar");
+          if (bar && bar.scrollIntoView) bar.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
       tabs.appendChild(b);
     });
   }
@@ -273,8 +292,11 @@
   function renderGrid() {
     var grid = $("#grid");
     var list = getProducts();
-    if (activeCat !== "all") list = list.filter(function (p) { return p.category === activeCat; });
-    if (searchTerm) {
+    // Browsing is category-by-category (no "All Products" view). Searching is
+    // the one exception: it spans every category so a keyword is never lost.
+    var searching = !!searchTerm;
+    if (!searching) list = list.filter(function (p) { return p.category === activeCat; });
+    if (searching) {
       var q = searchTerm.toLowerCase();
       list = list.filter(function (p) {
         var s = (p.name.en + " " + p.name.zh + " " + p.sku + " " + p.desc.en + " " + p.desc.zh).toLowerCase();
@@ -283,11 +305,13 @@
     }
     list = noPhotoLast(list);
     grid.innerHTML = "";
-    var showCustom = (activeCat === "custom");
+    var showCustom = !searching && (activeCat === "custom");
     if (showCustom) grid.appendChild(buildCustomCard());
-    $("#count").textContent = showCustom
+    var cur = CATS.filter(function (c) { return c.id === activeCat; })[0];
+    var catName = searching ? t("cat_search") : (cur ? t(cur.key) : "");
+    $("#count").textContent = catName + (catName ? " / " : "") + (showCustom
       ? (list.length ? t("custom_count") + " - " + list.length + " " + t("result_count") : t("custom_count"))
-      : list.length + " " + t("result_count");
+      : list.length + " " + t("result_count"));
     $("#noResult").style.display = (list.length || showCustom) ? "none" : "block";
 
     list.forEach(function (p) {
