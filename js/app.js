@@ -278,9 +278,13 @@
           (p.comingSoon ? '<span class="card__soon-badge">' + t("coming_soon") + '</span>' : '') +
         '</div>';
       var priceHtml = "";
-      if (CFG.showPrice && p.price > 0) {
+      if (!CFG.showPrice) {
+        // Prices are intentionally not published. Show a clear "private
+        // negotiation" cue instead of an empty slot so buyers know what to do.
+        priceHtml = '<span class="card__price card__price--private">' + t("price_private") + "</span>";
+      } else if (p.price > 0) {
         priceHtml = '<span class="card__price">' + CFG.currency + " " + p.price + "</span>";
-      } else if (CFG.showPrice) {
+      } else {
         priceHtml = '<span>' + t("quote_on_request") + "</span>";
       }
       card.innerHTML =
@@ -311,6 +315,37 @@
     bindGallery(grid);
   }
 
+  // ---------- private pricing negotiation (no public price) ----------
+  // No price figure is ever rendered. These helpers build pre-filled direct
+  // contact links so a buyer can start a confidential pricing discussion.
+  function pricingMail(p) {
+    var subject = t("price_talk_subject") + p.sku + " - " + (lang === "zh" ? p.name.zh : p.name.en);
+    var body = t("price_talk_body")
+      .replace(/\{sku\}/g, p.sku)
+      .replace(/\{name\}/g, p.name.en + " / " + p.name.zh);
+    return "mailto:" + CFG.sellerEmail +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+  }
+  function pricingWa(p) {
+    var msg = lang === "zh"
+      ? "您好 GunBase，我想私下洽谈 " + p.sku + "（" + p.name.zh + "）的价格，请与我联系并提供报价。"
+      : "Hello GunBase, I'd like to discuss pricing privately for " + p.sku + " (" + p.name.en + "). Please contact me with a quotation.";
+    return waLink(msg);
+  }
+  function pricingBlock(p) {
+    if (CFG.showPrice) return "";
+    return '<div class="detail__pricing">' +
+      '<h4>' + t("price_private_title") + '</h4>' +
+      '<p>' + t("price_private_hint") + '</p>' +
+      '<div class="detail__pricing-actions">' +
+        '<a class="btn btn--sm btn--accent" href="' + esc(pricingMail(p)) + '">' + t("price_talk_btn") + '</a>' +
+        (CFG.whatsapp
+          ? '<a class="btn btn--sm btn--ghost" target="_blank" rel="noopener" href="' + esc(pricingWa(p)) + '">' + t("price_talk_wa") + '</a>'
+          : '') +
+      '</div></div>';
+  }
+
   // ---------- product detail modal ----------
   function openDetail(p) {
     if (!p || p.comingSoon) return;
@@ -338,6 +373,7 @@
         '<div class="detail__sku">' + t("field_sku") + ": " + esc(p.sku) + "　·　" + t("field_moq") + ": " + (p.moq || "—") + '</div>' +
         (p.desc && p.desc[lang] ? '<p class="detail__desc">' + esc(p.desc[lang]) + '</p>' : '') +
         specHtml +
+        pricingBlock(p) +
         '<button class="btn" data-add="' + esc(p.id) + '" style="margin-top:16px">' + t("add_to_inquiry") + '</button>' +
       '</div>';
     var addBtn = body.querySelector('[data-add]');
@@ -592,6 +628,11 @@
     });
     if (inq.message) { lines.push(""); lines.push(L("f_message") + ": " + inq.message); }
     lines.push("");
+    if (!CFG.showPrice) {
+      lines.push("--- " + L("price_private_title") + " ---");
+      lines.push(L("price_mail_note"));
+      lines.push("");
+    }
     lines.push("--- " + L("terms_title") + " ---");
     lines.push(L("terms_deposit"));
     lines.push(L("terms_balance"));
@@ -642,6 +683,7 @@
       "<table><thead><tr><th>SKU</th><th>" + t("f_products") + "</th><th style='text-align:center'>Qty</th>" +
         (priceCol ? "<th>Price</th>" : "") + "</tr></thead><tbody>" + rows + "</tbody></table>" +
       (inq.message ? "<p style='margin-top:14px'><b>" + t("f_message") + ":</b> " + esc(inq.message) + "</p>" : "") +
+      (!priceCol ? "<div class='terms' style='border-left-color:#c9841a'><b>" + t("price_private_title") + "</b><br>" + t("price_mail_note") + "</div>" : "") +
       "<div class='terms'><b>" + t("terms_title") + "</b><br>" + t("terms_deposit") + "<br>" + t("terms_balance") + "<br>" + t("terms_methods") + "</div>" +
       "<p style='margin-top:18px;color:#888;font-size:11px'>" + esc(inq.date) + "</p>" +
       "</body></html>";
