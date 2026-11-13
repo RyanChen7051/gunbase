@@ -4,9 +4,58 @@
 (function () {
   "use strict";
   var I18N = window.I18N;
-  var lang = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
+  var LANGS = window.GUNBASE_LANGS;
+  var lang = (function () {
+    var v = window.GUNBASE_STORE.getItem("gunbase_lang") || "en";
+    return LANGS.filter(function (x) { return x.id === v; }).length ? v : "en";
+  })();
   function t(k){ return (I18N[lang]&&I18N[lang][k])||(I18N.en&&I18N.en[k])||k; }
   function $(s){ return document.querySelector(s); }
+  function langMeta(){ return LANGS.filter(function (x) { return x.id === lang; })[0] || LANGS[0]; }
+  function closeLangMenu(){
+    var pick = $("#langPick"); if (pick) pick.classList.remove("is-open");
+    var btn = $("#langBtn"); if (btn) btn.setAttribute("aria-expanded", "false");
+    var menu = $("#langMenu"); if (menu) menu.setAttribute("aria-hidden", "true");
+  }
+  function renderLangUI(){
+    var meta = langMeta(), code = $("#langCode");
+    if (code) code.textContent = meta.label;
+    var btn = $("#langBtn"); if (btn) btn.setAttribute("aria-label", t("lang_label"));
+    var menu = $("#langMenu"); if (!menu) return;
+    menu.innerHTML = "";
+    LANGS.forEach(function (m) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "langpick__opt" + (m.id === lang ? " is-active" : "");
+      b.setAttribute("role", "option");
+      b.setAttribute("aria-selected", m.id === lang ? "true" : "false");
+      var strong = document.createElement("b"); strong.textContent = m.label;
+      var span = document.createElement("span"); span.textContent = m.name;
+      var tick = document.createElement("i"); tick.className = "tick"; tick.textContent = "✓";
+      b.appendChild(strong); b.appendChild(span); b.appendChild(tick);
+      b.onclick = function () { setLang(m.id); };
+      menu.appendChild(b);
+    });
+  }
+  function setLang(l){
+    if (!LANGS.filter(function (x) { return x.id === l; }).length) return;
+    lang = l;
+    window.GUNBASE_STORE.setItem("gunbase_lang", l);
+    closeLangMenu(); applyI18n(); renderPreview();
+  }
+  function bindLangPicker(){
+    var btn = $("#langBtn"), pick = $("#langPick"), menu = $("#langMenu");
+    if (!btn || !pick || !menu) return;
+    btn.onclick = function (e) {
+      e.stopPropagation();
+      var open = !pick.classList.contains("is-open");
+      pick.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    document.addEventListener("click", function (e) { if (!pick.contains(e.target)) closeLangMenu(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLangMenu(); });
+  }
 
   // header keyword matcher
   function matchHeader(h) {
@@ -120,12 +169,13 @@
 
   function applyI18n() {
     document.querySelectorAll("[data-i18n]").forEach(function (el){ el.textContent = t(el.getAttribute("data-i18n")); });
-    document.documentElement.lang = (lang === "zh") ? "zh-CN" : "en";
+    document.documentElement.lang = langMeta().html;
+    renderLangUI();
   }
 
   function init() {
     applyI18n();
-    $("#langBtn").onclick = function () { lang = (lang === "en" ? "zh" : "en"); window.GUNBASE_STORE.setItem("gunbase_lang", lang); applyI18n(); renderPreview(); };
+    bindLangPicker();
     $("#file").onchange = function (e) { if (e.target.files[0]) parseFile(e.target.files[0]); };
     $("#dlJs").onclick = downloadJs;
     $("#preview").onclick = savePreview;
