@@ -372,8 +372,8 @@
           '<span class="card__name_zh">' + esc(p.name[lang === "zh" ? "en" : "zh"]) + '</span></h3>' +
         '<div class="detail__sku">' + t("field_sku") + ": " + esc(p.sku) + "　·　" + t("field_moq") + ": " + (p.moq || "—") + '</div>' +
         (p.desc && p.desc[lang] ? '<p class="detail__desc">' + esc(p.desc[lang]) + '</p>' : '') +
-        specHtml +
         pricingBlock(p) +
+        specHtml +
         '<button class="btn" data-add="' + esc(p.id) + '" style="margin-top:16px">' + t("add_to_inquiry") + '</button>' +
       '</div>';
     var addBtn = body.querySelector('[data-add]');
