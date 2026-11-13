@@ -558,50 +558,6 @@ window.GUNBASE_PRODUCTS = [
     image: ""
   },
   {
-    id: "GB-051",
-    category: "hardware",
-    name: { en: "Laser Boresighter / Trainer", zh: "223长尾校准仪红光" },
-    sku: "GB-051",
-    desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
-    price: 0,
-    moq: "",
-    specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 纸盒6颗电池多配一组胶圈" },
-    image: "GB-051.jpg"
-  },
-  {
-    id: "GB-052",
-    category: "hardware",
-    name: { en: "Laser Boresighter / Trainer", zh: "223长尾校准仪绿光" },
-    sku: "GB-052",
-    desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
-    price: 0,
-    moq: "",
-    specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 铁盒12颗电池多配一组胶圈" },
-    image: "GB-052.jpg"
-  },
-  {
-    id: "GB-053",
-    category: "hardware",
-    name: { en: "Laser Boresighter / Trainer", zh: "20.5训校一体红光" },
-    sku: "GB-053",
-    desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
-    price: 0,
-    moq: "",
-    specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 天地盖包装 USB线 胶圈*1组 说明书*1张" },
-    image: "GB-053.jpg"
-  },
-  {
-    id: "GB-054",
-    category: "hardware",
-    name: { en: "Laser Boresighter / Trainer", zh: "20.5训校一体绿光" },
-    sku: "GB-054",
-    desc: { en: "Laser boresighter and dry-fire training tool for zeroing and practice without live ammunition.", zh: "激光校准仪/训练器，可见光激光、多口径适配，免弹药归零与训练。" },
-    price: 0,
-    moq: "",
-    specs: { en: "Visible red / green laser | Caliber-specific adapters | Easy zeroing | Dry-fire practice | Battery powered | Compact", zh: "包装/配件: 天地盖包装 USB线 胶圈*1组 说明书*1张" },
-    image: "GB-054.jpg"
-  },
-  {
     id: "GB-055",
     category: "hardware",
     name: { en: "Laser Boresighter / Trainer", zh: "常规训练器红光" },
