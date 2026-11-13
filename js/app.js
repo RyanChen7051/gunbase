@@ -69,8 +69,12 @@
     } catch (e) {}
   }
   function loadCart() {
-    try { return JSON.parse(window.GUNBASE_STORE.getItem("gunbase_cart")) || []; }
-    catch (e) { return []; }
+    try {
+      var raw = JSON.parse(window.GUNBASE_STORE.getItem("gunbase_cart")) || [];
+      // Drop IDs that are no longer in the catalog (e.g. discontinued SKUs)
+      // so an old saved cart can never break the inquiry form.
+      return raw.filter(function (it) { return it && it.id && !!findProduct(it.id); });
+    } catch (e) { return []; }
   }
   function saveCart() { window.GUNBASE_STORE.setItem("gunbase_cart", JSON.stringify(cart)); }
   function findProduct(id) {
@@ -447,7 +451,7 @@
       body.appendChild(row);
     });
     $all("[data-dec]", body).forEach(function (b) { b.onclick = function () { var it = cart.filter(function (x){return x.id===b.getAttribute("data-dec");})[0]; setQty(b.getAttribute("data-dec"), (it?it.qty:1)-1); }; });
-    $all("[data-inc]", body).forEach(function (b) { var it = cart.filter(function (x){return x.id===b.getAttribute("data-inc");})[0]; setQty(b.getAttribute("data-inc"), (it?it.qty:1)+1); });
+    $all("[data-inc]", body).forEach(function (b) { b.onclick = function () { var it = cart.filter(function (x){return x.id===b.getAttribute("data-inc");})[0]; setQty(b.getAttribute("data-inc"), (it?it.qty:1)+1); }; });
     $all("[data-qty]", body).forEach(function (inp) { inp.onchange = function () { setQty(inp.getAttribute("data-qty"), inp.value); }; });
     $all("[data-rm]", body).forEach(function (b) { b.onclick = function () { removeFromCart(b.getAttribute("data-rm")); }; });
   }
@@ -571,8 +575,9 @@
     var fd = new FormData(form);
     var items = cart.map(function (it) {
       var p = findProduct(it.id);
+      if (!p) return null;
       return { sku: p.sku, name: p.name, qty: it.qty, price: p.price };
-    });
+    }).filter(Boolean);
     var tradeEl = form.querySelector('input[name="trade"]:checked');
     return {
       company: (fd.get("company") || "").trim(),
