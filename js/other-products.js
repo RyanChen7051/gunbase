@@ -2,8 +2,8 @@
 // GunBase 火械基地 - Firearms & Ammunition (partner-supplied platforms)
 // 来源: 合作厂商产品型录 PDF（原有 4 页 ALP-100 平台 3 配置 + 4 份型录归纳之 18 个产品族）
 // 分类: GB-OTH-001~003 与 GB-CAT-001~013 归 firearms；GB-CAT-014~018 归 ammunition
-// 合规: ammunition 5 条为受控品项(restricted)，仅保留品类名称与合规声明；
-//       技术参数、实物图与结构化数据一律不公开，规格须经 EUC / 出口许可核验后由人工提供。
+// 展示: GB-CAT-014~018 弹药品项完整公开品名、双语技术规格与实物图。
+//       原厂电话 / 邮箱 / 网址 / 公司名一律不写入本站。
 // 独立文件挂载，避免后台 admin.html 重导 Excel 时被覆盖。
 // 注意: 原厂电话 / 邮箱 / 网址 / 公司名一律不写入本站，
 //       所有询盘统一由 GunBase 窗口受理。
@@ -371,100 +371,119 @@ window.GUNBASE_OTHER_PRODUCTS = [
     "id": "GB-CAT-014",
     "category": "ammunition",
     "name": {
-      "en": "Medium Calibre Ammunition - 20 mm Class",
-      "zh": "中口径弹药 — 20 mm 级"
+      "en": "20 mm HEI Cartridge Assemblies (20x102 / 20x110)",
+      "zh": "20 mm 高爆燃烧弹整弹与组件（20x102 / 20x110）"
     },
     "sku": "GB-CAT-014",
     "desc": {
-      "en": "Controlled item. Detailed specifications, drawings and technical data sheets are released only after verification of the end user, end use and all applicable export / import licences. Supplied through our partner network; all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only - an end-user certificate (EUC) is required.",
-      "zh": "受控品项。详细规格、图面与技术资料须于核验最终用户、最终用途及相关进出口许可后，方由火械基地窗口提供。本产品由合作厂商供应，所有询盘统一受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明（EUC）。"
+      "en": "Medium-calibre 20 mm cartridge assemblies and components for anti-aircraft weapon systems, supplied as complete rounds or as body, shell and fuze sub-assemblies. Two case lengths are available. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "中口径 20 mm 整弹与组件，用于防空武器系统，可供应整弹或弹体、弹壳、引信等子组件，提供两种弹壳长度。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
     },
     "price": 0,
     "moq": "",
     "specs": {
-      "en": "Controlled information - released on request after end-user verification.",
-      "zh": "受控资料 — 最终用户资格核验后按需提供。"
+      "en": "Caliber type: medium caliber | Variants: 20x102 mm / 20x110 mm HEI | Weight: approx. 260 g (20x102) / 220 g (20x110) | Diameter: 20 mm | Length: approx. 168 mm / 178 mm | Material: brass and steel | Components: cartridge body / shell / fuze assembly | Application: anti-aircraft systems",
+      "zh": "口径类型：中口径 | 型号：20x102 mm / 20x110 mm HEI | 重量：约 260 g / 220 g | 直径：20 mm | 长度：约 168 mm / 178 mm | 材质：黄铜与钢 | 组件：弹体 / 弹壳 / 引信总成 | 用途：防空系统"
     },
-    "restricted": true
+    "image": "GB-CAT-IMG-09.jpg",
+    "images": [
+      "GB-CAT-IMG-09.jpg",
+      "GB-CAT-IMG-11.jpg"
+    ]
   },
   {
     "id": "GB-CAT-015",
     "category": "ammunition",
     "name": {
-      "en": "Medium Calibre Ammunition - 35 mm Class",
-      "zh": "中口径弹药 — 35 mm 级"
+      "en": "35 mm Anti-Aircraft Ammunition & Projectile Assemblies",
+      "zh": "35 mm 防空弹药与弹丸组件"
     },
     "sku": "GB-CAT-015",
     "desc": {
-      "en": "Controlled item. Detailed specifications, drawings and technical data sheets are released only after verification of the end user, end use and all applicable export / import licences. Supplied through our partner network; all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only - an end-user certificate (EUC) is required.",
-      "zh": "受控品项。详细规格、图面与技术资料须于核验最终用户、最终用途及相关进出口许可后，方由火械基地窗口提供。本产品由合作厂商供应，所有询盘统一受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明（EUC）。"
+      "en": "Medium-calibre 35 mm anti-aircraft ammunition supplied as projectile assemblies with body, case, ballistic cone, capsule and fuze components. Service and training variants are available. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "中口径 35 mm 防空弹药，以弹丸总成形式供应，含弹体、弹壳、弹道锥、火帽与引信组件，提供实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
     },
     "price": 0,
     "moq": "",
     "specs": {
-      "en": "Controlled information - released on request after end-user verification.",
-      "zh": "受控资料 — 最终用户资格核验后按需提供。"
+      "en": "Caliber type: medium caliber | Ammunition group: 35 mm anti-aircraft | Weight: approx. 1,570 g | Diameter: 35 mm | Length: approx. 387 mm | Material: 7075 aluminum alloy and equivalents + steel | Effective range: 6,000 m | Variants: service / training | Components: body / case / cone / capsule / fuze",
+      "zh": "口径类型：中口径 | 弹种：35 mm 防空弹药 | 重量：约 1,570 g | 直径：35 mm | 长度：约 387 mm | 材质：7075 铝合金及等同材料 + 钢 | 有效射程：6,000 m | 版本：实用弹 / 训练弹 | 组件：弹体 / 弹壳 / 弹道锥 / 火帽 / 引信"
     },
-    "restricted": true
+    "image": "GB-CAT-IMG-12.jpg",
+    "images": [
+      "GB-CAT-IMG-12.jpg",
+      "GB-CAT-IMG-14.jpg"
+    ]
   },
   {
     "id": "GB-CAT-016",
     "category": "ammunition",
     "name": {
-      "en": "40 mm Grenade Launcher Ammunition",
-      "zh": "40 mm 榴弹发射器弹药"
+      "en": "40 mm Low-Velocity Grenade Launcher Ammunition (40x46 / 40x53)",
+      "zh": "40 mm 低速榴弹发射器弹药（40x46 / 40x53）"
     },
     "sku": "GB-CAT-016",
     "desc": {
-      "en": "Controlled item. Detailed specifications, drawings and technical data sheets are released only after verification of the end user, end use and all applicable export / import licences. Supplied through our partner network; all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only - an end-user certificate (EUC) is required.",
-      "zh": "受控品项。详细规格、图面与技术资料须于核验最终用户、最终用途及相关进出口许可后，方由火械基地窗口提供。本产品由合作厂商供应，所有询盘统一受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明（EUC）。"
+      "en": "40 mm grenade launcher ammunition and component sets, covering low-velocity 40x46 mm and 40x53 mm families. Supplied as complete rounds or as individual case, body, holder, cone, fuze, capsule and seal components. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "40 mm 榴弹发射器弹药与组件组，涵盖低速 40x46 mm 与 40x53 mm 系列，可供应整弹或弹壳、弹体、本体座、弹道锥、引信、火帽与密封件等单件。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
     },
     "price": 0,
     "moq": "",
     "specs": {
-      "en": "Controlled information - released on request after end-user verification.",
-      "zh": "受控资料 — 最终用户资格核验后按需提供。"
+      "en": "Ammunition group: 40x46 mm low-velocity / 40x53 mm | Product class: grenade launcher ammunition | Components: ammo case / bullet body / body holder / ballistic cone / fuze / capsule / seal / plastic top cap | Variants: service / training",
+      "zh": "弹种：40x46 mm 低速 / 40x53 mm | 产品类别：榴弹发射器弹药 | 组件：弹壳 / 弹体 / 本体座 / 弹道锥 / 引信 / 火帽 / 密封件 / 塑料上盖 | 版本：实用弹 / 训练弹"
     },
-    "restricted": true
+    "image": "GB-CAT-IMG-12.jpg",
+    "images": [
+      "GB-CAT-IMG-12.jpg",
+      "GB-CAT-IMG-13.jpg"
+    ]
   },
   {
     "id": "GB-CAT-017",
     "category": "ammunition",
     "name": {
-      "en": "Mortar Ammunition - 60 / 81 mm Class",
-      "zh": "迫击炮弹 — 60 / 81 mm 级"
+      "en": "60 mm / 81 mm Mortar Ammunition",
+      "zh": "60 mm / 81 mm 迫击炮弹"
     },
     "sku": "GB-CAT-017",
     "desc": {
-      "en": "Controlled item. Detailed specifications, drawings and technical data sheets are released only after verification of the end user, end use and all applicable export / import licences. Supplied through our partner network; all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only - an end-user certificate (EUC) is required.",
-      "zh": "受控品项。详细规格、图面与技术资料须于核验最终用户、最终用途及相关进出口许可后，方由火械基地窗口提供。本产品由合作厂商供应，所有询盘统一受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明（EUC）。"
+      "en": "Mortar ammunition families in 60 mm and 81 mm calibres, available as complete rounds, projectile bodies and fin / fuze component sets. Service and training variants are covered by the portfolio. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "60 mm 与 81 mm 口径迫击炮弹系列，可供应整弹、弹体以及尾翼 / 引信组件组，涵盖实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
     },
     "price": 0,
     "moq": "",
     "specs": {
-      "en": "Controlled information - released on request after end-user verification.",
-      "zh": "受控资料 — 最终用户资格核验后按需提供。"
+      "en": "Caliber: 60 mm / 81 mm | Product group: mortar ammunition | Configurations: complete round / projectile body / fin assembly / fuze options | Variants: HE / training | Application: defense solutions inventory",
+      "zh": "口径：60 mm / 81 mm | 产品组别：迫击炮弹药 | 配置：整弹 / 弹体 / 尾翼总成 / 引信选项 | 版本：高爆弹 / 训练弹 | 用途：国防解决方案清单"
     },
-    "restricted": true
+    "image": "GB-CAT-IMG-13.jpg",
+    "images": [
+      "GB-CAT-IMG-13.jpg"
+    ]
   },
   {
     "id": "GB-CAT-018",
     "category": "ammunition",
     "name": {
-      "en": "Large Calibre Artillery Projectiles - 155 mm Class",
-      "zh": "大口径火炮弹丸 — 155 mm 级"
+      "en": "155 mm Artillery Projectiles",
+      "zh": "155 mm 火炮弹丸"
     },
     "sku": "GB-CAT-018",
     "desc": {
-      "en": "Controlled item. Detailed specifications, drawings and technical data sheets are released only after verification of the end user, end use and all applicable export / import licences. Supplied through our partner network; all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only - an end-user certificate (EUC) is required.",
-      "zh": "受控品项。详细规格、图面与技术资料须于核验最终用户、最终用途及相关进出口许可后，方由火械基地窗口提供。本产品由合作厂商供应，所有询盘统一受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明（EUC）。"
+      "en": "Large-calibre 155 mm artillery / howitzer projectile family, supplied as projectile bodies with boat-tail profiles and fuze / driving-band options. Service and training variants are included in the portfolio. Supplied through our partner network - all inquiries are handled by the GunBase sales window. For authorized government, law-enforcement and defense procurement only; an end-user certificate and all applicable export / import licenses are required.",
+      "zh": "大口径 155 mm 加农炮 / 榴弹炮弹丸系列，供应船尾型弹体与引信 / 弹带选项，清单含实用弹与训练弹版本。本产品由合作厂商供应，所有询盘统一由火械基地窗口受理。仅限合法授权之政府、执法与国防采购，须提供最终用户证明及相关进出口许可。"
     },
     "price": 0,
     "moq": "",
     "specs": {
-      "en": "Controlled information - released on request after end-user verification.",
-      "zh": "受控资料 — 最终用户资格核验后按需提供。"
+      "en": "Caliber: 155 mm | Product group: artillery / howitzer ammunition | Configuration: boat-tail projectile body | Options: fuze / driving band | Variants: HE / training | Application: defense solutions inventory",
+      "zh": "口径：155 mm | 产品组别：加农炮 / 榴弹炮弹药 | 配置：船尾型弹体 | 选项：引信 / 弹带 | 版本：高爆弹 / 训练弹 | 用途：国防解决方案清单"
     },
-    "restricted": true
+    "image": "GB-CAT-IMG-10.jpg",
+    "images": [
+      "GB-CAT-IMG-10.jpg",
+      "GB-CAT-IMG-14.jpg"
+    ]
   }
 ];
