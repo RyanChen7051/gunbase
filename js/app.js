@@ -1,6 +1,6 @@
 // =====================================================================
 // GunBase 火械基地 — app.js
-// 4-language catalog + inquiry cart + quote request (no backend).
+// 8-language catalog + inquiry cart + quote request (no backend).
 // =====================================================================
 (function () {
   "use strict";
@@ -34,9 +34,9 @@
   function t(key) {
     return (I18N[lang] && I18N[lang][key]) || (I18N.en && I18N.en[key]) || key;
   }
-  // Product data carries only en / zh fields. Spanish falls back to English;
-  // Traditional Chinese renders the Simplified source through a character map,
-  // so no product record needs to be duplicated or re-translated.
+  // Product data carries only en / zh fields. pt / fr / ar / hi (and Spanish)
+  // fall back to English; Traditional Chinese renders the Simplified source
+  // through a character map, so no product record needs to be duplicated.
   var PH = {}, PH_KEYS = [];
   (S2T.words || []).forEach(function (w) { PH[w[0]] = w[1]; PH_KEYS.push(w[0]); });
   PH_KEYS.sort(function (a, b) { return b.length - a.length; });   // longest match first
@@ -57,7 +57,7 @@
     if (!obj) return "";
     if (lang === "en") return obj.zh || "";
     if (lang === "zh" || lang === "zh-TW") return obj.en || "";
-    return "";  // Spanish: primary name is already English, no duplicate subline
+    return "";  // pt/fr/ar/hi/es: primary name is already English, no duplicate subline
   }
   function langMeta() {
     return LANGS.filter(function (x) { return x.id === lang; })[0] || LANGS[0];
@@ -193,7 +193,13 @@
   function applyI18n() {
     $all("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
     $all("[data-i18n-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
-    document.documentElement.lang = langMeta().html;
+    // Arabic needs a document-level RTL flip; lang attribute also drives the
+    // script-specific font stacks in CSS. No page reload on language change.
+    var meta = langMeta(), root = document.documentElement;
+    root.lang = meta.html;
+    root.dir = meta.dir || "ltr";
+    root.setAttribute("data-gb-lang", lang);
+    if (document.body) document.body.classList.toggle("is-rtl", meta.dir === "rtl");
     renderLangUI();
   }
 
@@ -230,7 +236,7 @@
         b.className = "langpick__opt" + (m.id === lang ? " is-active" : "");
         b.setAttribute("role", "option");
         b.setAttribute("aria-selected", m.id === lang ? "true" : "false");
-        b.innerHTML = "<b>" + esc(m.label) + "</b><span>" + esc(m.name) + "</span><i class=\"tick\">✓</i>";
+        b.innerHTML = "<b dir=\"auto\">" + esc(m.label) + "</b><span dir=\"auto\">" + esc(m.name) + "</span><i class=\"tick\">✓</i>";
         b.onclick = function () { setLang(m.id); };
         menu.appendChild(b);
       });
@@ -243,7 +249,7 @@
         b.type = "button";
         b.className = "hero__langbtn" + (m.id === lang ? " is-active" : "");
         b.setAttribute("aria-pressed", m.id === lang ? "true" : "false");
-        b.innerHTML = "<b>" + esc(m.label) + "</b><span>" + esc(m.name) + "</span>";
+        b.innerHTML = "<b dir=\"auto\">" + esc(m.label) + "</b><span dir=\"auto\">" + esc(m.name) + "</span>";
         b.onclick = function () { setLang(m.id); };
         hero.appendChild(b);
       });
