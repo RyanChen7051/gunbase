@@ -34,20 +34,32 @@ window.GUNBASE_CONFIG = {
     en: "Gun Base INC. (GunBase 火械基地)",
     zh: "火械基地股份有限公司 (Gun Base INC.)",
     "zh-TW": "火械基地股份有限公司 (Gun Base INC.)",
-    es: "Gun Base INC. (GunBase 火械基地)"
+    es: "Gun Base INC. (GunBase 火械基地)",
+    pt: "Gun Base INC. (GunBase 火械基地)",
+    fr: "Gun Base INC. (GunBase 火械基地)",
+    ar: "Gun Base INC. (GunBase 火械基地)",
+    hi: "Gun Base INC. (GunBase 火械基地)"
   },
   address: {
     en: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China",
     zh: "台北市松山区复兴北路367号8楼",
     "zh-TW": "台北市松山區復興北路 367 號 8 樓",
-    es: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China"
+    es: "8F., No. 367, Fuxing N. Rd., Songshan Dist., Taipei City, Taiwan, China",
+    pt: "8.º andar, N.º 367, Rua Fuxing Norte, Distrito de Songshan, Cidade de Taipei, Taiwan, China",
+    fr: "8e étage, n° 367, rue Fuxing Nord, district de Songshan, ville de Taipei, Taïwan, Chine",
+    ar: "الطابق الثامن، رقم ٣٦٧، شارع فوشينغ الشمالي، منطقة سونغشان، مدينة تايبيه، تايوان، الصين",
+    hi: "8वीं मंज़िल, नं. 367, फूशिंग नॉर्थ रोड, सोंगशान ज़िला, ताइपे शहर, ताइवान, चीन"
   },
   // 客服响应时间承诺（Contact 区块展示）
   replyTime: {
     en: "We reply within 2 business days.",
     zh: "我们将在 2 个工作日内回复。",
     "zh-TW": "我們將在 2 個工作天內回覆。",
-    es: "Respondemos en un plazo de 2 días laborables."
+    es: "Respondemos en un plazo de 2 días laborables.",
+    pt: "Respondemos em 2 dias úteis.",
+    fr: "Nous répondons sous 2 jours ouvrés.",
+    ar: "نرد خلال يومي عمل.",
+    hi: "हम 2 कार्यदिवसों में उत्तर देते हैं।"
   },
 
   // 公司抬头（用于询盘邮件 / PDF 抬头）
@@ -55,7 +67,11 @@ window.GUNBASE_CONFIG = {
     en: "GUNBASE TACTICAL SUPPLY",
     zh: "火械基地战术供应",
     "zh-TW": "火械基地戰術供應",
-    es: "GUNBASE TACTICAL SUPPLY"
+    es: "GUNBASE TACTICAL SUPPLY",
+    pt: "GUNBASE TACTICAL SUPPLY",
+    fr: "GUNBASE TACTICAL SUPPLY",
+    ar: "GUNBASE TACTICAL SUPPLY",
+    hi: "GUNBASE TACTICAL SUPPLY"
   },
 
   // 询盘邮件主题前缀
