@@ -29,8 +29,8 @@
       b.className = "langpick__opt" + (m.id === lang ? " is-active" : "");
       b.setAttribute("role", "option");
       b.setAttribute("aria-selected", m.id === lang ? "true" : "false");
-      var strong = document.createElement("b"); strong.textContent = m.label;
-      var span = document.createElement("span"); span.textContent = m.name;
+      var strong = document.createElement("b"); strong.setAttribute("dir", "auto"); strong.textContent = m.label;
+      var span = document.createElement("span"); span.setAttribute("dir", "auto"); span.textContent = m.name;
       var tick = document.createElement("i"); tick.className = "tick"; tick.textContent = "✓";
       b.appendChild(strong); b.appendChild(span); b.appendChild(tick);
       b.onclick = function () { setLang(m.id); };
@@ -169,7 +169,11 @@
 
   function applyI18n() {
     document.querySelectorAll("[data-i18n]").forEach(function (el){ el.textContent = t(el.getAttribute("data-i18n")); });
-    document.documentElement.lang = langMeta().html;
+    var meta = langMeta(), root = document.documentElement;
+    root.lang = meta.html;
+    root.dir = meta.dir || "ltr";
+    root.setAttribute("data-gb-lang", lang);
+    if (document.body) document.body.classList.toggle("is-rtl", meta.dir === "rtl");
     renderLangUI();
   }
 
