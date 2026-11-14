@@ -105,7 +105,7 @@ a { color: inherit; text-decoration: none; }
   transition: color .15s, background .15s, border-color .15s;
 }
 .nav a:hover { color: var(--ink); background: var(--panel-2); border-color: var(--line); }
-/* ---------- Language picker (EN / 简体 / 繁體 / Español) ---------- */
+/* ---------- Language picker (8 languages, Arabic is RTL) ---------- */
 .langpick { position: relative; flex: 0 0 auto; }
 .langpick__btn {
   display: flex; align-items: center; gap: 7px; cursor: pointer;
@@ -118,7 +118,10 @@ a { color: inherit; text-decoration: none; }
 .langpick__caret { color: var(--muted); font-size: 10px; line-height: 1; }
 .langpick__menu {
   display: none; position: absolute; top: calc(100% + 8px); right: 0; z-index: 80;
-  min-width: 192px; padding: 6px; border: 1px solid var(--line);
+  /* 8 entries: never overflow the viewport, scroll inside the panel instead. */
+  min-width: 192px; max-width: calc(100vw - 32px); max-height: min(70vh, 420px);
+  overflow-y: auto; overscroll-behavior: contain;
+  padding: 6px; border: 1px solid var(--line);
   background: var(--panel-2); border-radius: 10px; box-shadow: var(--shadow);
 }
 .langpick.is-open .langpick__menu { display: block; }
@@ -162,7 +165,8 @@ a { color: inherit; text-decoration: none; }
 .hero__langbtns { display: flex; flex-wrap: wrap; gap: 8px; }
 .hero__langbtn {
   display: flex; align-items: center; gap: 7px; cursor: pointer;
-  padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px;
+  /* 8 shortcuts: slightly tighter chips so they fit on fewer rows. */
+  padding: 5px 9px; font-size: 11px; border: 1px solid var(--line); border-radius: 6px;
   background: rgba(10,12,10,.45); color: var(--muted);
   font-size: 11.5px; font-weight: 600; line-height: 1.2; letter-spacing: .04em; transition: .15s;
 }
@@ -616,3 +620,103 @@ table.prev th { background: var(--panel-2); color: var(--accent); text-transform
 .detail__pricing p { margin: 0; font-size: 13px; line-height: 1.65; color: var(--muted); }
 .detail__pricing-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .detail__pricing-actions .btn { flex: 1 1 auto; text-decoration: none; }
+
+/* =====================================================================
+   v19 — 8-language support: script fonts + Arabic (RTL) mirroring
+   ===================================================================== */
+/* Arabic / Devanagari need explicit font stacks: the Latin UI stack has no
+   glyphs for them, and the display font (Bebas/Oswald) must not be inherited. */
+html[lang="ar"] {
+  --font: "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-display: "Geeza Pro", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+}
+html[lang="hi"] {
+  --font: "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", "Mangal", -apple-system, sans-serif;
+  --font-display: "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", "Mangal", -apple-system, sans-serif;
+}
+html[lang="hi"] body { line-height: 1.8; }
+html[lang="hi"] .cat__desc, html[lang="hi"] .card__name { line-height: 1.7; }
+/* letter-spacing inserts gaps between joined Arabic glyphs and breaks shaping. */
+html[lang="ar"] *, html[lang="ar"] *::before, html[lang="ar"] *::after { letter-spacing: normal !important; }
+html[lang="ar"] .display, html[lang="ar"] .hero .display { line-height: 1.5; }
+
+/* Latin tokens (SKU, e-mail, phone, language codes, brand watermark) must stay
+   LTR even inside an RTL paragraph, otherwise bidi reorders the characters. */
+html[dir="rtl"] .card__sku,
+html[dir="rtl"] .detail__sku,
+html[dir="rtl"] .langpick__btn,
+html[dir="rtl"] .langpick__opt b,
+html[dir="rtl"] .hero__langbtn b,
+html[dir="rtl"] #contactEmailText,
+html[dir="rtl"] #contactWaNumber,
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] .gb-wm,
+html[dir="rtl"] code { direction: ltr; unicode-bidi: isolate; }
+
+/* ---- Mirror the chrome for RTL ---- */
+html[dir="rtl"] .langpick__menu { right: auto; left: 0; }
+html[dir="rtl"] .langpick__opt { text-align: right; }
+html[dir="rtl"] .langpick__opt .tick { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .card__cat {
+  left: auto; right: 22px;
+  border-bottom-right-radius: 0; border-bottom-left-radius: 6px;
+}
+html[dir="rtl"] .card::before { left: auto; right: 8px; border-left: 0; border-right: 2px solid var(--accent); }
+html[dir="rtl"] .card::after  { right: auto; left: 8px;  border-right: 0; border-left: 2px solid var(--accent); }
+html[dir="rtl"] .cat__go { flex-direction: row-reverse; }
+html[dir="rtl"] .hero__cross { right: auto; left: -90px; }
+html[dir="rtl"] .search { flex-direction: row-reverse; }
+html[dir="rtl"] .search input { text-align: right; }
+html[dir="rtl"] .fab { right: auto; left: 20px; }
+html[dir="rtl"] .cart-toggle { right: auto; left: 20px; }
+html[dir="rtl"] .drawer {
+  right: auto; left: 0; transform: translateX(-100%);
+  border-left: 0; border-right: 1px solid var(--line);
+}
+html[dir="rtl"] .drawer.open { transform: translateX(0); }
+html[dir="rtl"] .drawer__head, html[dir="rtl"] .modal__head { flex-direction: row-reverse; }
+html[dir="rtl"] .cart-item__right { align-items: flex-start; }
+html[dir="rtl"] .hero__stat, html[dir="rtl"] .term { text-align: right; }
+html[dir="rtl"] table.prev th, html[dir="rtl"] table.prev td { text-align: right; }
+@media (max-width: 600px) {
+  /* LTR mobile puts the FAB strip on the left and the cart on the right. */
+  html[dir="rtl"] #waBtn     { left: auto; right: 108px; }
+  html[dir="rtl"] #homeBtn   { left: auto; right: 60px; }
+  html[dir="rtl"] #updateBtn { left: auto; right: 12px; }
+  html[dir="rtl"] .cart-toggle { right: auto; left: 12px; }
+}
+
+/* ---- v19b: bidi isolation + compact hero for tall scripts ---- */
+/* An Arabic language name inside an LTR option row must not be reordered by
+   the bidi algorithm; dir="auto" (set in JS) handles the text run, and the
+   isolate rule keeps it from bleeding into the neighbouring label / tick. */
+.langpick__opt b, .langpick__opt span,
+.hero__langbtn b, .hero__langbtn span { unicode-bidi: isolate; }
+html[dir="rtl"] .hero__stat b { direction: ltr; unicode-bidi: isolate; }
+/* Arabic and Devanagari glyphs are taller/wider than Latin; the 88px display
+   size wrapped onto two lines and pushed the hero stats under the mobile FABs. */
+html[lang="ar"] .hero .display,
+html[lang="hi"] .hero .display { font-size: clamp(28px, 5.6vw, 58px); line-height: 1.45; }
+html[lang="ar"] .hero, html[lang="hi"] .hero { padding: 64px 0 74px; }
+html[lang="ar"] .hero__sub, html[lang="hi"] .hero__sub { margin: 16px 0 22px; font-size: 15.5px; line-height: 1.75; }
+html[lang="ar"] .hero__langs, html[lang="hi"] .hero__langs { margin-top: 14px; gap: 9px; }
+html[lang="ar"] .hero__stats, html[lang="hi"] .hero__stats { margin-top: 28px; gap: 22px; }
+
+/* ---- v19c: mobile Arabic/Devanagari hero must clear the bottom FAB strip ---- */
+@media (max-width: 600px) {
+  html[lang="ar"] .hero, html[lang="hi"] .hero { padding: 40px 0 56px; }
+  html[lang="ar"] .hero__logo, html[lang="hi"] .hero__logo { height: 40px; margin-bottom: 14px; }
+  html[lang="ar"] .hero .display, html[lang="hi"] .hero .display {
+    font-size: clamp(23px, 6.6vw, 32px); line-height: 1.4;
+    text-wrap: balance; /* avoids a lone "·" stranded at the end of line 1 */
+  }
+  html[lang="ar"] .hero__sub, html[lang="hi"] .hero__sub {
+    margin: 10px 0 14px; font-size: 14px; line-height: 1.65;
+  }
+  html[lang="ar"] .hero__langs, html[lang="hi"] .hero__langs { margin-top: 8px; gap: 7px; }
+  html[lang="ar"] .hero__cta .btn, html[lang="hi"] .hero__cta .btn { padding: 11px 18px; font-size: 12px; }
+  html[lang="ar"] .hero__stats, html[lang="hi"] .hero__stats { margin-top: 16px; gap: 14px; }
+  html[lang="ar"] .hero__stat b, html[lang="hi"] .hero__stat b { font-size: 26px; }
+}
