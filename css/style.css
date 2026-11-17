@@ -720,3 +720,80 @@ html[lang="ar"] .hero__stats, html[lang="hi"] .hero__stats { margin-top: 28px; g
   html[lang="ar"] .hero__stats, html[lang="hi"] .hero__stats { margin-top: 16px; gap: 14px; }
   html[lang="ar"] .hero__stat b, html[lang="hi"] .hero__stat b { font-size: 26px; }
 }
+
+
+/* =====================================================================
+   Brand film section (home page). Dark tactical frame, click-to-play.
+   ===================================================================== */
+.section--film {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.film__lead {
+  color: var(--muted); max-width: 640px; margin: -10px 0 26px;
+  font-size: 15px; line-height: 1.75;
+}
+.film {
+  position: relative; max-width: 960px; margin: 0 auto;
+  aspect-ratio: 16 / 9; background: #000;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.film::before, .film::after {
+  content: ""; position: absolute; z-index: 3; pointer-events: none;
+  width: 26px; height: 26px; border-color: var(--accent); opacity: .85;
+}
+.film::before { top: 10px; left: 10px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+.film::after  { bottom: 10px; right: 10px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+.film__video {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain; background: #000;
+}
+.film__play {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; border: 0; color: var(--ink); text-align: center;
+  background: linear-gradient(180deg, rgba(6,8,6,.30), rgba(6,8,6,.66));
+}
+.film__playicon {
+  width: 78px; height: 78px; border-radius: 50%;
+  border: 2px solid var(--accent); background: rgba(10,12,10,.55);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(245,166,35,.10);
+  transition: transform .18s ease, background .18s ease;
+}
+.film__playicon::after {
+  content: ""; display: block; width: 0; height: 0; margin-left: 6px;
+  border-left: 20px solid var(--accent);
+  border-top: 12px solid transparent; border-bottom: 12px solid transparent;
+}
+.film__play:hover .film__playicon { transform: scale(1.07); background: rgba(245,166,35,.18); }
+.film__playlabel {
+  font-family: var(--font-display); font-size: clamp(17px, 2.6vw, 24px);
+  letter-spacing: .14em; text-shadow: 0 2px 12px rgba(0,0,0,.85);
+}
+.film__playmeta { font-size: 11px; letter-spacing: .22em; color: var(--muted); }
+.film.is-playing .film__play { display: none; }
+.film__note {
+  text-align: center; color: var(--muted-2);
+  font-size: 12px; letter-spacing: .06em; margin: 16px 0 0;
+}
+/* RTL: play triangle points left, matching reading direction */
+html[dir="rtl"] .film__playicon::after {
+  margin-left: 0; margin-right: 6px;
+  border-left: 0; border-right: 20px solid var(--accent);
+}
+@media (max-width: 600px) {
+  .section--film { padding: 48px 0; }
+  .film__lead { margin: -6px 0 18px; font-size: 14px; }
+  .film__play { gap: 10px; }
+  .film__playicon { width: 58px; height: 58px; }
+  .film__playicon::after {
+    border-left-width: 15px; border-top-width: 9px; border-bottom-width: 9px;
+  }
+  html[dir="rtl"] .film__playicon::after { border-right-width: 15px; }
+  .film__playlabel { font-size: 15px; letter-spacing: .1em; }
+  .film__playmeta { font-size: 10px; }
+  .film::before, .film::after { width: 16px; height: 16px; }
+}

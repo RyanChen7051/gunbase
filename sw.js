@@ -1,5 +1,5 @@
 // GunBase 火械基地 — Service Worker (offline app shell)
-var CACHE = "gunbase-v19";
+var CACHE = "gunbase-v20";
 var SHELL = [
   "./",
   "index.html",
@@ -16,6 +16,7 @@ var SHELL = [
   "js/admin.js",
   "libs/xlsx.full.min.js",
   "assets/logo-white.png",
+  "assets/film-poster.jpg",
   "assets/icon-192.png",
   "assets/icon-512.png",
   "assets/icon-maskable-512.png",
@@ -60,6 +61,12 @@ self.addEventListener("activate", function (e) {
 
 self.addEventListener("fetch", function (e) {
   var url = new URL(e.request.url);
+  // Media: always go to the network. Caching a 10MB MP4 would break
+  // HTTP Range (206) seeking and fill Cache Storage with large blobs.
+  if (/\.(mp4|m4v|webm|ogv|mov)$/i.test(url.pathname) || e.request.destination === "video") {
+    e.respondWith(fetch(e.request));
+    return;
+  }
   // products.js: network-first so catalog updates go live after redeploy
   if (url.pathname.indexOf("products.js") !== -1) {
     e.respondWith(

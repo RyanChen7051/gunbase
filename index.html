@@ -143,6 +143,30 @@
     </div>
   </section>
 
+  <!-- Brand film (click to load; never autoplays on first paint) -->
+  <section class="section section--film" id="film">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="film_eyebrow">BRAND FILM</p>
+      <h2 class="display" style="font-size:clamp(26px,5vw,46px)" data-i18n="h_film">GUNBASE BRAND FILM</h2>
+      <div class="rule"></div>
+      <p class="film__lead" data-i18n="film_lead">Watch the official GunBase brand film.</p>
+
+      <div class="film" id="filmFrame">
+        <video id="filmVideo" class="film__video"
+               data-src="assets/gunbase-brand-film.mp4"
+               poster="assets/film-poster.jpg"
+               preload="none" playsinline webkit-playsinline
+               width="1280" height="720" aria-label="GUNBASE brand film"></video>
+        <button class="film__play" id="filmPlay" type="button" aria-label="Play brand film">
+          <span class="film__playicon" aria-hidden="true"></span>
+          <span class="film__playlabel" data-i18n="film_play">PLAY BRAND FILM</span>
+          <span class="film__playmeta">1:50</span>
+        </button>
+      </div>
+      <p class="film__note" data-i18n="film_note">1:50 · Best viewed with sound</p>
+    </div>
+  </section>
+
   <!-- Catalog -->
   <section class="section" id="catalog">
     <div class="wrap">
@@ -367,5 +391,21 @@
   <script src="js/scope-switch.js"></script>
   <script src="js/other-products.js"></script>
   <script src="js/app.js"></script>
+  <!-- Brand film: load the 10MB MP4 only after an explicit user gesture -->
+  <script>
+  (function () {
+    var frame = document.getElementById("filmFrame");
+    var v = document.getElementById("filmVideo");
+    var btn = document.getElementById("filmPlay");
+    if (!frame || !v || !btn) return;
+    btn.addEventListener("click", function () {
+      if (!v.getAttribute("src")) v.src = v.getAttribute("data-src");
+      v.controls = true;
+      frame.classList.add("is-playing");
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { /* native controls remain available */ });
+    });
+  })();
+  </script>
 </body>
 </html>

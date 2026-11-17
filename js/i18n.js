@@ -5,6 +5,13 @@
 // =====================================================================
 window.I18N = {
   en: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "BRAND FILM",
+    "h_film": "GUNBASE BRAND FILM",
+    "film_lead": "Watch the official GunBase brand film.",
+    "film_play": "PLAY BRAND FILM",
+    "film_note": "1:50 · Best viewed with sound",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "Catalog",
@@ -176,6 +183,13 @@ window.I18N = {
   },
 
   zh: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "品牌影片",
+    "h_film": "GUNBASE 品牌影片",
+    "film_lead": "观看 GunBase 官方品牌影片。",
+    "film_play": "播放品牌影片",
+    "film_note": "1:50 · 建议开启声音",
+
     "brand": "火械基地",
     "brand_sub": "GUNBASE",
     "nav_catalog": "产品目录",
@@ -347,6 +361,13 @@ window.I18N = {
   },
 
   "zh-TW": {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "品牌影片",
+    "h_film": "GUNBASE 品牌影片",
+    "film_lead": "觀看 GunBase 官方品牌影片。",
+    "film_play": "播放品牌影片",
+    "film_note": "1:50 · 建議開啟聲音",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "產品目錄",
@@ -504,6 +525,13 @@ window.I18N = {
   },
 
   es: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "VÍDEO DE MARCA",
+    "h_film": "VÍDEO DE MARCA GUNBASE",
+    "film_lead": "Vea el vídeo oficial de la marca GunBase.",
+    "film_play": "REPRODUCIR VÍDEO",
+    "film_note": "1:50 · Mejor con sonido",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "Catálogo",
@@ -660,6 +688,13 @@ window.I18N = {
     "inquiry_doc_title": "GunBase Consulta / 火械基地询盘"
   },
   pt: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "VÍDEO DA MARCA",
+    "h_film": "VÍDEO DA MARCA GUNBASE",
+    "film_lead": "Assista ao vídeo oficial da marca GunBase.",
+    "film_play": "REPRODUZIR VÍDEO",
+    "film_note": "1:50 · Melhor com som",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "Catálogo",
@@ -816,6 +851,13 @@ window.I18N = {
     "inquiry_doc_title": "GunBase Consulta / 火械基地询盘"
   },
   fr: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "FILM DE MARQUE",
+    "h_film": "FILM DE MARQUE GUNBASE",
+    "film_lead": "Découvrez le film officiel de la marque GunBase.",
+    "film_play": "REGARDER LE FILM",
+    "film_note": "1:50 · À voir avec le son",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "Catalogue",
@@ -972,6 +1014,13 @@ window.I18N = {
     "inquiry_doc_title": "GunBase Demande / 火械基地询盘"
   },
   ar: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "فيلم العلامة",
+    "h_film": "فيلم علامة GUNBASE",
+    "film_lead": "شاهد الفيلم الرسمي لعلامة GunBase.",
+    "film_play": "تشغيل الفيلم",
+    "film_note": "1:50 · الأفضل مع الصوت",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "الكتالوج",
@@ -1128,6 +1177,13 @@ window.I18N = {
     "inquiry_doc_title": "GunBase طلب عرض سعر / 火械基地询盘"
   },
   hi: {
+    /* ---- Brand film (home page) ---- */
+    "film_eyebrow": "ब्रांड फ़िल्म",
+    "h_film": "GUNBASE ब्रांड फ़िल्म",
+    "film_lead": "GunBase की आधिकारिक ब्रांड फ़िल्म देखें।",
+    "film_play": "फ़िल्म चलाएँ",
+    "film_note": "1:50 · ध्वनि के साथ बेहतर",
+
     "brand": "GUNBASE",
     "brand_sub": "火械基地",
     "nav_catalog": "उत्पाद सूची",
