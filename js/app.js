@@ -71,7 +71,8 @@
     var soon = window.GUNBASE_COMING_SOON || [];
     var extra = window.GUNBASE_SCOPE_SWITCH || [];   // standalone docs (e.g. Scope Switch)
     var others = window.GUNBASE_OTHER_PRODUCTS || []; // partner-supplied / other products
-    return base.concat(soon).concat(extra).concat(others);
+    var partnerScopes = window.GUNBASE_PARTNER_SCOPES || [];  // partner-supplied optics catalog
+    return base.concat(soon).concat(extra).concat(others).concat(partnerScopes);
   }
   function catLabel(id) {
     var c = CATS.filter(function (x) { return x.id === id; })[0];
@@ -83,7 +84,8 @@
     try {
       var base = (window.GUNBASE_PRODUCTS || [])
         .concat(window.GUNBASE_SCOPE_SWITCH || [])
-        .concat(window.GUNBASE_OTHER_PRODUCTS || []);
+        .concat(window.GUNBASE_OTHER_PRODUCTS || [])
+        .concat(window.GUNBASE_PARTNER_SCOPES || []);
       var nodes = base.map(function (p) {
         var data = {
           "@context": "https://schema.org",

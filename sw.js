@@ -1,5 +1,5 @@
 // GunBase 火械基地 — Service Worker (offline app shell)
-var CACHE = "gunbase-v20";
+var CACHE = "gunbase-v21";
 var SHELL = [
   "./",
   "index.html",
@@ -12,6 +12,7 @@ var SHELL = [
   "js/coming-soon.js",
   "js/scope-switch.js",
   "js/other-products.js",
+  "js/partner-scopes.js",
   "js/app.js",
   "js/admin.js",
   "libs/xlsx.full.min.js",
