@@ -1,5 +1,5 @@
 // GunBase 火械基地 — Service Worker (offline app shell)
-var CACHE = "gunbase-v24";
+var CACHE = "gunbase-v25";
 var SHELL = [
   "./",
   "index.html",
@@ -63,25 +63,44 @@ self.addEventListener("activate", function (e) {
 
 self.addEventListener("fetch", function (e) {
   var url = new URL(e.request.url);
+  if (e.request.method !== "GET") return;
+
   // Media: always go to the network. Caching a 10MB MP4 would break
   // HTTP Range (206) seeking and fill Cache Storage with large blobs.
   if (/\.(mp4|m4v|webm|ogv|mov)$/i.test(url.pathname) || e.request.destination === "video") {
     e.respondWith(fetch(e.request));
     return;
   }
-  // products.js: network-first so catalog updates go live after redeploy
-  if (url.pathname.indexOf("products.js") !== -1) {
+
+  // Documents and code (HTML / JS / CSS / manifest) are NETWORK-FIRST.
+  // Cache-first here was the reason a fresh deploy could stay invisible for a
+  // whole session: the browser kept serving the old index.html (which does not
+  // load the newest data script) and old javascript, so new categories or new
+  // catalog files only showed up after the user manually cleared site data.
+  // Network-first guarantees "reload = latest", while the cache still covers
+  // the offline case and slow/flaky networks.
+  var isDoc = e.request.mode === "navigate" || e.request.destination === "document";
+  var isCode = /\.(js|css|webmanifest)$/i.test(url.pathname);
+  if (isDoc || isCode) {
     e.respondWith(
       fetch(e.request).then(function (res) {
-        var copy = res.clone();
-        caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+        if (res && res.ok && url.origin === location.origin) {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+        }
         return res;
-      }).catch(function () { return caches.match(e.request); })
+      }).catch(function () {
+        return caches.match(e.request, { ignoreSearch: true }).then(function (hit) {
+          if (hit) return hit;
+          if (isDoc) return caches.match("./");
+          return new Response("", { status: 504, statusText: "offline" });
+        });
+      })
     );
     return;
   }
-  // everything else: cache-first, fall back to network
-  if (e.request.method !== "GET") return;
+
+  // Images and other static assets: cache-first, fall back to network.
   e.respondWith(
     caches.match(e.request).then(function (hit) {
       return hit || fetch(e.request).then(function (res) {
