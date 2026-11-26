@@ -72,7 +72,8 @@
     var extra = window.GUNBASE_SCOPE_SWITCH || [];   // standalone docs (e.g. Scope Switch)
     var others = window.GUNBASE_OTHER_PRODUCTS || []; // partner-supplied / other products
     var partnerScopes = window.GUNBASE_PARTNER_SCOPES || [];  // partner-supplied optics catalog
-    return base.concat(soon).concat(extra).concat(others).concat(partnerScopes);
+    var smartGlasses = window.GUNBASE_SMART_GLASSES || [];    // partner-supplied smart eyewear
+    return base.concat(soon).concat(extra).concat(others).concat(partnerScopes).concat(smartGlasses);
   }
   function catLabel(id) {
     var c = CATS.filter(function (x) { return x.id === id; })[0];
@@ -85,7 +86,8 @@
       var base = (window.GUNBASE_PRODUCTS || [])
         .concat(window.GUNBASE_SCOPE_SWITCH || [])
         .concat(window.GUNBASE_OTHER_PRODUCTS || [])
-        .concat(window.GUNBASE_PARTNER_SCOPES || []);
+        .concat(window.GUNBASE_PARTNER_SCOPES || [])
+        .concat(window.GUNBASE_SMART_GLASSES || []);
       var nodes = base.map(function (p) {
         var data = {
           "@context": "https://schema.org",
