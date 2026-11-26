@@ -460,7 +460,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-042",
-    category: "hardware",
+    category: "lighting",
     name: { en: "Weapon Light WL-25", zh: "WL-25 步枪用枪灯" },
     sku: "WL-25",
     desc: { en: "Picatinny / M-LOK weapon-mounted white light for target identification and low-light engagement.", zh: "枪灯，Picatinny / M-LOK 战术导轨安装，高亮白光，适用于识别与低光交战。" },
@@ -471,7 +471,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-043",
-    category: "hardware",
+    category: "lighting",
     name: { en: "Weapon Light HL-20", zh: "HL-20 手枪用枪灯" },
     sku: "HL-20",
     desc: { en: "Picatinny / M-LOK weapon-mounted white light for target identification and low-light engagement.", zh: "枪灯，Picatinny / M-LOK 战术导轨安装，高亮白光，适用于识别与低光交战。" },
@@ -482,7 +482,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-044",
-    category: "hardware",
+    category: "lighting",
     name: { en: "Laser Flashlight", zh: "5038 下挂激光手电筒" },
     sku: "GB-044",
     desc: { en: "Combined white-light and visible (red / green) laser flashlight for aiming and illumination in training and field use.", zh: "激光手电筒，白光 + 可见激光（红/绿），适用于训练与实战照明瞄准。" },
@@ -493,7 +493,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-045",
-    category: "hardware",
+    category: "lighting",
     name: { en: "Tactical Flashlight", zh: "4025 战术手电筒" },
     sku: "GB-045",
     desc: { en: "Handheld tactical flashlight with high output, strobe and rugged construction for EDC, duty and outdoor use.", zh: "战术手电筒，高亮度、爆闪、航空铝机身，适用于日常、执勤与户外。" },
@@ -504,7 +504,7 @@ window.GUNBASE_PRODUCTS = [
   },
   {
     id: "GB-046",
-    category: "hardware",
+    category: "lighting",
     name: { en: "Tactical Flashlight", zh: "4030 战术手电筒" },
     sku: "GB-046",
     desc: { en: "Handheld tactical flashlight with high output, strobe and rugged construction for EDC, duty and outdoor use.", zh: "战术手电筒，高亮度、爆闪、航空铝机身，适用于日常、执勤与户外。" },
